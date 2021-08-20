@@ -58,16 +58,64 @@
 		CE5F0FA326CF845D00DC4272 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				CE5F0FA426CF845D00DC4272 /* AppDelegate.swift */,
-				CE5F0FA626CF845D00DC4272 /* SceneDelegate.swift */,
-				CE5F0FA826CF845D00DC4272 /* ViewController.swift */,
-				CE5F0FAA26CF845D00DC4272 /* Main.storyboard */,
-				CE5F0FB026CF845E00DC4272 /* Assets.xcassets */,
-				CE5F0FB226CF845E00DC4272 /* LaunchScreen.storyboard */,
 				CE5F0FB526CF845E00DC4272 /* Info.plist */,
-				CE5F0FAD26CF845D00DC4272 /* Chat.xcdatamodeld */,
+				CE5F0FBC26CF84FE00DC4272 /* Application */,
+				CE5F0FBD26CF850A00DC4272 /* CoreData */,
+				CE5F0FBE26CF851A00DC4272 /* Modules */,
+				CE5F0FBF26CF855400DC4272 /* Resources */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		CE5F0FBC26CF84FE00DC4272 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				CE5F0FA426CF845D00DC4272 /* AppDelegate.swift */,
+				CE5F0FA626CF845D00DC4272 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		CE5F0FBD26CF850A00DC4272 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				CE5F0FAD26CF845D00DC4272 /* Chat.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		CE5F0FBE26CF851A00DC4272 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				CE5F0FC126CF858600DC4272 /* Launch */,
+				CE5F0FC026CF857700DC4272 /* Main */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		CE5F0FBF26CF855400DC4272 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CE5F0FB026CF845E00DC4272 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CE5F0FC026CF857700DC4272 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CE5F0FA826CF845D00DC4272 /* ViewController.swift */,
+				CE5F0FAA26CF845D00DC4272 /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		CE5F0FC126CF858600DC4272 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				CE5F0FB226CF845E00DC4272 /* LaunchScreen.storyboard */,
+			);
+			path = Launch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
