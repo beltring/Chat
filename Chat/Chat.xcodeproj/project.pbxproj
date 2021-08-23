@@ -8,24 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		CE5F0FA526CF845D00DC4272 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5F0FA426CF845D00DC4272 /* AppDelegate.swift */; };
-		CE5F0FA726CF845D00DC4272 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5F0FA626CF845D00DC4272 /* SceneDelegate.swift */; };
 		CE5F0FA926CF845D00DC4272 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5F0FA826CF845D00DC4272 /* ViewController.swift */; };
 		CE5F0FAC26CF845D00DC4272 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5F0FAA26CF845D00DC4272 /* Main.storyboard */; };
 		CE5F0FAF26CF845D00DC4272 /* Chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE5F0FAD26CF845D00DC4272 /* Chat.xcdatamodeld */; };
 		CE5F0FB126CF845E00DC4272 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5F0FB026CF845E00DC4272 /* Assets.xcassets */; };
 		CE5F0FB426CF845E00DC4272 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5F0FB226CF845E00DC4272 /* LaunchScreen.storyboard */; };
+		CEA1A3F626D3608700122D32 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA1A3F526D3608700122D32 /* PromiseKit.framework */; };
+		CEA1A3F926D3609100122D32 /* TDJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA1A3F826D3609100122D32 /* TDJSON.framework */; };
+		CEA1A3FB26D360A600122D32 /* TDLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA1A3FA26D360A600122D32 /* TDLib.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE5F0FA126CF845D00DC4272 /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5F0FA426CF845D00DC4272 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE5F0FA626CF845D00DC4272 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CE5F0FA826CF845D00DC4272 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CE5F0FAB26CF845D00DC4272 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE5F0FAE26CF845D00DC4272 /* Chat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chat.xcdatamodel; sourceTree = "<group>"; };
 		CE5F0FB026CF845E00DC4272 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE5F0FB326CF845E00DC4272 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE5F0FB526CF845E00DC4272 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEA1A3F526D3608700122D32 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
+		CEA1A3F826D3609100122D32 /* TDJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TDJSON.framework; path = Carthage/Build/iOS/TDJSON.framework; sourceTree = "<group>"; };
+		CEA1A3FA26D360A600122D32 /* TDLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TDLib.framework; path = Carthage/Build/iOS/TDLib.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +37,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA1A3FB26D360A600122D32 /* TDLib.framework in Frameworks */,
+				CEA1A3F926D3609100122D32 /* TDJSON.framework in Frameworks */,
+				CEA1A3F626D3608700122D32 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +51,7 @@
 			children = (
 				CE5F0FA326CF845D00DC4272 /* Chat */,
 				CE5F0FA226CF845D00DC4272 /* Products */,
+				CEA1A3F426D3608700122D32 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				CE5F0FA426CF845D00DC4272 /* AppDelegate.swift */,
-				CE5F0FA626CF845D00DC4272 /* SceneDelegate.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -118,6 +125,16 @@
 			path = Launch;
 			sourceTree = "<group>";
 		};
+		CEA1A3F426D3608700122D32 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CEA1A3FA26D360A600122D32 /* TDLib.framework */,
+				CEA1A3F826D3609100122D32 /* TDJSON.framework */,
+				CEA1A3F526D3608700122D32 /* PromiseKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -128,6 +145,7 @@
 				CE5F0F9D26CF845D00DC4272 /* Sources */,
 				CE5F0F9E26CF845D00DC4272 /* Frameworks */,
 				CE5F0F9F26CF845D00DC4272 /* Resources */,
+				CEA1A3F326D3600600122D32 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -183,6 +201,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CEA1A3F326D3600600122D32 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/TDJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/TDLib.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CE5F0F9D26CF845D00DC4272 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -191,7 +232,6 @@
 				CE5F0FA926CF845D00DC4272 /* ViewController.swift in Sources */,
 				CE5F0FAF26CF845D00DC4272 /* Chat.xcdatamodeld in Sources */,
 				CE5F0FA526CF845D00DC4272 /* AppDelegate.swift in Sources */,
-				CE5F0FA726CF845D00DC4272 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +380,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 65CGDLNXGP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Chat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -348,7 +393,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.boltromyuk.Chat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -359,7 +404,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 65CGDLNXGP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Chat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -367,7 +417,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.boltromyuk.Chat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

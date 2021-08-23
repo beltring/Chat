@@ -1,0 +1,6 @@
+language: objective-c
+osx_image: xcode10.4
+script:
+  - bundle exec fastlane release
+notifications:
+  email: false
