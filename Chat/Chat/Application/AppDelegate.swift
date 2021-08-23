@@ -25,9 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Ignore these! TDLib-iOS will handle them.")
             case .waitPhoneNumber:
             // Show sign in screen.
+                TDManager.shared.setPhoneNumber(number: "+375297345698")
                 print("Show sign in screen.")
             case .waitCode(let codeInfo):
             // Show code input screen.
+                print(codeInfo)
                 print("Show code input screen.")
             case .waitPassword(let passwordHint, _, _):
             // Show passoword screen (will only happen when the user has setup 2FA).

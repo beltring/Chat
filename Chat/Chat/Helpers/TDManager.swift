@@ -16,4 +16,16 @@ class TDManager {
     private init(apiId: Int32, apiHash: String) {
         coordinator = Coordinator(client: TDJsonClient(), apiId: apiId, apiHash: apiHash)
     }
+    
+    func setPhoneNumber(number: String) {
+        coordinator.send(SetAuthenticationPhoneNumber(phoneNumber: number, settings: .none)).done { success in
+            print(success)
+        }
+    }
+    
+    func checkCode(code: String) {
+        coordinator.send(CheckAuthenticationCode(code: code)).done { result in
+            print(result)
+        }
+    }
 }
