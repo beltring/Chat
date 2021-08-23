@@ -15,7 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        TDManager.shared.coordinator.authorizationState.subscribe(on: .main) { event in
+        let vc = RootNavigationViewController()
+        vc.setRootController()
+        window?.rootViewController = vc
+        window?.makeKeyAndVisible()
+        
+        TDManager.shared.coordinator.authorizationState.subscribe(on: .main) { [weak self] event in
             guard let state = event.value else {
                 return
             }
@@ -25,8 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Ignore these! TDLib-iOS will handle them.")
             case .waitPhoneNumber:
             // Show sign in screen.
-                TDManager.shared.setPhoneNumber(number: "+375297345698")
+//                TDManager.shared.setPhoneNumber(number: "+37529734598")
                 print("Show sign in screen.")
+//                self?.window?.rootViewController = PhoneNumberViewController.initial()
             case .waitCode(let codeInfo):
             // Show code input screen.
                 print(codeInfo)

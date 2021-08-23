@@ -11,6 +11,10 @@
 		CE59DB4526D399A9002ABBB1 /* PhoneNumber.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE59DB4426D399A9002ABBB1 /* PhoneNumber.storyboard */; };
 		CE59DB4A26D3A992002ABBB1 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59DB4926D3A992002ABBB1 /* UIViewExtension.swift */; };
 		CE59DB4D26D3A9F4002ABBB1 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59DB4C26D3A9F4002ABBB1 /* UIViewControllerExtension.swift */; };
+		CE59DB5326D3B372002ABBB1 /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59DB5226D3B372002ABBB1 /* RootTabBarViewController.swift */; };
+		CE59DB5726D3B3D4002ABBB1 /* RootNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59DB5626D3B3D4002ABBB1 /* RootNavigationViewController.swift */; };
+		CE59DB5C26D3B416002ABBB1 /* RootTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE59DB5B26D3B416002ABBB1 /* RootTabBar.storyboard */; };
+		CE59DB6426D3C846002ABBB1 /* TDlibError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59DB6326D3C846002ABBB1 /* TDlibError.swift */; };
 		CE5F0FA526CF845D00DC4272 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5F0FA426CF845D00DC4272 /* AppDelegate.swift */; };
 		CE5F0FA926CF845D00DC4272 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5F0FA826CF845D00DC4272 /* ViewController.swift */; };
 		CE5F0FAC26CF845D00DC4272 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5F0FAA26CF845D00DC4272 /* Main.storyboard */; };
@@ -32,6 +36,10 @@
 		CE59DB4426D399A9002ABBB1 /* PhoneNumber.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhoneNumber.storyboard; sourceTree = "<group>"; };
 		CE59DB4926D3A992002ABBB1 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		CE59DB4C26D3A9F4002ABBB1 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		CE59DB5226D3B372002ABBB1 /* RootTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
+		CE59DB5626D3B3D4002ABBB1 /* RootNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationViewController.swift; sourceTree = "<group>"; };
+		CE59DB5B26D3B416002ABBB1 /* RootTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RootTabBar.storyboard; sourceTree = "<group>"; };
+		CE59DB6326D3C846002ABBB1 /* TDlibError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDlibError.swift; sourceTree = "<group>"; };
 		CE5F0FA126CF845D00DC4272 /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5F0FA426CF845D00DC4272 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5F0FA826CF845D00DC4272 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +104,32 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		CE59DB5026D3B328002ABBB1 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				CE59DB5B26D3B416002ABBB1 /* RootTabBar.storyboard */,
+				CE59DB5226D3B372002ABBB1 /* RootTabBarViewController.swift */,
+				CE59DB5126D3B350002ABBB1 /* Navigation */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		CE59DB5126D3B350002ABBB1 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				CE59DB5626D3B3D4002ABBB1 /* RootNavigationViewController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		CE59DB6226D3C818002ABBB1 /* Parents */ = {
+			isa = PBXGroup;
+			children = (
+				CE59DB6326D3C846002ABBB1 /* TDlibError.swift */,
+			);
+			path = Parents;
+			sourceTree = "<group>";
+		};
 		CE5F0F9826CF845D00DC4272 = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +156,7 @@
 				CE5F0FBD26CF850A00DC4272 /* CoreData */,
 				CEA1A40326D3635500122D32 /* Helpers */,
 				CE5F0FBE26CF851A00DC4272 /* Modules */,
+				CE59DB6226D3C818002ABBB1 /* Parents */,
 				CE5F0FBF26CF855400DC4272 /* Resources */,
 				CEA1A3FD26D3631800122D32 /* Utils */,
 			);
@@ -147,9 +182,10 @@
 		CE5F0FBE26CF851A00DC4272 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				CE59DB3E26D39798002ABBB1 /* SignInUp */,
 				CE5F0FC126CF858600DC4272 /* Launch */,
 				CE5F0FC026CF857700DC4272 /* Main */,
+				CE59DB5026D3B328002ABBB1 /* Root */,
+				CE59DB3E26D39798002ABBB1 /* SignInUp */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -266,6 +302,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE59DB5C26D3B416002ABBB1 /* RootTabBar.storyboard in Resources */,
 				CE59DB4526D399A9002ABBB1 /* PhoneNumber.storyboard in Resources */,
 				CE5F0FB426CF845E00DC4272 /* LaunchScreen.storyboard in Resources */,
 				CE5F0FB126CF845E00DC4272 /* Assets.xcassets in Resources */,
@@ -342,8 +379,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE59DB5326D3B372002ABBB1 /* RootTabBarViewController.swift in Sources */,
 				CE59DB4A26D3A992002ABBB1 /* UIViewExtension.swift in Sources */,
 				CE5F0FA926CF845D00DC4272 /* ViewController.swift in Sources */,
+				CE59DB5726D3B3D4002ABBB1 /* RootNavigationViewController.swift in Sources */,
+				CE59DB6426D3C846002ABBB1 /* TDlibError.swift in Sources */,
 				CEA1A40526D3640100122D32 /* TDManager.swift in Sources */,
 				CE59DB4126D39997002ABBB1 /* PhoneNumberViewController.swift in Sources */,
 				CE5F0FAF26CF845D00DC4272 /* Chat.xcdatamodeld in Sources */,
