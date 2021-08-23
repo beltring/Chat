@@ -17,9 +17,11 @@ class TDManager {
         coordinator = Coordinator(client: TDJsonClient(), apiId: apiId, apiHash: apiHash)
     }
     
-    func setPhoneNumber(number: String) {
+    func setPhoneNumber(number: String, completion: @escaping (Result<String, Error>) -> Void ) {
         coordinator.send(SetAuthenticationPhoneNumber(phoneNumber: number, settings: .none)).done { success in
             print(success)
+        }.catch{ error in
+            print(error)
         }
     }
     
