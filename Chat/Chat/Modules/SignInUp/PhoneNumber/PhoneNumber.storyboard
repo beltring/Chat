@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="8CN-Xd-Kso">
+            <objects>
+                <viewController id="7Us-Lf-Fkh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kQP-Tp-cz2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNw-kr-bCN">
+                                <rect key="frame" x="124.5" y="188" width="165" height="38"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please confirm your country code and enter your phone number." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXu-qu-W9g">
+                                <rect key="frame" x="20" y="266" width="374" height="113"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="113" id="r5l-lp-Ojn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zT3-IW-UAE" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
+                                <rect key="frame" x="20" y="419" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="w8G-Mb-AsC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eXu-qu-W9g" firstAttribute="leading" secondItem="w8G-Mb-AsC" secondAttribute="leading" constant="20" id="2rh-YB-Tgg"/>
+                            <constraint firstItem="w8G-Mb-AsC" firstAttribute="trailing" secondItem="eXu-qu-W9g" secondAttribute="trailing" constant="20" id="DBx-UM-PEr"/>
+                            <constraint firstItem="zT3-IW-UAE" firstAttribute="leading" secondItem="w8G-Mb-AsC" secondAttribute="leading" constant="20" id="DQP-dT-THw"/>
+                            <constraint firstItem="zT3-IW-UAE" firstAttribute="top" secondItem="eXu-qu-W9g" secondAttribute="bottom" constant="40" id="Pj7-HL-Ah0"/>
+                            <constraint firstItem="aNw-kr-bCN" firstAttribute="top" secondItem="w8G-Mb-AsC" secondAttribute="top" constant="100" id="Vaw-dD-Aru"/>
+                            <constraint firstItem="w8G-Mb-AsC" firstAttribute="trailing" secondItem="zT3-IW-UAE" secondAttribute="trailing" constant="20" id="WeT-8e-Szf"/>
+                            <constraint firstItem="eXu-qu-W9g" firstAttribute="top" secondItem="aNw-kr-bCN" secondAttribute="bottom" constant="40" id="gKb-f0-9UO"/>
+                            <constraint firstItem="aNw-kr-bCN" firstAttribute="centerX" secondItem="w8G-Mb-AsC" secondAttribute="centerX" id="r1R-lR-LC7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ef6-bx-bC6">
+                        <barButtonItem key="rightBarButtonItem" title="Next" style="done" id="2P7-4X-aJe"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LeV-cr-u9N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1168.1159420289855" y="75.669642857142847"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yQP-JF-u7q">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="meh-eK-aNA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fig-hJ-K1R">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7Us-Lf-Fkh" kind="relationship" relationship="rootViewController" id="E0D-yc-VyT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jo9-3e-L6d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="257.97101449275362" y="75.669642857142847"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
