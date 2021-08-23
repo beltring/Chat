@@ -16,6 +16,7 @@
 		CEA1A3F626D3608700122D32 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA1A3F526D3608700122D32 /* PromiseKit.framework */; };
 		CEA1A3F926D3609100122D32 /* TDJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA1A3F826D3609100122D32 /* TDJSON.framework */; };
 		CEA1A3FB26D360A600122D32 /* TDLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA1A3FA26D360A600122D32 /* TDLib.framework */; };
+		CEA1A40526D3640100122D32 /* TDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1A40426D3640100122D32 /* TDManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		CEA1A3F526D3608700122D32 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		CEA1A3F826D3609100122D32 /* TDJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TDJSON.framework; path = Carthage/Build/iOS/TDJSON.framework; sourceTree = "<group>"; };
 		CEA1A3FA26D360A600122D32 /* TDLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TDLib.framework; path = Carthage/Build/iOS/TDLib.framework; sourceTree = "<group>"; };
+		CEA1A40426D3640100122D32 /* TDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +71,10 @@
 				CE5F0FB526CF845E00DC4272 /* Info.plist */,
 				CE5F0FBC26CF84FE00DC4272 /* Application */,
 				CE5F0FBD26CF850A00DC4272 /* CoreData */,
+				CEA1A40326D3635500122D32 /* Helpers */,
 				CE5F0FBE26CF851A00DC4272 /* Modules */,
 				CE5F0FBF26CF855400DC4272 /* Resources */,
+				CEA1A3FD26D3631800122D32 /* Utils */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -133,6 +137,21 @@
 				CEA1A3F526D3608700122D32 /* PromiseKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CEA1A3FD26D3631800122D32 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CEA1A40326D3635500122D32 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CEA1A40426D3640100122D32 /* TDManager.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE5F0FA926CF845D00DC4272 /* ViewController.swift in Sources */,
+				CEA1A40526D3640100122D32 /* TDManager.swift in Sources */,
 				CE5F0FAF26CF845D00DC4272 /* Chat.xcdatamodeld in Sources */,
 				CE5F0FA526CF845D00DC4272 /* AppDelegate.swift in Sources */,
 			);
