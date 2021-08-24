@@ -19,13 +19,12 @@ class RootNavigationViewController: UINavigationController {
     func setRootController() {
         let vc: UIViewController
         
-        vc = PhoneNumberViewController.initial()
-//        if AuthorizeData.shared.isAuthorized {
-//            vc = RootTabBarViewController.initial()
-//        } else {
-//            vc = LoginViewController.initial()
-//        }
-//
+        if false {
+            vc = RootTabBarViewController.initial()
+        } else {
+            vc = PhoneNumberViewController.initial()
+        }
+
         setViewControllers([vc], animated: false)
     }
 

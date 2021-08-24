@@ -9,16 +9,30 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Chats View Controller-->
+        <!--Chats-->
         <scene sceneID="m65-Rb-3Ci">
             <objects>
                 <viewController id="q2F-vo-Bkd" customClass="ChatsViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gpi-wP-oYJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEd-G3-2GI">
+                                <rect key="frame" x="184.5" y="418" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="0Vm-VN-PCy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="PEd-G3-2GI" firstAttribute="centerX" secondItem="0Vm-VN-PCy" secondAttribute="centerX" id="5gP-tR-vlG"/>
+                            <constraint firstItem="PEd-G3-2GI" firstAttribute="centerY" secondItem="0Vm-VN-PCy" secondAttribute="centerY" id="tGh-IA-75A"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Chats" image="message" catalog="system" id="Rw7-Aq-pW2"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2NG-xY-9jw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -26,6 +40,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="message" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
