@@ -11,6 +11,7 @@
 		CE5338AC26D4CE1F00391E86 /* Chats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5338AB26D4CE1F00391E86 /* Chats.storyboard */; };
 		CE5338B126D4CE8200391E86 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5338B026D4CE8200391E86 /* SettingsViewController.swift */; };
 		CE5338B426D4CE8D00391E86 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5338B326D4CE8D00391E86 /* Settings.storyboard */; };
+		CE5338B926D4FCAB00391E86 /* UITableViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5338B826D4FCAB00391E86 /* UITableViewCellExtensions.swift */; };
 		CE59DB4126D39997002ABBB1 /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59DB4026D39997002ABBB1 /* PhoneNumberViewController.swift */; };
 		CE59DB4526D399A9002ABBB1 /* PhoneNumber.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE59DB4426D399A9002ABBB1 /* PhoneNumber.storyboard */; };
 		CE59DB4A26D3A992002ABBB1 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59DB4926D3A992002ABBB1 /* UIViewExtension.swift */; };
@@ -40,6 +41,7 @@
 		CE5338AB26D4CE1F00391E86 /* Chats.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chats.storyboard; sourceTree = "<group>"; };
 		CE5338B026D4CE8200391E86 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE5338B326D4CE8D00391E86 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		CE5338B826D4FCAB00391E86 /* UITableViewCellExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtensions.swift; sourceTree = "<group>"; };
 		CE59DB4026D39997002ABBB1 /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
 		CE59DB4426D399A9002ABBB1 /* PhoneNumber.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhoneNumber.storyboard; sourceTree = "<group>"; };
 		CE59DB4926D3A992002ABBB1 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		CE5338A726D4CE0900391E86 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
+				CE5338B726D4E78B00391E86 /* Cell */,
 				CE5338AB26D4CE1F00391E86 /* Chats.storyboard */,
 				CE5338A826D4CE1800391E86 /* ChatsViewController.swift */,
 			);
@@ -111,6 +114,13 @@
 				CE5338B026D4CE8200391E86 /* SettingsViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		CE5338B726D4E78B00391E86 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		CE59DB3E26D39798002ABBB1 /* SignInUp */ = {
@@ -136,6 +146,7 @@
 			children = (
 				CE59DB4C26D3A9F4002ABBB1 /* UIViewControllerExtension.swift */,
 				CE59DB4926D3A992002ABBB1 /* UIViewExtension.swift */,
+				CE5338B826D4FCAB00391E86 /* UITableViewCellExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -427,6 +438,7 @@
 				CE59DB4126D39997002ABBB1 /* PhoneNumberViewController.swift in Sources */,
 				CE5F0FAF26CF845D00DC4272 /* Chat.xcdatamodeld in Sources */,
 				CE59DB4D26D3A9F4002ABBB1 /* UIViewControllerExtension.swift in Sources */,
+				CE5338B926D4FCAB00391E86 /* UITableViewCellExtensions.swift in Sources */,
 				CE5F0FA526CF845D00DC4272 /* AppDelegate.swift in Sources */,
 				CE5338B126D4CE8200391E86 /* SettingsViewController.swift in Sources */,
 			);
