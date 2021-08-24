@@ -30,8 +30,7 @@ class AuthenticationCodeViewController: UIViewController {
         TDManager.shared.checkCode(code: code) { [weak self] result in
             switch result {
             case.success:
-                print("Success")
-//                self?.navigationController?.pushViewController(MainScreeen, animated: true)
+                self?.navigationController?.pushViewController(RootTabBarViewController.initial(), animated: true)
             case .failure(let error):
                 self?.presentAlert(title: "Error", message: error.localizedDescription)
             }
