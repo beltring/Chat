@@ -4,5 +4,7 @@ platform :ios, '12.3'
 target 'Chat' do
   
   pod 'PhoneNumberKit', '3.3'
+  
+  pod 'KeychainSwift', '~> 19.0'
 
 end

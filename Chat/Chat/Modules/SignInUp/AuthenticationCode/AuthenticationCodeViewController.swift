@@ -26,17 +26,16 @@ class AuthenticationCodeViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func nextTapped() {
-        let rootVC = RootTabBarViewController.initial()
-        self.navigationController?.setViewControllers([rootVC], animated: true)
-//        guard let code = codeTextField.text else { return }
-//        TDManager.shared.checkCode(code: code) { [weak self] result in
-//            switch result {
-//            case.success:
-//                let rootVC = RootTabBarViewController.initial()
-//        self.navigationController?.setViewControllers([rootVC], animated: true)
-//            case .failure(let error):
-//                self?.presentAlert(title: "Error", message: error.localizedDescription)
-//            }
-//        }
+        guard let code = codeTextField.text else { return }
+        TDManager.shared.checkCode(code: code) { [weak self] result in
+            switch result {
+            case.success:
+                AuthorizeData.shared.isAuthorized = true
+                let rootVC = RootTabBarViewController.initial()
+                self?.navigationController?.setViewControllers([rootVC], animated: true)
+            case .failure(let error):
+                self?.presentAlert(title: "Error", message: error.localizedDescription)
+            }
+        }
     }
 }

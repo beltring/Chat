@@ -17,26 +17,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEd-G3-2GI">
-                                <rect key="frame" x="184.5" y="418" width="45" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LTK-Yj-uER">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0Vm-VN-PCy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="PEd-G3-2GI" firstAttribute="centerX" secondItem="0Vm-VN-PCy" secondAttribute="centerX" id="5gP-tR-vlG"/>
-                            <constraint firstItem="PEd-G3-2GI" firstAttribute="centerY" secondItem="0Vm-VN-PCy" secondAttribute="centerY" id="tGh-IA-75A"/>
+                            <constraint firstItem="LTK-Yj-uER" firstAttribute="trailing" secondItem="0Vm-VN-PCy" secondAttribute="trailing" id="6eG-Ec-Pdu"/>
+                            <constraint firstItem="LTK-Yj-uER" firstAttribute="bottom" secondItem="0Vm-VN-PCy" secondAttribute="bottom" id="HBA-0x-ssj"/>
+                            <constraint firstItem="LTK-Yj-uER" firstAttribute="top" secondItem="0Vm-VN-PCy" secondAttribute="top" id="YpA-ru-VCh"/>
+                            <constraint firstItem="LTK-Yj-uER" firstAttribute="leading" secondItem="0Vm-VN-PCy" secondAttribute="leading" id="j8x-nk-peg"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Chats" image="message" catalog="system" id="Rw7-Aq-pW2"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="LTK-Yj-uER" id="tsq-f1-nf1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2NG-xY-9jw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="141" y="90"/>
+            <point key="canvasLocation" x="140.57971014492756" y="89.732142857142847"/>
         </scene>
     </scenes>
     <resources>

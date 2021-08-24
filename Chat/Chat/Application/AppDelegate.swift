@@ -43,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case .ready:
             // Show main view
                 print("Show main view.")
+                AuthorizeData.shared.isAuthorized = true
             case .loggingOut, .closing, .closed:
                 break
             case .waitOtherDeviceConfirmation(link: let link):
