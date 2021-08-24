@@ -25,9 +25,11 @@ class TDManager {
         }
     }
     
-    func checkCode(code: String) {
-        coordinator.send(CheckAuthenticationCode(code: code)).done { result in
-            print(result)
+    func checkCode(code: String, completion: @escaping (Result<String, TDlibError>) -> Void) {
+        coordinator.send(CheckAuthenticationCode(code: code)).done { success in
+            completion(.success(code))
+        }.catch{ error in
+            completion(.failure(.invalidCode))
         }
     }
 }

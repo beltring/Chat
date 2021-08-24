@@ -9,6 +9,7 @@ import Foundation
 
 enum TDlibError: Error {
     case invalidPhoneNumber
+    case invalidCode
 }
 
 extension TDlibError: LocalizedError {
@@ -16,6 +17,8 @@ extension TDlibError: LocalizedError {
         switch self {
         case .invalidPhoneNumber:
             return "Invalid phone number."
+        case .invalidCode:
+            return "Invalid code." 
         }
     }
 }

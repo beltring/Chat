@@ -17,20 +17,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e51-15-9pt">
-                                <rect key="frame" x="169" y="436.5" width="76" height="33.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter text" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qlg-Dc-veq">
+                                <rect key="frame" x="132" y="436" width="150" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Hot-ip-MAP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HeR-qU-xjy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="e51-15-9pt" firstAttribute="centerY" secondItem="HeR-qU-xjy" secondAttribute="centerY" id="I3H-19-5eQ"/>
-                            <constraint firstItem="e51-15-9pt" firstAttribute="centerX" secondItem="HeR-qU-xjy" secondAttribute="centerX" id="K27-3A-xJw"/>
+                            <constraint firstItem="qlg-Dc-veq" firstAttribute="centerY" secondItem="HeR-qU-xjy" secondAttribute="centerY" id="7Ba-us-1If"/>
+                            <constraint firstItem="qlg-Dc-veq" firstAttribute="centerX" secondItem="HeR-qU-xjy" secondAttribute="centerX" id="idM-YZ-KrJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="codeTextField" destination="qlg-Dc-veq" id="sCY-OJ-J3k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yX2-3Y-UOm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
