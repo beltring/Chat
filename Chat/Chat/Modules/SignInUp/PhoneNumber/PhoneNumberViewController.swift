@@ -28,7 +28,16 @@ class PhoneNumberViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func nextTapped(_ sender: Any) {
-        TDManager.shared.setPhoneNumber(number: numberTextField.text!)
+//        guard let phoneNumber = numberTextField.text else { return }
+        navigationController?.pushViewController(AuthenticationCodeViewController.initial(), animated: true)
+//        TDManager.shared.setPhoneNumber(number: phoneNumber) { [weak self] result in
+//            switch result {
+//            case .success:
+//                self?.navigationController?.pushViewController(AuthenticationCodeViewController.initial(), animated: true)
+//            case .failure(let error):
+//                self?.presentAlert(title: "Error", message: error.localizedDescription)
+//            }
+//        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

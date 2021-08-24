@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum NetworkError: Error {
+enum TDlibError: Error {
     case invalidPhoneNumber
 }
 
-extension NetworkError: LocalizedError {
+extension TDlibError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .invalidPhoneNumber:
