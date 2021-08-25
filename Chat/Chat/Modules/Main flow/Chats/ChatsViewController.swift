@@ -15,6 +15,7 @@ class ChatsViewController: UIViewController {
         super.viewDidLoad()
 
         setupTableView()
+        tabBarController?.navigationItem.title = "Chats"
     }
 
     private func setupTableView() {
