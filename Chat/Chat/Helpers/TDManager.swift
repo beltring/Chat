@@ -56,4 +56,12 @@ class TDManager {
             completion(.failure(.sampleError))
         }
     }
+    
+    func createPrivateChat(userId: Int32, completion: @escaping (Result<Chat, TDlibError>) -> Void) {
+        coordinator.send(CreatePrivateChat(userId: userId, force: false)).done { chat in
+            completion(.success(chat))
+        }.catch { error in
+            completion(.failure(.sampleError))
+        }
+    }
 }

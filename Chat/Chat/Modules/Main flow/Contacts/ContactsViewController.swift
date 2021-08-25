@@ -70,4 +70,17 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = dataSource[indexPath.row]
+        
+        TDManager.shared.createPrivateChat(userId: user.id) { result in
+            switch result {
+            case .success(let chat):
+                print(chat)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
