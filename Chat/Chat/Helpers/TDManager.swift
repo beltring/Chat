@@ -32,4 +32,12 @@ class TDManager {
             completion(.failure(.invalidCode))
         }
     }
+    
+    func getContacts(completion: @escaping (Result<Users, TDlibError>) -> Void) {
+        coordinator.send(GetContacts()).done { users in
+            completion(.success(users))
+        }.catch{ error in
+            completion(.failure(.invalidCode))
+        }
+    }
 }
