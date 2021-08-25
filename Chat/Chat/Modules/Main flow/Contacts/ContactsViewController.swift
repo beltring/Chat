@@ -13,6 +13,7 @@ class ContactsViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private var dataSource = [User]()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +30,22 @@ class ContactsViewController: UIViewController {
     }
     
     private func prepareDataSource() {
-        TDManager.shared.getContacts { result in
+        TDManager.shared.getContacts { [weak self] result in
             switch result {
             case .success(let users):
-                print("Count: \(users.totalCount)")
+                for id in users.userIds {
+                    TDManager.shared.getUser(id: id) { [weak self] res in
+                        switch res {
+                        case .success(let user):
+                            DispatchQueue.main.async {
+                                self?.dataSource.append(user)
+                                self?.tableView.reloadData()
+                            }
+                        case .failure(let error):
+                            print(error.localizedDescription)
+                        }
+                    }
+                }
             case.failure(let error):
                 print(error.localizedDescription)
             }
@@ -51,7 +64,9 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = ContactTableViewCell.dequeueReusableCell(in: tableView, for: indexPath)
         
         let user = dataSource[indexPath.row]
-        cell.configure(name: user.username)
+        let name = "\(user.firstName) \(user.lastName)"
+        let status = String(describing: user.status)
+        cell.configure(name: name, status: status)
         
         return cell
     }

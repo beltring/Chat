@@ -9,13 +9,16 @@ import UIKit
 
 class ContactTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet private weak var profileImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func configure(name: String) {
+    func configure(name: String, status: String) {
         nameLabel.text = name
+        statusLabel.text = status
     }
 }

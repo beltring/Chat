@@ -50,7 +50,7 @@ class TDManager {
     }
     
     func getChats(completion: @escaping (Result<Chats, TDlibError>) -> Void) {
-        coordinator.send(GetChats(chatList: nil, offsetOrder: nil, offsetChatId: nil, limit: 10)).done { chats in
+        coordinator.send(GetChats(chatList: nil, offsetOrder: nil, offsetChatId: nil, limit: 100)).done { chats in
             completion(.success(chats))
         }.catch { error in
             completion(.failure(.sampleError))

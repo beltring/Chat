@@ -6,20 +6,24 @@ PODS:
   - PhoneNumberKit/PhoneNumberKitCore (3.3.0)
   - PhoneNumberKit/UIKit (3.3.0):
     - PhoneNumberKit/PhoneNumberKitCore
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - KeychainSwift (~> 19.0)
   - PhoneNumberKit (= 3.3)
+  - SVProgressHUD (= 2.2.5)
 
 SPEC REPOS:
   trunk:
     - KeychainSwift
     - PhoneNumberKit
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   PhoneNumberKit: edd7d55c9bcf5b00cb7675c045b24c698a43c874
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 4ebe33b5e524370cdfeb30c6d6650588119ab0d4
+PODFILE CHECKSUM: ea5e5fa1b34f093bf55a035a3e0c0f2e7588c7a5
 
 COCOAPODS: 1.10.1

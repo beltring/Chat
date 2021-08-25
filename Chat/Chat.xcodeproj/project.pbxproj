@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040D1EDC8573044E1AA5EBA2 /* libPods-Chat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5C9E0026D6497400711AB0 /* libPods-Chat.a */; };
 		CE5338A926D4CE1800391E86 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5338A826D4CE1800391E86 /* ChatsViewController.swift */; };
 		CE5338AC26D4CE1F00391E86 /* Chats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5338AB26D4CE1F00391E86 /* Chats.storyboard */; };
 		CE5338B126D4CE8200391E86 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5338B026D4CE8200391E86 /* SettingsViewController.swift */; };
@@ -37,7 +38,6 @@
 		CEA1A3F926D3609100122D32 /* TDJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA1A3F826D3609100122D32 /* TDJSON.framework */; };
 		CEA1A3FB26D360A600122D32 /* TDLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA1A3FA26D360A600122D32 /* TDLib.framework */; };
 		CEA1A40526D3640100122D32 /* TDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1A40426D3640100122D32 /* TDManager.swift */; };
-		FD06E174D3A0A1DE891CA59A /* libPods-Chat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92FA61DD61EE4D05219689B5 /* libPods-Chat.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +62,11 @@
 		CE59DB6326D3C846002ABBB1 /* TDlibError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDlibError.swift; sourceTree = "<group>"; };
 		CE59DB6726D3CFB2002ABBB1 /* AuthenticationCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCodeViewController.swift; sourceTree = "<group>"; };
 		CE59DB6B26D3CFBB002ABBB1 /* AuthenticationCode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthenticationCode.storyboard; sourceTree = "<group>"; };
+		CE5C9DFA26D6494600711AB0 /* libPods-Chat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-Chat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE5C9DFE26D6497400711AB0 /* libKeychainSwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libKeychainSwift.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE5C9DFF26D6497400711AB0 /* libPhoneNumberKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libPhoneNumberKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE5C9E0026D6497400711AB0 /* libPods-Chat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-Chat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE5C9E0126D6497400711AB0 /* libSVProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSVProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5F0FA126CF845D00DC4272 /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5F0FA426CF845D00DC4272 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5F0FAE26CF845D00DC4272 /* Chat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chat.xcdatamodel; sourceTree = "<group>"; };
@@ -86,7 +91,7 @@
 				CEA1A3FB26D360A600122D32 /* TDLib.framework in Frameworks */,
 				CEA1A3F926D3609100122D32 /* TDJSON.framework in Frameworks */,
 				CEA1A3F626D3608700122D32 /* PromiseKit.framework in Frameworks */,
-				FD06E174D3A0A1DE891CA59A /* libPods-Chat.a in Frameworks */,
+				040D1EDC8573044E1AA5EBA2 /* libPods-Chat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +306,11 @@
 		CEA1A3F426D3608700122D32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE5C9DFE26D6497400711AB0 /* libKeychainSwift.a */,
+				CE5C9DFF26D6497400711AB0 /* libPhoneNumberKit.a */,
+				CE5C9E0026D6497400711AB0 /* libPods-Chat.a */,
+				CE5C9E0126D6497400711AB0 /* libSVProgressHUD.a */,
+				CE5C9DFA26D6494600711AB0 /* libPods-Chat.a */,
 				CEA1A3FA26D360A600122D32 /* TDLib.framework */,
 				CEA1A3F826D3609100122D32 /* TDJSON.framework */,
 				CEA1A3F526D3608700122D32 /* PromiseKit.framework */,
