@@ -37,7 +37,23 @@ class TDManager {
         coordinator.send(GetContacts()).done { users in
             completion(.success(users))
         }.catch{ error in
-            completion(.failure(.invalidCode))
+            completion(.failure(.sampleError))
+        }
+    }
+
+    func getUser(id: Int32, completion: @escaping (Result<User, TDlibError>) -> Void) {
+        coordinator.send(GetUser(userId: id)).done { user in
+            completion(.success(user))
+        }.catch{ error in
+            completion(.failure(.sampleError))
+        }
+    }
+    
+    func getChats(completion: @escaping (Result<Chats, TDlibError>) -> Void) {
+        coordinator.send(GetChats(chatList: nil, offsetOrder: nil, offsetChatId: nil, limit: 10)).done { chats in
+            completion(.success(chats))
+        }.catch { error in
+            completion(.failure(.sampleError))
         }
     }
 }
