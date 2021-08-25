@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter text" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qlg-Dc-veq">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qlg-Dc-veq">
                                 <rect key="frame" x="132" y="436" width="150" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="Hot-ip-MAP"/>
@@ -25,12 +25,39 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check your Telegram messages" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzE-n5-NNn">
+                                <rect key="frame" x="20" y="189" width="374" height="62"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgMessages" translatesAutoresizingMaskIntoConstraints="NO" id="oPd-O2-h85">
+                                <rect key="frame" x="157" y="74" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="8Xx-Qk-Pj7"/>
+                                    <constraint firstAttribute="width" constant="100" id="jq3-yU-H63"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We've sent the code to the Telegram app on your other device" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SfT-NN-vl5">
+                                <rect key="frame" x="20" y="259" width="374" height="92.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HeR-qU-xjy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="oPd-O2-h85" firstAttribute="top" secondItem="HeR-qU-xjy" secondAttribute="top" constant="30" id="6DH-Ep-LdV"/>
+                            <constraint firstItem="oPd-O2-h85" firstAttribute="centerX" secondItem="HeR-qU-xjy" secondAttribute="centerX" id="6ie-Aq-hZk"/>
                             <constraint firstItem="qlg-Dc-veq" firstAttribute="centerY" secondItem="HeR-qU-xjy" secondAttribute="centerY" id="7Ba-us-1If"/>
+                            <constraint firstItem="HeR-qU-xjy" firstAttribute="trailing" secondItem="SfT-NN-vl5" secondAttribute="trailing" constant="20" id="9Yf-b1-TBT"/>
+                            <constraint firstItem="wzE-n5-NNn" firstAttribute="leading" secondItem="HeR-qU-xjy" secondAttribute="leading" constant="20" id="BbT-fb-3pn"/>
+                            <constraint firstItem="SfT-NN-vl5" firstAttribute="leading" secondItem="HeR-qU-xjy" secondAttribute="leading" constant="20" id="H8u-d3-buw"/>
+                            <constraint firstItem="wzE-n5-NNn" firstAttribute="top" secondItem="oPd-O2-h85" secondAttribute="bottom" constant="15" id="Hyk-NF-HiI"/>
+                            <constraint firstItem="HeR-qU-xjy" firstAttribute="trailing" secondItem="wzE-n5-NNn" secondAttribute="trailing" constant="20" id="ZoZ-FS-KED"/>
                             <constraint firstItem="qlg-Dc-veq" firstAttribute="centerX" secondItem="HeR-qU-xjy" secondAttribute="centerX" id="idM-YZ-KrJ"/>
+                            <constraint firstItem="SfT-NN-vl5" firstAttribute="top" secondItem="wzE-n5-NNn" secondAttribute="bottom" constant="8" symbolic="YES" id="v4X-Gg-xiu"/>
                         </constraints>
                     </view>
                     <connections>
@@ -43,6 +70,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="imgMessages" width="94" height="60"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
