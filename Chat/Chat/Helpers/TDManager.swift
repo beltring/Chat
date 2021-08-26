@@ -64,4 +64,20 @@ class TDManager {
             completion(.failure(.sampleError))
         }
     }
+    
+    func getCurrentUser(completion: @escaping (Result<User, TDlibError>) -> Void) {
+        coordinator.send(GetMe()).done { user in
+            completion(.success(user))
+        }.catch { error in
+            completion(.failure(.sampleError))
+        }
+    }
+    
+    func logOut(completion: @escaping (Result<Bool, TDlibError>) -> Void) {
+        coordinator.send(LogOut()).done { _ in
+            completion(.success(true))
+        }.catch { error in
+            completion(.failure(.sampleError))
+        }
+    }
 }

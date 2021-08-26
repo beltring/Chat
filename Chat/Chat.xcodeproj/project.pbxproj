@@ -28,12 +28,13 @@
 		CE59DB6C26D3CFBB002ABBB1 /* AuthenticationCode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE59DB6B26D3CFBB002ABBB1 /* AuthenticationCode.storyboard */; };
 		CE5F0FA526CF845D00DC4272 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5F0FA426CF845D00DC4272 /* AppDelegate.swift */; };
 		CE5F0FAF26CF845D00DC4272 /* Chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE5F0FAD26CF845D00DC4272 /* Chat.xcdatamodeld */; };
-		CE5F0FB126CF845E00DC4272 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5F0FB026CF845E00DC4272 /* Assets.xcassets */; };
 		CE5F0FB426CF845E00DC4272 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5F0FB226CF845E00DC4272 /* LaunchScreen.storyboard */; };
 		CE601E8326D611AE00D40665 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE601E8226D611AE00D40665 /* ContactsViewController.swift */; };
 		CE601E8726D611B800D40665 /* Contacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE601E8626D611B800D40665 /* Contacts.storyboard */; };
 		CE601E9226D612F200D40665 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE601E9026D612F200D40665 /* ContactTableViewCell.swift */; };
 		CE601E9326D612F200D40665 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE601E9126D612F200D40665 /* ContactTableViewCell.xib */; };
+		CE7B7E6826D7501900DEB604 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7B7E6726D7501900DEB604 /* Chat.storyboard */; };
+		CE7B7E6C26D7521900DEB604 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B7E6B26D7521900DEB604 /* ChatViewController.swift */; };
 		CEA1A3F626D3608700122D32 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA1A3F526D3608700122D32 /* PromiseKit.framework */; };
 		CEA1A3F926D3609100122D32 /* TDJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA1A3F826D3609100122D32 /* TDJSON.framework */; };
 		CEA1A3FB26D360A600122D32 /* TDLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA1A3FA26D360A600122D32 /* TDLib.framework */; };
@@ -77,6 +78,8 @@
 		CE601E8626D611B800D40665 /* Contacts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Contacts.storyboard; sourceTree = "<group>"; };
 		CE601E9026D612F200D40665 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		CE601E9126D612F200D40665 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
+		CE7B7E6726D7501900DEB604 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		CE7B7E6B26D7521900DEB604 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		CEA1A3F526D3608700122D32 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		CEA1A3F826D3609100122D32 /* TDJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TDJSON.framework; path = Carthage/Build/iOS/TDJSON.framework; sourceTree = "<group>"; };
 		CEA1A3FA26D360A600122D32 /* TDLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TDLib.framework; path = Carthage/Build/iOS/TDLib.framework; sourceTree = "<group>"; };
@@ -110,8 +113,9 @@
 		CE5338A626D4CDC800391E86 /* Main flow */ = {
 			isa = PBXGroup;
 			children = (
-				CE601E8126D6118900D40665 /* Contacts */,
+				CE5C9E1526D6778000711AB0 /* Chat */,
 				CE5338A726D4CE0900391E86 /* Chats */,
+				CE601E8126D6118900D40665 /* Contacts */,
 				CE5338AE26D4CE5300391E86 /* Settings */,
 			);
 			path = "Main flow";
@@ -206,6 +210,15 @@
 				CE59DB6726D3CFB2002ABBB1 /* AuthenticationCodeViewController.swift */,
 			);
 			path = AuthenticationCode;
+			sourceTree = "<group>";
+		};
+		CE5C9E1526D6778000711AB0 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				CE7B7E6726D7501900DEB604 /* Chat.storyboard */,
+				CE7B7E6B26D7521900DEB604 /* ChatViewController.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		CE5F0F9826CF845D00DC4272 = {
@@ -402,9 +415,9 @@
 				CE59DB5C26D3B416002ABBB1 /* RootTabBar.storyboard in Resources */,
 				CE59DB4526D399A9002ABBB1 /* PhoneNumber.storyboard in Resources */,
 				CE5F0FB426CF845E00DC4272 /* LaunchScreen.storyboard in Resources */,
-				CE5F0FB126CF845E00DC4272 /* Assets.xcassets in Resources */,
 				CE59DB6C26D3CFBB002ABBB1 /* AuthenticationCode.storyboard in Resources */,
 				CE601E9326D612F200D40665 /* ContactTableViewCell.xib in Resources */,
+				CE7B7E6826D7501900DEB604 /* Chat.storyboard in Resources */,
 				CE5338B426D4CE8D00391E86 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,6 +507,7 @@
 				CE5338BE26D4FD3C00391E86 /* ChatTableViewCell.swift in Sources */,
 				CE5F0FA526CF845D00DC4272 /* AppDelegate.swift in Sources */,
 				CE5338B126D4CE8200391E86 /* SettingsViewController.swift in Sources */,
+				CE7B7E6C26D7521900DEB604 /* ChatViewController.swift in Sources */,
 				CE601E9226D612F200D40665 /* ContactTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
