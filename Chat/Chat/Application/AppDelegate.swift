@@ -20,15 +20,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
         
-        TDManager.shared.coordinator.authorizationState.subscribe(on: .main) { event in
+        TDManager.shared.coordinator.authorizationState.subscribe(on: .main) { [weak self] event in
             guard let state = event.value else {
                 return
             }
             switch state {
-            case .waitTdlibParameters, .waitEncryptionKey:
+            case .waitTdlibParameters:
             print("Ignore these! TDLib-iOS will handle them.")
+            case .waitEncryptionKey:
+                print("Wait encryption key")
             case .waitPhoneNumber:
                 print("Wait phone number event.")
+                let vc = RootNavigationViewController()
+                vc.setRootController()
+                self?.window?.rootViewController = vc
+                self?.window?.makeKeyAndVisible()
             case .waitCode(_):
                 print("Wait code event.")
             case .waitPassword( _, _, _):
@@ -36,6 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case .ready:
                 print("Ready")
                 AuthorizeData.shared.isAuthorized = true
+                let vc = RootNavigationViewController()
+                vc.setRootController()
+                self?.window?.rootViewController = vc
+                self?.window?.makeKeyAndVisible()
             case .loggingOut, .closing, .closed:
                 break
             case .waitOtherDeviceConfirmation(link: _):

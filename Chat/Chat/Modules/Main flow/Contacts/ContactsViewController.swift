@@ -18,6 +18,7 @@ class ContactsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tabBarController?.navigationItem.title = "Contacts"
         setupTablewView()
         prepareDataSource()
     }
@@ -74,10 +75,12 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = dataSource[indexPath.row]
         
-        TDManager.shared.createPrivateChat(userId: user.id) { result in
+        TDManager.shared.createPrivateChat(userId: user.id) { [weak self] result in
             switch result {
             case .success(let chat):
                 print(chat)
+                let vc = ChatViewController.initial()
+                self?.tabBarController?.navigationController?.pushViewController(vc, animated: true)
             case .failure(let error):
                 print(error.localizedDescription)
             }

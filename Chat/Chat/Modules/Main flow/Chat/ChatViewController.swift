@@ -10,50 +10,41 @@ import UIKit
 
 class ChatViewController: MessagesViewController {
 
-//    private var messages: [Message] = []
-//    private var messageListener: ListenerRegistration?
+    let sender = Sender(senderId: "any_unique_id", displayName: "Steven")
+    var messages: [Message] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tabBarController?.navigationItem.title = "TEST"
+        messages.append(Message(userId: "1233333", content: "test message", displayName: "Valery"))
+        TDManager.shared.getChats { result in
+            switch result {
+            case .success(let chats):
+                print(chats.chatIds.count)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
 }
 
 // MARK: - MessagesDataSource
-//extension ChatViewController: MessagesDataSource {
-//  // 1
-//  func numberOfSections(
-//    in messagesCollectionView: MessagesCollectionView
-//  ) -> Int {
-//    return messages.count
-//  }
-//
-//  // 2
-//  func currentSender() -> SenderType {
-//    return Sender(senderId: "123", displayName: "Test")
-//  }
-//
-//  // 3
-//  func messageForItem(
-//    at indexPath: IndexPath,
-//    in messagesCollectionView: MessagesCollectionView
-//  ) -> MessageType {
-//    return messages[indexPath.section]
-//  }
-//
-//  // 4
-//  func messageTopLabelAttributedText(
-//    for message: MessageType,
-//    at indexPath: IndexPath
-//  ) -> NSAttributedString? {
-//    let name = message.sender.displayName
-//    return NSAttributedString(
-//      string: name,
-//      attributes: [
-//        .font: UIFont.preferredFont(forTextStyle: .caption1),
-//        .foregroundColor: UIColor(white: 0.3, alpha: 1)
-//      ])
-//  }
-//}
+extension ChatViewController: MessagesDataSource {
+
+    func currentSender() -> SenderType {
+        return Sender(senderId: "1234", displayName: "Steven")
+    }
+
+    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
+        return messages.count
+    }
+
+    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+        return messages[indexPath.section]
+    }
+}
+
+// MARK: - MessagesDisplayDelegate&MessagesLayoutDelegate
+extension ChatViewController: MessagesDisplayDelegate, MessagesLayoutDelegate {}

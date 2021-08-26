@@ -13,7 +13,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tabBarController?.navigationItem.title = "Settings"
     }
 
     // MARK: - Actions

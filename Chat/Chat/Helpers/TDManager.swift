@@ -50,9 +50,20 @@ class TDManager {
     }
     
     func getChats(completion: @escaping (Result<Chats, TDlibError>) -> Void) {
-        coordinator.send(GetChats(chatList: nil, offsetOrder: nil, offsetChatId: nil, limit: 100)).done { chats in
+        coordinator.send(GetChats(chatList: .main, offsetOrder: .some("9223372036854775807"), offsetChatId: .zero, limit: 1000)).done { chats in
             completion(.success(chats))
         }.catch { error in
+            print(error)
+            completion(.failure(.sampleError))
+        }
+    }
+    
+    func getChat(chatId: Int64, completion: @escaping (Result<Chat, TDlibError>) -> Void) {
+        coordinator.send(GetChat(chatId: chatId)).done { chat in
+            print(chat)
+            completion(.success(chat))
+        }.catch { error in
+            print(error)
             completion(.failure(.sampleError))
         }
     }
@@ -61,6 +72,7 @@ class TDManager {
         coordinator.send(CreatePrivateChat(userId: userId, force: false)).done { chat in
             completion(.success(chat))
         }.catch { error in
+            print(error)
             completion(.failure(.sampleError))
         }
     }
@@ -69,6 +81,7 @@ class TDManager {
         coordinator.send(GetMe()).done { user in
             completion(.success(user))
         }.catch { error in
+            print(error)
             completion(.failure(.sampleError))
         }
     }
