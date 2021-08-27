@@ -30,7 +30,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test text text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJA-Ql-5om">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="private" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJA-Ql-5om">
                         <rect key="frame" x="68" y="33" width="261" height="21"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -52,6 +52,7 @@
             <connections>
                 <outlet property="chatImage" destination="2AP-Xc-SEq" id="kYa-ZG-Ptt"/>
                 <outlet property="chatNameLabel" destination="KkC-FW-qmX" id="A6p-8r-osz"/>
+                <outlet property="chatTypeLabel" destination="kJA-Ql-5om" id="rJ7-fg-hyb"/>
             </connections>
             <point key="canvasLocation" x="161.59420289855075" y="111.49553571428571"/>
         </tableViewCell>

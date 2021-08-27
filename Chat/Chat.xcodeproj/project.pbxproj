@@ -34,6 +34,8 @@
 		CE601E8726D611B800D40665 /* Contacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE601E8626D611B800D40665 /* Contacts.storyboard */; };
 		CE601E9226D612F200D40665 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE601E9026D612F200D40665 /* ContactTableViewCell.swift */; };
 		CE601E9326D612F200D40665 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE601E9126D612F200D40665 /* ContactTableViewCell.xib */; };
+		CE6E16B626D8D18A00EE5D1B /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E16B526D8D18A00EE5D1B /* DateFormatterExtensions.swift */; };
+		CE6E16DE26D8F2E300EE5D1B /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E16DD26D8F2E300EE5D1B /* Sender.swift */; };
 		CE7B7E6826D7501900DEB604 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7B7E6726D7501900DEB604 /* Chat.storyboard */; };
 		CE7B7E6C26D7521900DEB604 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B7E6B26D7521900DEB604 /* ChatViewController.swift */; };
 		CEA1A3F626D3608700122D32 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA1A3F526D3608700122D32 /* PromiseKit.framework */; };
@@ -80,6 +82,8 @@
 		CE601E8626D611B800D40665 /* Contacts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Contacts.storyboard; sourceTree = "<group>"; };
 		CE601E9026D612F200D40665 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		CE601E9126D612F200D40665 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
+		CE6E16B526D8D18A00EE5D1B /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
+		CE6E16DD26D8F2E300EE5D1B /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		CE7B7E6726D7501900DEB604 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		CE7B7E6B26D7521900DEB604 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		CEA1A3F526D3608700122D32 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
@@ -151,12 +155,13 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		CE5382EC26D7A94C006F5552 /* ChatHelpers */ = {
+		CE5382EC26D7A94C006F5552 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
 				CE5382ED26D7A9C7006F5552 /* Message.swift */,
+				CE6E16DD26D8F2E300EE5D1B /* Sender.swift */,
 			);
-			path = ChatHelpers;
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		CE59DB3E26D39798002ABBB1 /* SignInUp */ = {
@@ -183,6 +188,7 @@
 				CE59DB4C26D3A9F4002ABBB1 /* UIViewControllerExtension.swift */,
 				CE59DB4926D3A992002ABBB1 /* UIViewExtension.swift */,
 				CE5338B826D4FCAB00391E86 /* UITableViewCellExtensions.swift */,
+				CE6E16B526D8D18A00EE5D1B /* DateFormatterExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -354,7 +360,7 @@
 		CEA1A40326D3635500122D32 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				CE5382EC26D7A94C006F5552 /* ChatHelpers */,
+				CE5382EC26D7A94C006F5552 /* Chat */,
 				CEA1A40426D3640100122D32 /* TDManager.swift */,
 			);
 			path = Helpers;
@@ -503,11 +509,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE5338C326D518C400391E86 /* AuthorizeData.swift in Sources */,
+				CE6E16DE26D8F2E300EE5D1B /* Sender.swift in Sources */,
 				CE59DB5326D3B372002ABBB1 /* RootTabBarViewController.swift in Sources */,
 				CE59DB6826D3CFB2002ABBB1 /* AuthenticationCodeViewController.swift in Sources */,
 				CE59DB4A26D3A992002ABBB1 /* UIViewExtension.swift in Sources */,
 				CE59DB5726D3B3D4002ABBB1 /* RootNavigationViewController.swift in Sources */,
 				CE601E8326D611AE00D40665 /* ContactsViewController.swift in Sources */,
+				CE6E16B626D8D18A00EE5D1B /* DateFormatterExtensions.swift in Sources */,
 				CE59DB6426D3C846002ABBB1 /* TDlibError.swift in Sources */,
 				CE5382EE26D7A9C7006F5552 /* Message.swift in Sources */,
 				CEA1A40526D3640100122D32 /* TDManager.swift in Sources */,

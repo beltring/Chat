@@ -65,8 +65,8 @@ class ChatsViewController: UIViewController {
 }
 
 // MARK: - Extensions
-// MARK: - UITableViewDataSource&UITableViewDelegate
-extension ChatsViewController: UITableViewDataSource, UITableViewDelegate {
+// MARK: - UITableViewDataSource
+extension ChatsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dataSource.count
     }
@@ -74,18 +74,26 @@ extension ChatsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ChatTableViewCell.dequeueReusableCell(in: tableView, for: indexPath)
         
-        let title = dataSource[indexPath.row].title
-        cell.configure(name: title)
+        let chat = dataSource[indexPath.row]
+        let date = DateFormatter().convert(timeInterval: chat.lastMessage?.date)
+        let title = chat.title
+        cell.configure(name: title, lastMessagesDate: date)
         
         return cell
     }
-    
+}
+
+// MARK: - UITableViewDataSource&UITableViewDelegate
+extension ChatsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let chatId = dataSource[indexPath.row].id
         TDManager.shared.getChatHistory(chatId: chatId) { [weak self] result in
             switch result {
             case .success(let messages):
                 print(messages)
+                let vc = ChatViewController.initial()
+                vc.tdLibMessages = messages
+                self?.navigationController?.pushViewController(vc, animated: true)
             case .failure(let error):
                 self?.presentAlert(title: "Error", message: error.localizedDescription)
             }
