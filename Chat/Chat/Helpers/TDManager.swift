@@ -100,4 +100,12 @@ class TDManager {
             completion(.failure(.sampleError))
         }
     }
+    
+    func sendMessage(id: Int64, completion: @escaping (Result<Bool, TDlibError>) -> Void) {
+        coordinator.send(SendMessage(chatId: id, replyToMessageId: 0, options: .none, replyMarkup: .none, inputMessageContent: .inputMessageText(text: FormattedText(text: "Message from app", entities: .none), disableWebPagePreview: .none, clearDraft: .none))).done { message in
+            completion(.success(true))
+        }.catch { error in
+            completion(.failure(.sampleError))
+        }
+    }
 }

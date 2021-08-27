@@ -71,6 +71,14 @@ extension ChatViewController: MessagesDataSource {
 extension ChatViewController: InputBarAccessoryViewDelegate {
   func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
     print("Press")
+    TDManager.shared.sendMessage(id: 852357644) { result in
+        switch result {
+        case .success(let result):
+            print(result)
+        case .failure(let error):
+            print(error)
+        }
+    }
     let message = Message(userId: currentUser.senderId, content: text, displayName: currentUser.displayName)
     messages.append(message)
     inputBar.inputTextView.text = ""
