@@ -68,6 +68,14 @@ class TDManager {
         }
     }
     
+    func getChatHistory(chatId: Int64, completion: @escaping (Result<Messages, TDlibError>) -> Void) {
+        coordinator.send(GetChatHistory(chatId: chatId, fromMessageId: 0, offset: 0, limit: 100, onlyLocal: false)).done { messages in
+            completion(.success(messages))
+        }.catch { error in
+            completion(.failure(.sampleError))
+        }
+    }
+    
     func createPrivateChat(userId: Int32, completion: @escaping (Result<Chat, TDlibError>) -> Void) {
         coordinator.send(CreatePrivateChat(userId: userId, force: false)).done { chat in
             completion(.success(chat))

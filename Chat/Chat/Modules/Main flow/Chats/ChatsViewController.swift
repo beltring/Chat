@@ -40,6 +40,7 @@ class ChatsViewController: UIViewController {
             case .success(let chats):
                 print(chats.chatIds.count)
                 self?.dataSource = chats.chatIds
+                self?.tableView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -60,6 +61,9 @@ extension ChatsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ChatTableViewCell.dequeueReusableCell(in: tableView, for: indexPath)
+        
+        let chatId = String(dataSource[indexPath.row])
+        cell.configure(name: chatId)
         
         return cell
     }
