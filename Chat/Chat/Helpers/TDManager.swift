@@ -60,7 +60,6 @@ class TDManager {
     
     func getChat(chatId: Int64, completion: @escaping (Result<Chat, TDlibError>) -> Void) {
         coordinator.send(GetChat(chatId: chatId)).done { chat in
-            print(chat)
             completion(.success(chat))
         }.catch { error in
             print(error)
