@@ -12,10 +12,10 @@ import UIKit
 
 class ChatViewController: MessagesViewController {
     
-    var messages: [Message] = []
-    var tdLibMessages: Messages!
-    var currentUser = Sender(senderId: "123", displayName: "Pavel Boltromyuk")
+    private var messages: [Message] = []
+    private var currentUser: Sender!
     var chat: Chat!
+    var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,14 +30,13 @@ class ChatViewController: MessagesViewController {
         layout.textMessageSizeCalculator.incomingAvatarSize = .zero
         }
         
-        title = "Test"
-        
-        messages.append(Message(userId: currentUser.senderId, content: "Hello", displayName: currentUser.displayName))
-        messages.append(Message(userId: "2", content: "Hello, How are you?", displayName: "Test"))
-        messages.append(Message(userId: currentUser.senderId, content: "I'm fine, thank you", displayName: currentUser.displayName))
-        messages.append(Message(userId: "2", content: "How you weekends?", displayName: "Test"))
-        messages.append(Message(userId: currentUser.senderId, content: "Good", displayName: currentUser.displayName))
-        messages.append(Message(userId: "2", content: "I went to fishing", displayName: "Test"))
+        title = chat.title
+        prepareDataSource()
+    }
+    
+    private func prepareDataSource() {
+        messages = chat.messages
+        self.messagesCollectionView.scrollToLastItem()
     }
 }
 
@@ -45,6 +44,9 @@ class ChatViewController: MessagesViewController {
 extension ChatViewController: MessagesDataSource {
 
     func currentSender() -> SenderType {
+        let name = "\(user.firstName) \(user.lastName))"
+        let senderId = String(user.id)
+        currentUser = Sender(senderId: senderId, displayName: name)
         return currentUser
     }
 
@@ -83,6 +85,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
     }
     let message = Message(userId: currentUser.senderId, content: text, displayName: currentUser.displayName)
     messages.append(message)
+    self.chat.messages.append(message)
     inputBar.inputTextView.text = ""
     messagesCollectionView.reloadData()
     self.messagesCollectionView.scrollToLastItem()

@@ -13,6 +13,7 @@ class ChatsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var dataSource = [TDLib.Chat]()
+    private var currentUser: User!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -22,6 +23,7 @@ class ChatsViewController: UIViewController {
         tabBarController?.navigationItem.title = "Chats"
         setupNavigationItem()
         prepareDataSource()
+        setupCurrentUser()
     }
     
     // MARK: - Setup
@@ -33,6 +35,17 @@ class ChatsViewController: UIViewController {
     
     private func setupNavigationItem() {
         tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Update", style: .plain, target: self, action: #selector(tappedUpdate))
+    }
+    
+    private func setupCurrentUser() {
+        TDManager.shared.getCurrentUser { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.currentUser = user
+            case .failure(let error):
+                self?.presentAlert(title: "Error", message: error.localizedDescription)
+            }
+        }
     }
     
     private func prepareDataSource() {
@@ -87,12 +100,14 @@ extension ChatsViewController: UITableViewDataSource {
 extension ChatsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let chatId = dataSource[indexPath.row].id
+        let title = dataSource[indexPath.row].title
         TDManager.shared.getChatHistory(chatId: chatId) { [weak self] result in
             switch result {
             case .success(let messages):
                 print(messages)
                 let vc = ChatViewController.initial()
-                vc.chat = Chat(id: chatId, messages: messages.convertToArrayMessages())
+                vc.chat = Chat(id: chatId, title: title, messages: messages.convertToArrayMessages())
+                vc.user = self?.currentUser
                 self?.navigationController?.pushViewController(vc, animated: true)
             case .failure(let error):
                 self?.presentAlert(title: "Error", message: error.localizedDescription)

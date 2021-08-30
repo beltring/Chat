@@ -9,5 +9,6 @@ import Foundation
 
 struct Chat {
     let id: Int64
-    let messages: [Message]
+    let title: String
+    var messages: [Message]
 }

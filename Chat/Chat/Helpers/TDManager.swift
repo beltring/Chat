@@ -68,7 +68,7 @@ class TDManager {
     }
     
     func getChatHistory(chatId: Int64, completion: @escaping (Result<Messages, TDlibError>) -> Void) {
-        coordinator.send(GetChatHistory(chatId: chatId, fromMessageId: .max, offset: 0, limit: 10, onlyLocal: false)).done { messages in
+        coordinator.send(GetChatHistory(chatId: chatId, fromMessageId: .max, offset: 0, limit: 50, onlyLocal: false)).done { messages in
             completion(.success(messages))
         }.catch { error in
             print(error)

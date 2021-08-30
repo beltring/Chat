@@ -18,7 +18,6 @@ extension Messages {
                 var content = ""
                 switch item.content {
                 case .messageText(text: let text, webPage: nil):
-                    print(text)
                     content = text.text ?? "default"
                 default:
                     print("Default")
@@ -28,7 +27,7 @@ extension Messages {
                 let message = Message(id: id, userId: userId, content: content, displayName: "test", date: date)
                 messages.append(message)
             }
-            return messages
+            return messages.reversed()
         } else {
             return messages
         }
