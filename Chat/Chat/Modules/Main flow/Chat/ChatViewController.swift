@@ -15,6 +15,7 @@ class ChatViewController: MessagesViewController {
     var messages: [Message] = []
     var tdLibMessages: Messages!
     var currentUser = Sender(senderId: "123", displayName: "Pavel Boltromyuk")
+    var chat: Chat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +72,8 @@ extension ChatViewController: MessagesDataSource {
 extension ChatViewController: InputBarAccessoryViewDelegate {
   func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
     print("Press")
-    TDManager.shared.sendMessage(id: 852357644) { result in
+    let content: InputMessageContent = .inputMessageText(text: FormattedText(text: text, entities: .none), disableWebPagePreview: false, clearDraft: false)
+    TDManager.shared.sendMessage(id: 676963246, content: content) { result in
         switch result {
         case .success(let result):
             print(result)

@@ -27,6 +27,8 @@
 		CE59DB6426D3C846002ABBB1 /* TDlibError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59DB6326D3C846002ABBB1 /* TDlibError.swift */; };
 		CE59DB6826D3CFB2002ABBB1 /* AuthenticationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59DB6726D3CFB2002ABBB1 /* AuthenticationCodeViewController.swift */; };
 		CE59DB6C26D3CFBB002ABBB1 /* AuthenticationCode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE59DB6B26D3CFBB002ABBB1 /* AuthenticationCode.storyboard */; };
+		CE5EC12D26DCC01300E467A9 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EC12C26DCC01300E467A9 /* Chat.swift */; };
+		CE5EC13426DCC1E100E467A9 /* MessagesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EC13326DCC1E100E467A9 /* MessagesExtension.swift */; };
 		CE5F0FA526CF845D00DC4272 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5F0FA426CF845D00DC4272 /* AppDelegate.swift */; };
 		CE5F0FAF26CF845D00DC4272 /* Chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE5F0FAD26CF845D00DC4272 /* Chat.xcdatamodeld */; };
 		CE5F0FB426CF845E00DC4272 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5F0FB226CF845E00DC4272 /* LaunchScreen.storyboard */; };
@@ -72,6 +74,8 @@
 		CE5C9DFF26D6497400711AB0 /* libPhoneNumberKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libPhoneNumberKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C9E0026D6497400711AB0 /* libPods-Chat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-Chat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C9E0126D6497400711AB0 /* libSVProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSVProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE5EC12C26DCC01300E467A9 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		CE5EC13326DCC1E100E467A9 /* MessagesExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesExtension.swift; sourceTree = "<group>"; };
 		CE5F0FA126CF845D00DC4272 /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5F0FA426CF845D00DC4272 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5F0FAE26CF845D00DC4272 /* Chat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chat.xcdatamodel; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 			children = (
 				CE5382ED26D7A9C7006F5552 /* Message.swift */,
 				CE6E16DD26D8F2E300EE5D1B /* Sender.swift */,
+				CE5EC12C26DCC01300E467A9 /* Chat.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 		CE59DB4826D3A95C002ABBB1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CE5EC13226DCC0EB00E467A9 /* TdLib */,
 				CE59DB4C26D3A9F4002ABBB1 /* UIViewControllerExtension.swift */,
 				CE59DB4926D3A992002ABBB1 /* UIViewExtension.swift */,
 				CE5338B826D4FCAB00391E86 /* UITableViewCellExtensions.swift */,
@@ -235,6 +241,14 @@
 				CE7B7E6B26D7521900DEB604 /* ChatViewController.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		CE5EC13226DCC0EB00E467A9 /* TdLib */ = {
+			isa = PBXGroup;
+			children = (
+				CE5EC13326DCC1E100E467A9 /* MessagesExtension.swift */,
+			);
+			path = TdLib;
 			sourceTree = "<group>";
 		};
 		CE5F0F9826CF845D00DC4272 = {
@@ -514,6 +528,7 @@
 				CE59DB6826D3CFB2002ABBB1 /* AuthenticationCodeViewController.swift in Sources */,
 				CE59DB4A26D3A992002ABBB1 /* UIViewExtension.swift in Sources */,
 				CE59DB5726D3B3D4002ABBB1 /* RootNavigationViewController.swift in Sources */,
+				CE5EC13426DCC1E100E467A9 /* MessagesExtension.swift in Sources */,
 				CE601E8326D611AE00D40665 /* ContactsViewController.swift in Sources */,
 				CE6E16B626D8D18A00EE5D1B /* DateFormatterExtensions.swift in Sources */,
 				CE59DB6426D3C846002ABBB1 /* TDlibError.swift in Sources */,
@@ -525,6 +540,7 @@
 				CE59DB4D26D3A9F4002ABBB1 /* UIViewControllerExtension.swift in Sources */,
 				CE5338B926D4FCAB00391E86 /* UITableViewCellExtensions.swift in Sources */,
 				CE5338BE26D4FD3C00391E86 /* ChatTableViewCell.swift in Sources */,
+				CE5EC12D26DCC01300E467A9 /* Chat.swift in Sources */,
 				CE5F0FA526CF845D00DC4272 /* AppDelegate.swift in Sources */,
 				CE5338B126D4CE8200391E86 /* SettingsViewController.swift in Sources */,
 				CE7B7E6C26D7521900DEB604 /* ChatViewController.swift in Sources */,

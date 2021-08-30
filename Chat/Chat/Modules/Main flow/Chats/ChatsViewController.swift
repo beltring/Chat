@@ -12,7 +12,7 @@ class ChatsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    private var dataSource = [Chat]()
+    private var dataSource = [TDLib.Chat]()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -92,7 +92,7 @@ extension ChatsViewController: UITableViewDelegate {
             case .success(let messages):
                 print(messages)
                 let vc = ChatViewController.initial()
-                vc.tdLibMessages = messages
+                vc.chat = Chat(id: chatId, messages: messages.convertToArrayMessages())
                 self?.navigationController?.pushViewController(vc, animated: true)
             case .failure(let error):
                 self?.presentAlert(title: "Error", message: error.localizedDescription)

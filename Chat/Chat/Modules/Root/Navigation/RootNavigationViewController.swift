@@ -21,6 +21,8 @@ class RootNavigationViewController: UINavigationController {
         
         if AuthorizeData.shared.isAuthorized {
             vc = RootTabBarViewController.initial()
+            guard let tabBar = vc as? RootTabBarViewController else { return }
+            tabBar.selectedIndex = 1
         } else {
             vc = PhoneNumberViewController.initial()
         }

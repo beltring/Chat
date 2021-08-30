@@ -40,14 +40,13 @@ struct Message: MessageType {
         id = nil
     }
     
-//    init(user: User, image: UIImage) {
-//        let userId = String(user.id)
-//        sender = Sender(senderId: userId, displayName: displayName)
-//        self.image = image
-//        content = ""
-//        sentDate = Date()
-//        id = nil
-//    }
+    init(id: Int64, userId: Int32, content: String, displayName: String, date: Int32) {
+        let userId = String(userId)
+        sender = Sender(senderId: userId, displayName: displayName)
+        self.content = content
+        sentDate = UIKit.Date(timeIntervalSince1970: TimeInterval(date))
+        self.id = String(id)
+    }
 }
 
 // MARK: - Comparable
