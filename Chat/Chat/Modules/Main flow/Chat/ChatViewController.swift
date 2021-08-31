@@ -34,9 +34,13 @@ class ChatViewController: MessagesViewController {
         prepareDataSource()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.messagesCollectionView.scrollToLastItem()
+    }
+    
+    // MARK: - Setup
     private func prepareDataSource() {
         messages = chat.messages
-        self.messagesCollectionView.scrollToLastItem()
     }
 }
 
@@ -75,7 +79,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
   func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
     print("Press")
     let content: InputMessageContent = .inputMessageText(text: FormattedText(text: text, entities: .none), disableWebPagePreview: false, clearDraft: false)
-    TDManager.shared.sendMessage(id: 676963246, content: content) { result in
+    TDManager.shared.sendMessage(id: chat.id, content: content) { result in
         switch result {
         case .success(let result):
             print(result)

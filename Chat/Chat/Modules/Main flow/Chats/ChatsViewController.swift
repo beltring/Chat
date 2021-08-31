@@ -14,16 +14,27 @@ class ChatsViewController: UIViewController {
     
     private var dataSource = [TDLib.Chat]()
     private var currentUser: User!
+    private let refreshControl = UIRefreshControl()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupTableView()
-        tabBarController?.navigationItem.title = "Chats"
         setupNavigationItem()
         prepareDataSource()
         setupCurrentUser()
+        setupRefreshControl()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     // MARK: - Setup
@@ -33,8 +44,18 @@ class ChatsViewController: UIViewController {
         ChatTableViewCell.registerCellNib(in: tableView)
     }
     
+    private func setupRefreshControl() {
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(refreshChats(_:)), for: .valueChanged)
+    }
+    
     private func setupNavigationItem() {
-        tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Update", style: .plain, target: self, action: #selector(tappedUpdate))
+        navigationItem.title = "Chats"
     }
     
     private func setupCurrentUser() {
@@ -49,6 +70,7 @@ class ChatsViewController: UIViewController {
     }
     
     private func prepareDataSource() {
+        dataSource = []
         TDManager.shared.getChats { [weak self] result in
             switch result {
             case .success(let chats):
@@ -65,6 +87,7 @@ class ChatsViewController: UIViewController {
                             print(error.localizedDescription)
                         }
                     }
+                    self?.refreshControl.endRefreshing()
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -72,7 +95,8 @@ class ChatsViewController: UIViewController {
         }
     }
     
-    @objc private func tappedUpdate() {
+    // MARK: - Actions    
+    @objc private func refreshChats(_ sender: Any) {
         prepareDataSource()
     }
 }
@@ -99,6 +123,7 @@ extension ChatsViewController: UITableViewDataSource {
 // MARK: - UITableViewDataSource&UITableViewDelegate
 extension ChatsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let chatId = dataSource[indexPath.row].id
         let title = dataSource[indexPath.row].title
         TDManager.shared.getChatHistory(chatId: chatId) { [weak self] result in
@@ -108,7 +133,7 @@ extension ChatsViewController: UITableViewDelegate {
                 let vc = ChatViewController.initial()
                 vc.chat = Chat(id: chatId, title: title, messages: messages.convertToArrayMessages())
                 vc.user = self?.currentUser
-                self?.navigationController?.pushViewController(vc, animated: true)
+                self?.tabBarController?.navigationController?.pushViewController(vc, animated: true)
             case .failure(let error):
                 self?.presentAlert(title: "Error", message: error.localizedDescription)
             }
