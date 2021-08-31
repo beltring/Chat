@@ -114,7 +114,16 @@ extension ChatsViewController: UITableViewDataSource {
         let chat = dataSource[indexPath.row]
         let date = DateFormatter().convert(timeInterval: chat.lastMessage?.date)
         let title = chat.title
-        cell.configure(name: title, lastMessagesDate: date)
+        var content = ""
+        switch chat.lastMessage?.content {
+        case .messageText(text: let text, webPage: nil):
+            content = text.text ?? "default"
+        case .messagePhoto(photo: _, caption: let formattedText, isSecret: _):
+            content = formattedText.text ?? "Photo"
+        default:
+            content = "Multimedia content"
+        }
+        cell.configure(name: title, content: content, lastMessageTime: date)
         
         return cell
     }

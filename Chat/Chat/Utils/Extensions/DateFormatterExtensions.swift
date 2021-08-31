@@ -13,8 +13,7 @@ extension DateFormatter {
         let interval = TimeInterval(timeInterval)
         let date = Date(timeIntervalSince1970: interval)
         
-        self.dateStyle = .long
-        self.timeStyle = .short
+        self.dateFormat = date.isToday ? "HH:mm" : "HH:mm dd.MM"
         
         return self.string(from: date)
     }

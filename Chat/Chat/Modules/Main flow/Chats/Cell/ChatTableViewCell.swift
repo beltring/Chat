@@ -11,16 +11,18 @@ class ChatTableViewCell: UITableViewCell {
 
     @IBOutlet weak var chatImage: UIImageView!
     @IBOutlet weak var chatNameLabel: UILabel!
-    @IBOutlet weak var chatTypeLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func configure(name: String, lastMessagesDate: String) {
+    func configure(name: String, content: String, lastMessageTime: String) {
         chatNameLabel.text = name
         chatImage.image = UIImage(named: "icNoImage")
-        chatTypeLabel.text = lastMessagesDate
+        contentLabel.text = content
+        timeLabel.text = lastMessageTime
     }
 }

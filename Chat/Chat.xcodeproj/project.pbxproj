@@ -37,6 +37,7 @@
 		CE601E9226D612F200D40665 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE601E9026D612F200D40665 /* ContactTableViewCell.swift */; };
 		CE601E9326D612F200D40665 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE601E9126D612F200D40665 /* ContactTableViewCell.xib */; };
 		CE6236B026DE02A300961A3E /* Hud.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6236AF26DE02A300961A3E /* Hud.swift */; };
+		CE62372D26DE3C3800961A3E /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62372C26DE3C3800961A3E /* DateExtension.swift */; };
 		CE6E16B626D8D18A00EE5D1B /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E16B526D8D18A00EE5D1B /* DateFormatterExtensions.swift */; };
 		CE6E16DE26D8F2E300EE5D1B /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E16DD26D8F2E300EE5D1B /* Sender.swift */; };
 		CE7B7E6826D7501900DEB604 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7B7E6726D7501900DEB604 /* Chat.storyboard */; };
@@ -87,6 +88,7 @@
 		CE601E9026D612F200D40665 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		CE601E9126D612F200D40665 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
 		CE6236AF26DE02A300961A3E /* Hud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hud.swift; sourceTree = "<group>"; };
+		CE62372C26DE3C3800961A3E /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		CE6E16B526D8D18A00EE5D1B /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
 		CE6E16DD26D8F2E300EE5D1B /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		CE7B7E6726D7501900DEB604 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				CE59DB4926D3A992002ABBB1 /* UIViewExtension.swift */,
 				CE5338B826D4FCAB00391E86 /* UITableViewCellExtensions.swift */,
 				CE6E16B526D8D18A00EE5D1B /* DateFormatterExtensions.swift */,
+				CE62372C26DE3C3800961A3E /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				CE601E8326D611AE00D40665 /* ContactsViewController.swift in Sources */,
 				CE6E16B626D8D18A00EE5D1B /* DateFormatterExtensions.swift in Sources */,
 				CE59DB6426D3C846002ABBB1 /* TDlibError.swift in Sources */,
+				CE62372D26DE3C3800961A3E /* DateExtension.swift in Sources */,
 				CE5382EE26D7A9C7006F5552 /* Message.swift in Sources */,
 				CEA1A40526D3640100122D32 /* TDManager.swift in Sources */,
 				CE5338A926D4CE1800391E86 /* ChatsViewController.swift in Sources */,
