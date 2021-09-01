@@ -58,7 +58,7 @@ class TDManager {
         }
     }
     
-    func getChat(chatId: Int64, completion: @escaping (Result<Chat, TDlibError>) -> Void) {
+    func getChat(chatId: Int64, completion: @escaping (Result<TDLib.Chat, TDlibError>) -> Void) {
         coordinator.send(GetChat(chatId: chatId)).done { chat in
             completion(.success(chat))
         }.catch { error in
@@ -68,14 +68,23 @@ class TDManager {
     }
     
     func getChatHistory(chatId: Int64, completion: @escaping (Result<Messages, TDlibError>) -> Void) {
-        coordinator.send(GetChatHistory(chatId: chatId, fromMessageId: 0, offset: 0, limit: 100, onlyLocal: false)).done { messages in
+        coordinator.send(GetChatHistory(chatId: chatId, fromMessageId: .max, offset: 0, limit: 50, onlyLocal: false)).done { messages in
             completion(.success(messages))
         }.catch { error in
+            print(error)
             completion(.failure(.sampleError))
         }
     }
     
-    func createPrivateChat(userId: Int32, completion: @escaping (Result<Chat, TDlibError>) -> Void) {
+    func getChatHistory(chatId: Int64) {
+        coordinator.send(GetChatHistory(chatId: chatId, fromMessageId: .max, offset: 0, limit: 50, onlyLocal: false)).done { messages in
+            print("Messages count: \(messages.totalCount)")
+        }.catch { error in
+            print(error)
+        }
+    }
+    
+    func createPrivateChat(userId: Int32, completion: @escaping (Result<TDLib.Chat, TDlibError>) -> Void) {
         coordinator.send(CreatePrivateChat(userId: userId, force: false)).done { chat in
             completion(.success(chat))
         }.catch { error in
@@ -96,6 +105,22 @@ class TDManager {
     func logOut(completion: @escaping (Result<Bool, TDlibError>) -> Void) {
         coordinator.send(LogOut()).done { _ in
             completion(.success(true))
+        }.catch { error in
+            completion(.failure(.sampleError))
+        }
+    }
+    
+    func sendMessage(id: Int64, content: InputMessageContent, completion: @escaping (Result<Bool, TDlibError>) -> Void) {
+        coordinator.send(SendMessage(chatId: id, replyToMessageId: 0, options: .none, replyMarkup: .none, inputMessageContent: content)).done { message in
+            completion(.success(true))
+        }.catch { error in
+            completion(.failure(.sampleError))
+        }
+    }
+    
+    func downloadFile(id: Int32?, completion: @escaping (Result<File, TDlibError>) -> Void) {
+        coordinator.send(DownloadFile(fileId: id, priority: 32, offset: 0, limit: 0, synchronous: true)).done { file in
+            completion(.success(file))
         }.catch { error in
             completion(.failure(.sampleError))
         }

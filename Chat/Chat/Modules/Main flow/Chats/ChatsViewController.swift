@@ -12,16 +12,29 @@ class ChatsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    private var dataSource = [Chat]()
+    private var dataSource = [TDLib.Chat]()
+    private var currentUser: User!
+    private let refreshControl = UIRefreshControl()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupTableView()
-        tabBarController?.navigationItem.title = "Chats"
         setupNavigationItem()
         prepareDataSource()
+        setupCurrentUser()
+        setupRefreshControl()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     // MARK: - Setup
@@ -31,11 +44,33 @@ class ChatsViewController: UIViewController {
         ChatTableViewCell.registerCellNib(in: tableView)
     }
     
+    private func setupRefreshControl() {
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(refreshChats(_:)), for: .valueChanged)
+    }
+    
     private func setupNavigationItem() {
-        tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Update", style: .plain, target: self, action: #selector(tappedUpdate))
+        navigationItem.title = "Chats"
+    }
+    
+    private func setupCurrentUser() {
+        TDManager.shared.getCurrentUser { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.currentUser = user
+            case .failure(let error):
+                self?.presentAlert(title: "Error", message: error.localizedDescription)
+            }
+        }
     }
     
     private func prepareDataSource() {
+        dataSource = []
         TDManager.shared.getChats { [weak self] result in
             switch result {
             case .success(let chats):
@@ -53,20 +88,23 @@ class ChatsViewController: UIViewController {
                         }
                     }
                 }
+                self?.tableView.reloadData()
+                self?.refreshControl.endRefreshing()
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
     
-    @objc private func tappedUpdate() {
+    // MARK: - Actions    
+    @objc private func refreshChats(_ sender: Any) {
         prepareDataSource()
     }
 }
 
 // MARK: - Extensions
-// MARK: - UITableViewDataSource&UITableViewDelegate
-extension ChatsViewController: UITableViewDataSource, UITableViewDelegate {
+// MARK: - UITableViewDataSource
+extension ChatsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dataSource.count
     }
@@ -74,18 +112,38 @@ extension ChatsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ChatTableViewCell.dequeueReusableCell(in: tableView, for: indexPath)
         
-        let title = dataSource[indexPath.row].title
-        cell.configure(name: title)
+        let chat = dataSource[indexPath.row]
+        let date = DateFormatter().convert(timeInterval: chat.lastMessage?.date)
+        let title = chat.title
+        var content = ""
+        switch chat.lastMessage?.content {
+        case .messageText(text: let text, webPage: nil):
+            content = text.text ?? "default"
+        case .messagePhoto(photo: _, caption: let formattedText, isSecret: _):
+            content = formattedText.text ?? "Photo"
+        default:
+            content = "Multimedia content"
+        }
+        cell.configure(name: title, content: content, lastMessageTime: date)
         
         return cell
     }
-    
+}
+
+// MARK: - UITableViewDataSource&UITableViewDelegate
+extension ChatsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let chatId = dataSource[indexPath.row].id
+        let title = dataSource[indexPath.row].title
         TDManager.shared.getChatHistory(chatId: chatId) { [weak self] result in
             switch result {
             case .success(let messages):
                 print(messages)
+                let vc = ChatViewController.initial()
+                vc.chat = Chat(id: chatId, title: title, messages: messages.convertToArrayMessages())
+                vc.user = self?.currentUser
+                self?.tabBarController?.navigationController?.pushViewController(vc, animated: true)
             case .failure(let error):
                 self?.presentAlert(title: "Error", message: error.localizedDescription)
             }
