@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgMessages" translatesAutoresizingMaskIntoConstraints="NO" id="6Wt-hO-b3D">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Wt-hO-b3D">
                         <rect key="frame" x="16" y="7.5" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="Vlm-Os-i2v"/>
@@ -51,12 +51,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="nameLabel" destination="dCl-n9-6gE" id="cvc-RC-4NS"/>
+                <outlet property="profileImage" destination="6Wt-hO-b3D" id="Ckn-IZ-qZb"/>
                 <outlet property="statusLabel" destination="X7e-39-QLG" id="hwb-29-C8Z"/>
             </connections>
             <point key="canvasLocation" x="140.57971014492756" y="64.620535714285708"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="imgMessages" width="94" height="60"/>
-    </resources>
 </document>

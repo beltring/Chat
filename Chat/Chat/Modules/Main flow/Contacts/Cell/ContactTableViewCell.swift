@@ -15,10 +15,23 @@ class ContactTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.layoutIfNeeded()
+        profileImage.layer.cornerRadius = profileImage.frame.height / 2.0
+        layer.masksToBounds = true
     }
     
-    func configure(name: String, status: String) {
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        nameLabel.text = nil
+        statusLabel.text = nil
+        profileImage.image = nil
+    }
+    
+    func configure(name: String, status: String, profileImage: UIImage?) {
         nameLabel.text = name
         statusLabel.text = status
+        guard let img = profileImage else { return }
+        self.profileImage.image = img
     }
 }

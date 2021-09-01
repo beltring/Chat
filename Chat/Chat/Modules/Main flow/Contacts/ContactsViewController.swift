@@ -13,6 +13,7 @@ class ContactsViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private var dataSource = [User]()
+    private var currentUser: User!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -21,6 +22,7 @@ class ContactsViewController: UIViewController {
         tabBarController?.navigationItem.title = "Contacts"
         setupTablewView()
         prepareDataSource()
+        setupCurrentUser()
     }
 
     // MARK: - Setup
@@ -28,6 +30,17 @@ class ContactsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         ContactTableViewCell.registerCellNib(in: tableView)
+    }
+    
+    private func setupCurrentUser() {
+        TDManager.shared.getCurrentUser { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.currentUser = user
+            case .failure(let error):
+                self?.presentAlert(title: "Error Get current user", message: error.localizedDescription)
+            }
+        }
     }
     
     private func prepareDataSource() {
@@ -67,7 +80,21 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
         let user = dataSource[indexPath.row]
         let name = "\(user.firstName) \(user.lastName)"
         let status = String(describing: user.status)
-        cell.configure(name: name, status: status)
+        var profileImg: UIImage?
+
+        if let fileId = user.profilePhoto?.small.id {
+            TDManager.shared.downloadFile(id: fileId) { [weak self] result in
+                switch result {
+                case .success(let file):
+                    profileImg = UIImage(contentsOfFile: file.local.path)
+                    cell.configure(name: name, status: status, profileImage: profileImg)
+                case .failure(let error):
+                    self?.presentAlert(title: "Error Download", message: error.localizedDescription)
+                }
+            }
+        } else {
+            cell.configure(name: name, status: status, profileImage: UIImage(named: "person.crop.circle.badge.xmark"))
+        }
         
         return cell
     }
@@ -79,8 +106,20 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
             switch result {
             case .success(let chat):
                 print(chat)
-                let vc = ChatViewController.initial()
-                self?.tabBarController?.navigationController?.pushViewController(vc, animated: true)
+                TDManager.shared.getChatHistory(chatId: chat.id) { [weak self] result in
+                    switch result {
+                    case .success(let messages):
+                        print(messages)
+                        let id = chat.id
+                        let title = chat.title
+                        let vc = ChatViewController.initial()
+                        vc.chat = Chat(id: id, title: title, messages: messages.convertToArrayMessages())
+                        vc.user = self?.currentUser
+                        self?.tabBarController?.navigationController?.pushViewController(vc, animated: true)
+                    case .failure(let error):
+                        self?.presentAlert(title: "Error Get chat history", message: error.localizedDescription)
+                    }
+                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
