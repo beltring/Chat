@@ -117,4 +117,12 @@ class TDManager {
             completion(.failure(.sampleError))
         }
     }
+    
+    func downloadFile(id: Int32?, completion: @escaping (Result<File, TDlibError>) -> Void) {
+        coordinator.send(DownloadFile(fileId: id, priority: 32, offset: 0, limit: 0, synchronous: true)).done { file in
+            completion(.success(file))
+        }.catch { error in
+            completion(.failure(.sampleError))
+        }
+    }
 }

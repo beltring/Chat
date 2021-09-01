@@ -87,8 +87,9 @@ class ChatsViewController: UIViewController {
                             print(error.localizedDescription)
                         }
                     }
-                    self?.refreshControl.endRefreshing()
                 }
+                self?.tableView.reloadData()
+                self?.refreshControl.endRefreshing()
             case .failure(let error):
                 print(error.localizedDescription)
             }
