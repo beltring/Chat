@@ -27,20 +27,44 @@
                                     <action selector="tappedLogOut:" destination="IPL-of-VUn" eventType="touchUpInside" id="iy8-TW-6EM"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="185" translatesAutoresizingMaskIntoConstraints="NO" id="ODU-vO-s3w">
+                                <rect key="frame" x="30" y="94" width="354" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" text="Dark Appearance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ydi-y3-LEQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="31"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Mys-xR-HXc">
+                                        <rect key="frame" x="305" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="tappedSwitchTheme:" destination="IPL-of-VUn" eventType="valueChanged" id="4iM-KH-Xfx"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sIY-YN-b7A"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="pHx-Xm-sCH" firstAttribute="centerX" secondItem="sIY-YN-b7A" secondAttribute="centerX" id="2NA-nk-wFu"/>
+                            <constraint firstItem="sIY-YN-b7A" firstAttribute="trailing" secondItem="ODU-vO-s3w" secondAttribute="trailing" constant="30" id="GT5-xH-2R5"/>
+                            <constraint firstItem="ODU-vO-s3w" firstAttribute="top" secondItem="sIY-YN-b7A" secondAttribute="top" constant="50" id="N9c-HF-Jae"/>
+                            <constraint firstItem="ODU-vO-s3w" firstAttribute="leading" secondItem="sIY-YN-b7A" secondAttribute="leading" constant="30" id="POy-NT-qml"/>
                             <constraint firstItem="pHx-Xm-sCH" firstAttribute="centerY" secondItem="sIY-YN-b7A" secondAttribute="centerY" id="fDg-eV-08h"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="xJw-jd-A4N"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="appearanceStackView" destination="ODU-vO-s3w" id="JaL-Eg-rSk"/>
+                        <outlet property="switchTheme" destination="Mys-xR-HXc" id="4b9-ge-uGv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QPZ-jf-TPv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="141" y="90"/>
+            <point key="canvasLocation" x="140.57971014492756" y="89.732142857142847"/>
         </scene>
     </scenes>
     <resources>
