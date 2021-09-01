@@ -8,7 +8,7 @@
 import UIKit
 
 class ChatTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var chatImage: UIImageView!
     @IBOutlet weak var chatNameLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
@@ -16,13 +16,24 @@ class ChatTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.layoutIfNeeded()
+        chatImage.layer.cornerRadius = chatImage.frame.height / 2.0
+        layer.masksToBounds = true
     }
     
-    func configure(name: String, content: String, lastMessageTime: String) {
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        chatImage.image = nil
+        chatNameLabel.text = nil
+        contentLabel.text = nil
+        timeLabel.text = nil
+    }
+    
+    func configure(name: String, content: String, lastMessageTime: String, chatImage: UIImage?) {
         chatNameLabel.text = name
-        chatImage.image = UIImage(named: "icNoImage")
         contentLabel.text = content
         timeLabel.text = lastMessageTime
+        guard let img = chatImage else { return }
+        self.chatImage.image = img
     }
 }

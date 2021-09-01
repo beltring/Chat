@@ -64,7 +64,7 @@ class ChatsViewController: UIViewController {
             case .success(let user):
                 self?.currentUser = user
             case .failure(let error):
-                self?.presentAlert(title: "Error", message: error.localizedDescription)
+                self?.presentAlert(title: "Error Get current user", message: error.localizedDescription)
             }
         }
     }
@@ -115,6 +115,7 @@ extension ChatsViewController: UITableViewDataSource {
         let chat = dataSource[indexPath.row]
         let date = DateFormatter().convert(timeInterval: chat.lastMessage?.date)
         let title = chat.title
+        var chatImg: UIImage?
         var content = ""
         switch chat.lastMessage?.content {
         case .messageText(text: let text, webPage: nil):
@@ -124,7 +125,20 @@ extension ChatsViewController: UITableViewDataSource {
         default:
             content = "Multimedia content"
         }
-        cell.configure(name: title, content: content, lastMessageTime: date)
+        
+        if let fileId = chat.photo?.small.id {
+            TDManager.shared.downloadFile(id: fileId) { [weak self] result in
+                switch result {
+                case .success(let file):
+                    chatImg = UIImage(contentsOfFile: file.local.path)
+                    cell.configure(name: title, content: content, lastMessageTime: date, chatImage: chatImg)
+                case .failure(let error):
+                    self?.presentAlert(title: "Error Download", message: error.localizedDescription)
+                }
+            }
+        } else {
+            cell.configure(name: title, content: content, lastMessageTime: date, chatImage: UIImage(named: "person.crop.circle.badge.xmark"))
+        }
         
         return cell
     }
@@ -145,7 +159,7 @@ extension ChatsViewController: UITableViewDelegate {
                 vc.user = self?.currentUser
                 self?.tabBarController?.navigationController?.pushViewController(vc, animated: true)
             case .failure(let error):
-                self?.presentAlert(title: "Error", message: error.localizedDescription)
+                self?.presentAlert(title: "Error Get chat history", message: error.localizedDescription)
             }
         }
     }
