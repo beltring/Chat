@@ -17,14 +17,28 @@ extension Messages {
             for item in self.messages! {
                 let userId = String(item.senderUserId)
                 var content = ""
+                var description = ""
                 var image: UIImage?
                 switch item.content {
                 case .messageText(text: let text, webPage: nil):
                     content = text.text ?? "default"
                 case .messagePhoto(photo: let photo, caption: let caption, isSecret: false):
-                    content = caption.text ?? ""
-                    if let data = photo.minithumbnail?.data {
-                        image = UIImage(data: data)
+                    description = caption.text ?? ""
+                    print(photo)
+                    let path = photo.sizes.first { $0.type == "m" || $0.type == "s"}?.photo.local.path
+                    
+                    if path != "" {
+                        image = UIImage(contentsOfFile: path!)
+                    } else {
+                        let photoId = photo.sizes.first { $0.type == "m" || $0.type == "s"}?.photo.id
+                        TDManager.shared.downloadFile(id: photoId) { result in
+                            switch result {
+                            case .success(let file):
+                                image = UIImage(contentsOfFile: file.local.path)
+                            case .failure(let error):
+                                print(error.localizedDescription)
+                            }
+                        }
                     }
                 case .messageSticker(sticker: let sticker):
                     content = sticker.emoji
@@ -34,6 +48,10 @@ extension Messages {
                 let date = item.date
                 let id = item.id
                 let sender = Sender(senderId: userId, displayName: "Test")
+                if description != "" {
+                    let descriptionMessage = Message(id: id, sender: sender, content: description, date: date)
+                    messages.append(descriptionMessage)
+                }
                 let message = Message(id: id, sender: sender, content: content, date: date, image: image)
                 messages.append(message)
             }

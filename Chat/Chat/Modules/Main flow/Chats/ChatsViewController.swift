@@ -30,6 +30,7 @@ class ChatsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.navigationController?.setNavigationBarHidden(true, animated: animated)
+        prepareDataSource()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -126,14 +127,19 @@ extension ChatsViewController: UITableViewDataSource {
             content = "Multimedia content"
         }
         
-        if let fileId = chat.photo?.small.id {
-            TDManager.shared.downloadFile(id: fileId) { [weak self] result in
-                switch result {
-                case .success(let file):
-                    chatImg = UIImage(contentsOfFile: file.local.path)
-                    cell.configure(name: title, content: content, lastMessageTime: date, chatImage: chatImg)
-                case .failure(let error):
-                    self?.presentAlert(title: "Error Download", message: error.localizedDescription)
+        if let photo = chat.photo {
+            if photo.small.local.path != "" {
+                chatImg = UIImage(contentsOfFile: photo.small.local.path)
+                cell.configure(name: title, content: content, lastMessageTime: date, chatImage: chatImg)
+            } else {
+                TDManager.shared.downloadFile(id: photo.small.id) { [weak self] result in
+                    switch result {
+                    case .success(let file):
+                        chatImg = UIImage(contentsOfFile: file.local.path)
+                        cell.configure(name: title, content: content, lastMessageTime: date, chatImage: chatImg)
+                    case .failure(let error):
+                        self?.presentAlert(title: "Error Download", message: error.localizedDescription)
+                    }
                 }
             }
         } else {

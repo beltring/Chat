@@ -8,15 +8,29 @@
 import TDLib
 import MessageKit
 import InputBarAccessoryView
+import Photos
 import UIKit
 
 class ChatViewController: MessagesViewController {
     
-    private var messages: [Message] = []
-    private var currentUser: Sender!
     var chat: Chat!
     var user: User!
     
+    private var messages: [Message] = []
+    private var currentUser: Sender!
+    private var sendPhotoUrl: String = ""
+    private var isSendingPhoto = false {
+        didSet {
+            messageInputBar.leftStackViewItems.forEach { item in
+                guard let item = item as? InputBarButtonItem else {
+                    return
+                }
+                item.isEnabled = !self.isSendingPhoto
+            }
+        }
+    }
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +46,7 @@ class ChatViewController: MessagesViewController {
         
         title = chat.title
         prepareDataSource()
+        addCameraBarButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,6 +56,61 @@ class ChatViewController: MessagesViewController {
     // MARK: - Setup
     private func prepareDataSource() {
         messages = chat.messages
+    }
+    
+    private func addCameraBarButton() {
+        // 1
+        let cameraItem = InputBarButtonItem(type: .system)
+        cameraItem.tintColor = .darkGray
+        cameraItem.image = UIImage(named: "camera")
+        
+        // 2
+        cameraItem.addTarget(
+            self,
+            action: #selector(cameraButtonPressed),
+            for: .primaryActionTriggered)
+        cameraItem.setSize(CGSize(width: 60, height: 30), animated: false)
+        messageInputBar.leftStackView.alignment = .center
+        messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
+        
+        // 3
+        messageInputBar
+            .setStackViewItems([cameraItem], forStack: .left, animated: false)
+    }
+    
+    // MARK: - Actions
+    @objc private func cameraButtonPressed() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            picker.sourceType = .camera
+        } else {
+            picker.sourceType = .photoLibrary
+        }
+        
+        present(picker, animated: true)
+    }
+    
+    // MARK: - Logic
+    private func sendPhoto(_ image: UIImage) {
+        isSendingPhoto = true
+        
+        let content: InputMessageContent = .inputMessagePhoto(photo: InputFile.local(path: sendPhotoUrl), thumbnail: InputThumbnail(thumbnail: .none, width: .none, height: .none), addedStickerFileIds: [], width: 100, height: 100, caption: FormattedText(text: "test", entities: .none), ttl: 0)
+        TDManager.shared.sendMessage(id: chat.id, content: content) { result in
+            switch result {
+            case .success(let result):
+                print(result)
+            case .failure(let error):
+                print(error)
+            }
+        }
+        let message = Message(sender: currentUser, content: "test photo message", image: UIImage(contentsOfFile: sendPhotoUrl)!)
+        messages.append(message)
+        self.chat.messages.append(message)
+
+        messagesCollectionView.reloadData()
+        self.messagesCollectionView.scrollToLastItem()
     }
 }
 
@@ -124,5 +194,54 @@ extension ChatViewController: MessagesLayoutDelegate {
     
     func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return 20
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate&UINavigationControllerDelegate
+extension ChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
+    ) {
+        picker.dismiss(animated: true)
+        
+        if let imgUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL{
+            let imgName = imgUrl.lastPathComponent
+            let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+            let localPath = documentDirectory?.appending(imgName)
+            
+            let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+            let data = image.pngData()! as NSData
+            data.write(toFile: localPath!, atomically: true)
+            //let imageData = NSData(contentsOfFile: localPath!)!
+//            let photoURL = URL.init(fileURLWithPath: localPath!)//NSURL(fileURLWithPath: localPath!)
+            sendPhotoUrl = localPath!
+        }
+        
+        //        // 1
+        //        if let asset = info[.phAsset] as? PHAsset {
+        //            let size = CGSize(width: 500, height: 500)
+        //            PHImageManager.default().requestImage(
+        //                for: asset,
+        //                targetSize: size,
+        //                contentMode: .aspectFit,
+        //                options: nil
+        //            ) { result, _ in
+        //                guard let image = result else {
+        //                    return
+        //                }
+        //                print(image)
+        //                //          self.sendPhoto(image)
+        //            }
+        //
+        //            // 2
+        //        } else if let image = info[.originalImage] as? UIImage {
+        //            //            sendPhoto(image)
+        //            print(image)
+        //        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
     }
 }

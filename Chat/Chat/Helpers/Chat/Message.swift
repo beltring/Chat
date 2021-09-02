@@ -45,13 +45,13 @@ struct Message: MessageType {
         id = nil
     }
     
-//    init(id: Int64, sender: Sender, content: String, image: UIImage, date: Int32) {
-//        self.sender = sender
-//        self.content = content
-//        self.image = image
-//        sentDate = UIKit.Date(timeIntervalSince1970: TimeInterval(date))
-//        self.id = String(id)
-//    }
+    init(sender: Sender, content: String, image: UIImage) {
+        self.sender = sender
+        self.content = content
+        self.image = image
+        sentDate = Date()
+        self.id = nil
+    }
     
     init(id: Int64, sender: Sender, content: String, date: Int32, image: UIImage? = nil) {
         self.sender = sender
