@@ -93,7 +93,7 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         } else {
-            cell.configure(name: name, status: status, profileImage: UIImage(named: "person.crop.circle.badge.xmark"))
+            cell.configure(name: name, status: status, profileImage: UIImage(named: "imgNoImage"))
         }
         
         return cell

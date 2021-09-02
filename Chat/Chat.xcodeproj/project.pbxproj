@@ -18,6 +18,7 @@
 		CE5338C326D518C400391E86 /* AuthorizeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5338C226D518C400391E86 /* AuthorizeData.swift */; };
 		CE5382EE26D7A9C7006F5552 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5382ED26D7A9C7006F5552 /* Message.swift */; };
 		CE59BF9426DF628C009D18D6 /* DataUDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59BF9326DF628C009D18D6 /* DataUDManager.swift */; };
+		CE59BF9726DF80F3009D18D6 /* ImageMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59BF9626DF80F3009D18D6 /* ImageMediaItem.swift */; };
 		CE59DB4126D39997002ABBB1 /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59DB4026D39997002ABBB1 /* PhoneNumberViewController.swift */; };
 		CE59DB4526D399A9002ABBB1 /* PhoneNumber.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE59DB4426D399A9002ABBB1 /* PhoneNumber.storyboard */; };
 		CE59DB4A26D3A992002ABBB1 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59DB4926D3A992002ABBB1 /* UIViewExtension.swift */; };
@@ -64,6 +65,7 @@
 		CE5338C226D518C400391E86 /* AuthorizeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizeData.swift; sourceTree = "<group>"; };
 		CE5382ED26D7A9C7006F5552 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		CE59BF9326DF628C009D18D6 /* DataUDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUDManager.swift; sourceTree = "<group>"; };
+		CE59BF9626DF80F3009D18D6 /* ImageMediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMediaItem.swift; sourceTree = "<group>"; };
 		CE59DB4026D39997002ABBB1 /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
 		CE59DB4426D399A9002ABBB1 /* PhoneNumber.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhoneNumber.storyboard; sourceTree = "<group>"; };
 		CE59DB4926D3A992002ABBB1 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				CE5382ED26D7A9C7006F5552 /* Message.swift */,
 				CE6E16DD26D8F2E300EE5D1B /* Sender.swift */,
 				CE5EC12C26DCC01300E467A9 /* Chat.swift */,
+				CE59BF9626DF80F3009D18D6 /* ImageMediaItem.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				CE5338B926D4FCAB00391E86 /* UITableViewCellExtensions.swift in Sources */,
 				CE5338BE26D4FD3C00391E86 /* ChatTableViewCell.swift in Sources */,
 				CE5EC12D26DCC01300E467A9 /* Chat.swift in Sources */,
+				CE59BF9726DF80F3009D18D6 /* ImageMediaItem.swift in Sources */,
 				CE5F0FA526CF845D00DC4272 /* AppDelegate.swift in Sources */,
 				CE5338B126D4CE8200391E86 /* SettingsViewController.swift in Sources */,
 				CE7B7E6C26D7521900DEB604 /* ChatViewController.swift in Sources */,

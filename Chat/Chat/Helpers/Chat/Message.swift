@@ -19,7 +19,12 @@ struct Message: MessageType {
     let sentDate: UIKit.Date
     let sender: SenderType
     var kind: MessageKind {
-        return .text(content)
+        if let image = image {
+          let mediaItem = ImageMediaItem(image: image)
+          return .photo(mediaItem)
+        } else {
+          return .text(content)
+        }
     }
     
     var image: UIImage?
@@ -40,12 +45,21 @@ struct Message: MessageType {
         id = nil
     }
     
-    init(id: Int64, userId: Int32, content: String, displayName: String, date: Int32) {
-        let userId = String(userId)
-        sender = Sender(senderId: userId, displayName: displayName)
+    init(sender: Sender, content: String, image: UIImage) {
+        self.sender = sender
+        self.content = content
+        self.image = image
+        sentDate = Date()
+        self.id = nil
+    }
+    
+    init(id: Int64, sender: Sender, content: String, date: Int32, image: UIImage? = nil) {
+        self.sender = sender
         self.content = content
         sentDate = UIKit.Date(timeIntervalSince1970: TimeInterval(date))
         self.id = String(id)
+        guard let img = image else { return }
+        self.image = img
     }
 }
 
