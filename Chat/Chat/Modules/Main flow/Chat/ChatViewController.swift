@@ -19,6 +19,7 @@ class ChatViewController: MessagesViewController {
     private var messages: [Message] = []
     private var currentUser: Sender!
     private var sendPhotoUrl: String = ""
+    private var timer: Timer?
     private var isSendingPhoto = false {
         didSet {
             messageInputBar.leftStackViewItems.forEach { item in
@@ -50,7 +51,13 @@ class ChatViewController: MessagesViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.messagesCollectionView.scrollToLastItem()
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(getMessages), userInfo: nil, repeats: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        timer?.invalidate()
+        timer = nil
     }
     
     // MARK: - Setup
@@ -111,6 +118,20 @@ class ChatViewController: MessagesViewController {
 
         messagesCollectionView.reloadData()
         self.messagesCollectionView.scrollToLastItem()
+    }
+    
+    // MARK: - API calls
+    @objc private func getMessages() {
+        TDManager.shared.getChatHistory(chatId: chat.id) { [weak self] result in
+            switch result {
+            case .success(let messages):
+                self?.messages = messages.convertToArrayMessages()
+                self?.messagesCollectionView.reloadData()
+                self?.messagesCollectionView.scrollToLastItem()
+            case .failure(let error):
+                self?.presentAlert(title: "Error Get chat history", message: error.localizedDescription)
+            }
+        }
     }
 }
 
