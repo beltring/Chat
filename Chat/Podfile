@@ -12,4 +12,6 @@ target 'Chat' do
 
   pod 'MessageKit'
 
+  pod 'SwiftLint', '0.41.0'
+
 end

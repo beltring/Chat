@@ -9,8 +9,8 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
-    @IBOutlet weak var appearanceStackView: UIStackView!
-    @IBOutlet weak var switchTheme: UISwitch!
+    @IBOutlet private weak var appearanceStackView: UIStackView!
+    @IBOutlet private weak var switchTheme: UISwitch!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class SettingsViewController: UIViewController {
     }
 
     // MARK: - Actions
-    @IBAction func tappedLogOut(_ sender: UIButton) {
+    @IBAction private func tappedLogOut(_ sender: UIButton) {
         TDManager.shared.logOut { [weak self] result in
             switch result {
             case .success:

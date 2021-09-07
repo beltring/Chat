@@ -9,7 +9,7 @@ import UIKit
 
 class AuthenticationCodeViewController: UIViewController {
 
-    @IBOutlet weak var codeTextField: UITextField!
+    @IBOutlet private weak var codeTextField: UITextField!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {

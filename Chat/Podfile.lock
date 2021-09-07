@@ -14,12 +14,14 @@ PODS:
   - SVProgressHUD (2.2.6):
     - SVProgressHUD/Core (= 2.2.6)
   - SVProgressHUD/Core (2.2.6)
+  - SwiftLint (0.41.0)
 
 DEPENDENCIES:
   - KeychainSwift (~> 19.0)
   - MessageKit
   - PhoneNumberKit (= 3.3)
   - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
+  - SwiftLint (= 0.41.0)
 
 SPEC REPOS:
   trunk:
@@ -27,6 +29,7 @@ SPEC REPOS:
     - KeychainSwift
     - MessageKit
     - PhoneNumberKit
+    - SwiftLint
 
 EXTERNAL SOURCES:
   SVProgressHUD:
@@ -43,7 +46,8 @@ SPEC CHECKSUMS:
   MessageKit: d153fbbbcb12f3f4045a1ba8874298924dacfb62
   PhoneNumberKit: edd7d55c9bcf5b00cb7675c045b24c698a43c874
   SVProgressHUD: de812b4f0e1d65358f0064416473174ae619843f
+  SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: ce9eeaa132a9d0043d0e44396b1bcfb8c0830e5a
+PODFILE CHECKSUM: 882840574854ef65c53d0ca1d57768415c9f20ea
 
 COCOAPODS: 1.10.1

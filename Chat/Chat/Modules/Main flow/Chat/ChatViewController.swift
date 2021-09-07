@@ -6,8 +6,8 @@
 //
 
 import TDLib
-import MessageKit
 import InputBarAccessoryView
+import MessageKit
 import Photos
 import UIKit
 
@@ -35,22 +35,14 @@ class ChatViewController: MessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        messagesCollectionView.messagesDataSource = self
-        messagesCollectionView.messagesDisplayDelegate = self
-        messagesCollectionView.messagesLayoutDelegate = self
-        messageInputBar.delegate = self
-        
-        if let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout {
-            layout.textMessageSizeCalculator.outgoingAvatarSize = .zero
-            layout.textMessageSizeCalculator.incomingAvatarSize = .zero
-        }
-        
         title = chat.title
+        setupMessageCollectionView()
         prepareDataSource()
         addCameraBarButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        messagesCollectionView.scrollToLastItem()
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(getMessages), userInfo: nil, repeats: true)
     }
     
@@ -65,13 +57,25 @@ class ChatViewController: MessagesViewController {
         messages = chat.messages
     }
     
+    private func setupMessageCollectionView() {
+        messagesCollectionView.messagesDataSource = self
+        messagesCollectionView.messagesDisplayDelegate = self
+        messagesCollectionView.messagesLayoutDelegate = self
+        messageInputBar.delegate = self
+        
+        if let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout {
+            layout.textMessageSizeCalculator.outgoingAvatarSize = .zero
+            layout.textMessageSizeCalculator.incomingAvatarSize = .zero
+            layout.photoMessageSizeCalculator.outgoingAvatarSize = .zero
+            layout.photoMessageSizeCalculator.incomingAvatarSize = .zero
+        }
+    }
+    
     private func addCameraBarButton() {
-        // 1
         let cameraItem = InputBarButtonItem(type: .system)
         cameraItem.tintColor = .darkGray
         cameraItem.image = UIImage(named: "camera")
         
-        // 2
         cameraItem.addTarget(
             self,
             action: #selector(cameraButtonPressed),
@@ -80,7 +84,6 @@ class ChatViewController: MessagesViewController {
         messageInputBar.leftStackView.alignment = .center
         messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
         
-        // 3
         messageInputBar
             .setStackViewItems([cameraItem], forStack: .left, animated: false)
     }
@@ -103,7 +106,10 @@ class ChatViewController: MessagesViewController {
     private func sendPhoto(_ image: UIImage) {
         isSendingPhoto = true
         
-        let content: InputMessageContent = .inputMessagePhoto(photo: InputFile.local(path: sendPhotoUrl), thumbnail: InputThumbnail(thumbnail: .none, width: .none, height: .none), addedStickerFileIds: [], width: 100, height: 100, caption: FormattedText(text: "test", entities: .none), ttl: 0)
+        let inputThumbnail = InputThumbnail(thumbnail: .none, width: .none, height: .none)
+        let text = FormattedText(text: "test", entities: .none)
+        let photo = InputFile.local(path: sendPhotoUrl)
+        let content: InputMessageContent = .inputMessagePhoto(photo: photo, thumbnail: inputThumbnail, addedStickerFileIds: [], width: 100, height: 100, caption: text, ttl: 0)
         TDManager.shared.sendMessage(id: chat.id, content: content) { result in
             switch result {
             case .success(let result):
@@ -125,9 +131,12 @@ class ChatViewController: MessagesViewController {
         TDManager.shared.getChatHistory(chatId: chat.id) { [weak self] result in
             switch result {
             case .success(let messages):
-                self?.messages = messages.convertToArrayMessages()
-                self?.messagesCollectionView.reloadData()
-                self?.messagesCollectionView.scrollToLastItem()
+                let newMessages = messages.convertToArrayMessages()
+                if self?.messages.count != newMessages.count {
+                    self?.messages = messages.convertToArrayMessages()
+                    self?.messagesCollectionView.reloadData()
+                    self?.messagesCollectionView.scrollToLastItem()
+                }
             case .failure(let error):
                 self?.presentAlert(title: "Error Get chat history", message: error.localizedDescription)
             }
@@ -189,10 +198,6 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
 
 // MARK: - MessagesDisplayDelegate
 extension ChatViewController: MessagesDisplayDelegate {
-    //  func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-    //    return .blue
-    //  }
-    
     func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> Bool {
         return false
     }
@@ -226,40 +231,17 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
     ) {
         picker.dismiss(animated: true)
         
-        if let imgUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL{
+        if let imgUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL {
             let imgName = imgUrl.lastPathComponent
             let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
             let localPath = documentDirectory?.appending(imgName)
             
-            let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-            let data = image.pngData()! as NSData
+            let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+            guard let img = image else { return }
+            let data = img.pngData()! as NSData
             data.write(toFile: localPath!, atomically: true)
-            //let imageData = NSData(contentsOfFile: localPath!)!
-//            let photoURL = URL.init(fileURLWithPath: localPath!)//NSURL(fileURLWithPath: localPath!)
             sendPhotoUrl = localPath!
         }
-        
-        //        // 1
-        //        if let asset = info[.phAsset] as? PHAsset {
-        //            let size = CGSize(width: 500, height: 500)
-        //            PHImageManager.default().requestImage(
-        //                for: asset,
-        //                targetSize: size,
-        //                contentMode: .aspectFit,
-        //                options: nil
-        //            ) { result, _ in
-        //                guard let image = result else {
-        //                    return
-        //                }
-        //                print(image)
-        //                //          self.sendPhoto(image)
-        //            }
-        //
-        //            // 2
-        //        } else if let image = info[.originalImage] as? UIImage {
-        //            //            sendPhoto(image)
-        //            print(image)
-        //        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

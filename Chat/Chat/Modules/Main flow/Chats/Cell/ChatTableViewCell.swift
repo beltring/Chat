@@ -9,11 +9,12 @@ import UIKit
 
 class ChatTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var chatImage: UIImageView!
-    @IBOutlet weak var chatNameLabel: UILabel!
-    @IBOutlet weak var contentLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet private weak var chatImage: UIImageView!
+    @IBOutlet private weak var chatNameLabel: UILabel!
+    @IBOutlet private weak var contentLabel: UILabel!
+    @IBOutlet private weak var timeLabel: UILabel!
     
+    // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layoutIfNeeded()
@@ -21,6 +22,7 @@ class ChatTableViewCell: UITableViewCell {
         layer.masksToBounds = true
     }
     
+    // MARK: - Setup
     override func prepareForReuse() {
         super.prepareForReuse()
         chatImage.image = nil

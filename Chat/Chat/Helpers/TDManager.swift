@@ -20,7 +20,7 @@ class TDManager {
     func setPhoneNumber(number: String, completion: @escaping (Result<String, TDlibError>) -> Void ) {
         coordinator.send(SetAuthenticationPhoneNumber(phoneNumber: number, settings: .none)).done { success in
             completion(.success(number))
-        }.catch{ error in
+        }.catch { _ in
             completion(.failure(.invalidPhoneNumber))
         }
     }
@@ -28,7 +28,7 @@ class TDManager {
     func checkCode(code: String, completion: @escaping (Result<String, TDlibError>) -> Void) {
         coordinator.send(CheckAuthenticationCode(code: code)).done { success in
             completion(.success(code))
-        }.catch{ error in
+        }.catch { _ in
             completion(.failure(.invalidCode))
         }
     }
@@ -36,7 +36,7 @@ class TDManager {
     func getContacts(completion: @escaping (Result<Users, TDlibError>) -> Void) {
         coordinator.send(GetContacts()).done { users in
             completion(.success(users))
-        }.catch{ error in
+        }.catch { _ in
             completion(.failure(.sampleError))
         }
     }
@@ -44,7 +44,7 @@ class TDManager {
     func getUser(id: Int32, completion: @escaping (Result<User, TDlibError>) -> Void) {
         coordinator.send(GetUser(userId: id)).done { user in
             completion(.success(user))
-        }.catch{ error in
+        }.catch { _ in
             completion(.failure(.sampleError))
         }
     }
@@ -105,15 +105,15 @@ class TDManager {
     func logOut(completion: @escaping (Result<Bool, TDlibError>) -> Void) {
         coordinator.send(LogOut()).done { _ in
             completion(.success(true))
-        }.catch { error in
+        }.catch { _ in
             completion(.failure(.sampleError))
         }
     }
     
     func sendMessage(id: Int64, content: InputMessageContent, completion: @escaping (Result<Bool, TDlibError>) -> Void) {
-        coordinator.send(SendMessage(chatId: id, replyToMessageId: 0, options: .none, replyMarkup: .none, inputMessageContent: content)).done { message in
+        coordinator.send(SendMessage(chatId: id, replyToMessageId: 0, options: .none, replyMarkup: .none, inputMessageContent: content)).done { _ in
             completion(.success(true))
-        }.catch { error in
+        }.catch { _ in
             completion(.failure(.sampleError))
         }
     }
@@ -121,7 +121,7 @@ class TDManager {
     func downloadFile(id: Int32?, completion: @escaping (Result<File, TDlibError>) -> Void) {
         coordinator.send(DownloadFile(fileId: id, priority: 32, offset: 0, limit: 0, synchronous: true)).done { file in
             completion(.success(file))
-        }.catch { error in
+        }.catch { _ in
             completion(.failure(.sampleError))
         }
     }

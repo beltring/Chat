@@ -10,7 +10,7 @@ import UIKit
 
 class ChatsViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     private var dataSource = [TDLib.Chat]()
     private var currentUser: User!
@@ -23,7 +23,7 @@ class ChatsViewController: UIViewController {
         setupTableView()
         setupNavigationItem()
         prepareDataSource()
-        setupCurrentUser()
+        getUser()
         setupRefreshControl()
     }
     
@@ -59,17 +59,6 @@ class ChatsViewController: UIViewController {
         navigationItem.title = "Chats"
     }
     
-    private func setupCurrentUser() {
-        TDManager.shared.getCurrentUser { [weak self] result in
-            switch result {
-            case .success(let user):
-                self?.currentUser = user
-            case .failure(let error):
-                self?.presentAlert(title: "Error Get current user", message: error.localizedDescription)
-            }
-        }
-    }
-    
     private func prepareDataSource() {
         dataSource = []
         TDManager.shared.getChats { [weak self] result in
@@ -100,6 +89,18 @@ class ChatsViewController: UIViewController {
     // MARK: - Actions    
     @objc private func refreshChats(_ sender: Any) {
         prepareDataSource()
+    }
+    
+    // MARK: - API calls
+    private func getUser() {
+        TDManager.shared.getCurrentUser { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.currentUser = user
+            case .failure(let error):
+                self?.presentAlert(title: "Error Get current user", message: error.localizedDescription)
+            }
+        }
     }
 }
 
@@ -150,7 +151,7 @@ extension ChatsViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - UITableViewDataSource&UITableViewDelegate
+// MARK: - UITableViewDelegate
 extension ChatsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

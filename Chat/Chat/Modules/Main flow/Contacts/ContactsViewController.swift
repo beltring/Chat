@@ -82,18 +82,24 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
         let status = String(describing: user.status)
         var profileImg: UIImage?
 
-        if let fileId = user.profilePhoto?.small.id {
-            TDManager.shared.downloadFile(id: fileId) { [weak self] result in
-                switch result {
-                case .success(let file):
-                    profileImg = UIImage(contentsOfFile: file.local.path)
-                    cell.configure(name: name, status: status, profileImage: profileImg)
-                case .failure(let error):
-                    self?.presentAlert(title: "Error Download", message: error.localizedDescription)
+        if let photo = user.profilePhoto {
+            if photo.small.local.path != "" {
+                profileImg = UIImage(contentsOfFile: photo.small.local.path)
+                cell.configure(name: name, status: status, profileImage: profileImg)
+            } else {
+                TDManager.shared.downloadFile(id: photo.small.id) { [weak self] result in
+                    switch result {
+                    case .success(let file):
+                        profileImg = UIImage(contentsOfFile: file.local.path)
+                        cell.configure(name: name, status: status, profileImage: profileImg)
+                    case .failure(let error):
+                        self?.presentAlert(title: "Error Download", message: error.localizedDescription)
+                    }
                 }
             }
         } else {
-            cell.configure(name: name, status: status, profileImage: UIImage(named: "imgNoImage"))
+            profileImg = UIImage(named: "imgMessages")
+            cell.configure(name: name, status: status, profileImage: profileImg)
         }
         
         return cell

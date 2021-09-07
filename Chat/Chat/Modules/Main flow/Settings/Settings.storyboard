@@ -27,17 +27,20 @@
                                     <action selector="tappedLogOut:" destination="IPL-of-VUn" eventType="touchUpInside" id="iy8-TW-6EM"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="185" translatesAutoresizingMaskIntoConstraints="NO" id="ODU-vO-s3w">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="135" translatesAutoresizingMaskIntoConstraints="NO" id="ODU-vO-s3w">
                                 <rect key="frame" x="30" y="94" width="354" height="31"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" text="Dark Appearance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ydi-y3-LEQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="31"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Dark Appearance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ydi-y3-LEQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="157" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="157" id="161-t9-pDv"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Mys-xR-HXc">
-                                        <rect key="frame" x="305" y="0.0" width="51" height="31"/>
+                                        <rect key="frame" x="292" y="0.0" width="64" height="31"/>
                                         <connections>
                                             <action selector="tappedSwitchTheme:" destination="IPL-of-VUn" eventType="valueChanged" id="4iM-KH-Xfx"/>
                                         </connections>

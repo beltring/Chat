@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import TDLib
 import MessageKit
+import TDLib
 import UIKit
 
 struct Message: MessageType {
