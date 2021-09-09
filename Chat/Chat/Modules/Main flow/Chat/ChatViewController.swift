@@ -131,11 +131,13 @@ class ChatViewController: MessagesViewController {
         TDManager.shared.getChatHistory(chatId: chat.id) { [weak self] result in
             switch result {
             case .success(let messages):
+                guard let self = self else { return }
                 let newMessages = messages.convertToArrayMessages()
-                if self?.messages.count != newMessages.count {
-                    self?.messages = messages.convertToArrayMessages()
-                    self?.messagesCollectionView.reloadData()
-                    self?.messagesCollectionView.scrollToLastItem()
+                if self.messages.count != newMessages.count {
+                    self.messages = newMessages
+                    self.messagesCollectionView.reloadData()
+                    self.messagesCollectionView.scrollToLastItem(at: .bottom, animated: false)
+                    AudioServicesPlaySystemSound(1022)
                 }
             case .failure(let error):
                 self?.presentAlert(title: "Error Get chat history", message: error.localizedDescription)
@@ -219,7 +221,7 @@ extension ChatViewController: MessagesLayoutDelegate {
     }
     
     func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        return 20
+        return 5
     }
 }
 
