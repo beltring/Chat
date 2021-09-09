@@ -17,9 +17,7 @@ class ChatTableViewCell: UITableViewCell {
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.layoutIfNeeded()
         chatImage.layer.cornerRadius = chatImage.frame.height / 2.0
-        layer.masksToBounds = true
     }
     
     // MARK: - Setup

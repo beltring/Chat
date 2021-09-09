@@ -98,7 +98,7 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         } else {
-            profileImg = UIImage(named: "imgMessages")
+            profileImg = UIImage(named: "imgNoImage")
             cell.configure(name: name, status: status, profileImage: profileImg)
         }
         

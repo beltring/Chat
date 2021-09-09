@@ -11,16 +11,14 @@ PODS:
   - PhoneNumberKit/PhoneNumberKitCore (3.3.0)
   - PhoneNumberKit/UIKit (3.3.0):
     - PhoneNumberKit/PhoneNumberKitCore
-  - SVProgressHUD (2.2.6):
-    - SVProgressHUD/Core (= 2.2.6)
-  - SVProgressHUD/Core (2.2.6)
+  - PKHUD (5.0.0)
   - SwiftLint (0.41.0)
 
 DEPENDENCIES:
   - KeychainSwift (~> 19.0)
   - MessageKit
   - PhoneNumberKit (= 3.3)
-  - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
+  - PKHUD (= 5.0)
   - SwiftLint (= 0.41.0)
 
 SPEC REPOS:
@@ -29,25 +27,17 @@ SPEC REPOS:
     - KeychainSwift
     - MessageKit
     - PhoneNumberKit
+    - PKHUD
     - SwiftLint
-
-EXTERNAL SOURCES:
-  SVProgressHUD:
-    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
-
-CHECKOUT OPTIONS:
-  SVProgressHUD:
-    :commit: de1d4dba816a19454329031156b8788692bcfa2c
-    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
 
 SPEC CHECKSUMS:
   InputBarAccessoryView: 1f75d8c9f75e5e57f3ffac36ed58635a8005e0bc
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   MessageKit: d153fbbbcb12f3f4045a1ba8874298924dacfb62
   PhoneNumberKit: edd7d55c9bcf5b00cb7675c045b24c698a43c874
-  SVProgressHUD: de812b4f0e1d65358f0064416473174ae619843f
+  PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: 882840574854ef65c53d0ca1d57768415c9f20ea
+PODFILE CHECKSUM: c5e79a9d9ef2e51abb678842a41ab46c13e59b6e
 
 COCOAPODS: 1.10.1

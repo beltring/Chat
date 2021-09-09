@@ -16,6 +16,7 @@ class ChatsViewController: UIViewController {
     private var currentUser: User!
     private let refreshControl = UIRefreshControl()
     private var lastIndexPath = IndexPath(row: 0, section: 0)
+    private let activityIndicator = UIActivityIndicatorView(style: .gray)
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -26,6 +27,10 @@ class ChatsViewController: UIViewController {
         prepareDataSource()
         getUser()
         setupRefreshControl()
+        
+//        let barButton = UIBarButtonItem(customView: activityIndicator)
+//        navigationItem.rightBarButtonItem = barButton
+//        activityIndicator.startAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,8 +78,6 @@ class ChatsViewController: UIViewController {
                             DispatchQueue.main.async {
                                 self?.dataSource.append(chat)
                                 self?.tableView.reloadData()
-//                                guard let lastIndexPath = self?.lastIndexPath else { return }
-//                                self?.tableView.scrollToRow(at: lastIndexPath, at: .middle, animated: false)
                             }
                         case .failure(let error):
                             print(error.localizedDescription)
