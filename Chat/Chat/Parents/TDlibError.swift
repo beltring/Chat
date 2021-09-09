@@ -11,6 +11,7 @@ enum TDlibError: Error {
     case invalidPhoneNumber
     case invalidCode
     case sampleError
+    case invalidUser
 }
 
 extension TDlibError: LocalizedError {
@@ -22,6 +23,8 @@ extension TDlibError: LocalizedError {
             return "Invalid code." 
         case .sampleError:
             return "Error"
+        case .invalidUser:
+            return "The user was not received"
         }
     }
 }

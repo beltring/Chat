@@ -38,7 +38,7 @@ class ContactsViewController: UIViewController {
             case .success(let user):
                 self?.currentUser = user
             case .failure(let error):
-                self?.presentAlert(title: "Error Get current user", message: error.localizedDescription)
+                self?.presentAlert(title: error.localizedDescription)
             }
         }
     }

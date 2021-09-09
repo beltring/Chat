@@ -15,6 +15,7 @@ class ChatsViewController: UIViewController {
     private var dataSource = [TDLib.Chat]()
     private var currentUser: User!
     private let refreshControl = UIRefreshControl()
+    private var lastIndexPath = IndexPath(row: 0, section: 0)
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -72,12 +73,14 @@ class ChatsViewController: UIViewController {
                             DispatchQueue.main.async {
                                 self?.dataSource.append(chat)
                                 self?.tableView.reloadData()
+//                                guard let lastIndexPath = self?.lastIndexPath else { return }
+//                                self?.tableView.scrollToRow(at: lastIndexPath, at: .middle, animated: false)
                             }
                         case .failure(let error):
                             print(error.localizedDescription)
                         }
                     }
-                }
+                }            
                 self?.tableView.reloadData()
                 self?.refreshControl.endRefreshing()
             case .failure(let error):
@@ -98,7 +101,7 @@ class ChatsViewController: UIViewController {
             case .success(let user):
                 self?.currentUser = user
             case .failure(let error):
-                self?.presentAlert(title: "Error Get current user", message: error.localizedDescription)
+                self?.presentAlert(title: error.localizedDescription)
             }
         }
     }
@@ -157,10 +160,11 @@ extension ChatsViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let chatId = dataSource[indexPath.row].id
         let title = dataSource[indexPath.row].title
+        lastIndexPath = indexPath
         TDManager.shared.getChatHistory(chatId: chatId) { [weak self] result in
             switch result {
             case .success(let messages):
-                print(messages)
+//                print(messages)
                 let vc = ChatViewController.initial()
                 vc.chat = Chat(id: chatId, title: title, messages: messages.convertToArrayMessages())
                 vc.user = self?.currentUser

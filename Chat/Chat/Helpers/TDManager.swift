@@ -97,8 +97,8 @@ class TDManager {
         coordinator.send(GetMe()).done { user in
             completion(.success(user))
         }.catch { error in
-            print(error)
-            completion(.failure(.sampleError))
+            print(error.localizedDescription)
+            completion(.failure(.invalidUser))
         }
     }
     

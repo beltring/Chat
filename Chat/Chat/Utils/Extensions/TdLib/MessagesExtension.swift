@@ -24,7 +24,7 @@ extension Messages {
                     content = text.text ?? "default"
                 case .messagePhoto(photo: let photo, caption: let caption, isSecret: false):
                     description = caption.text ?? ""
-                    print(photo)
+//                    print(photo)
                     let path = photo.sizes.first { $0.type == "m" || $0.type == "s"}?.photo.local.path
                     
                     if path != "" {
