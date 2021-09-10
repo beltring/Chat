@@ -122,7 +122,7 @@ class ChatViewController: MessagesViewController {
             switch result {
             case .success(let result):
                 print(result)
-            case .failure(let error):
+            case .failure:
                 self?.presentAlert(title: "Error", message: "The image size is large")
             }
         }

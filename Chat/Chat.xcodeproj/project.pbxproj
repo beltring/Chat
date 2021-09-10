@@ -47,6 +47,7 @@
 		CEA1A3F926D3609100122D32 /* TDJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA1A3F826D3609100122D32 /* TDJSON.framework */; };
 		CEA1A3FB26D360A600122D32 /* TDLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA1A3FA26D360A600122D32 /* TDLib.framework */; };
 		CEA1A40526D3640100122D32 /* TDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1A40426D3640100122D32 /* TDManager.swift */; };
+		CEE949ED26EB90FA00A2A0E2 /* AudioItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE949EC26EB90FA00A2A0E2 /* AudioItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		CEA1A3F826D3609100122D32 /* TDJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TDJSON.framework; path = Carthage/Build/iOS/TDJSON.framework; sourceTree = "<group>"; };
 		CEA1A3FA26D360A600122D32 /* TDLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TDLib.framework; path = Carthage/Build/iOS/TDLib.framework; sourceTree = "<group>"; };
 		CEA1A40426D3640100122D32 /* TDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDManager.swift; sourceTree = "<group>"; };
+		CEE949EC26EB90FA00A2A0E2 /* AudioItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				CE6E16DD26D8F2E300EE5D1B /* Sender.swift */,
 				CE5EC12C26DCC01300E467A9 /* Chat.swift */,
 				CE59BF9626DF80F3009D18D6 /* ImageMediaItem.swift */,
+				CEE949EC26EB90FA00A2A0E2 /* AudioItem.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEE949ED26EB90FA00A2A0E2 /* AudioItem.swift in Sources */,
 				CE5338C326D518C400391E86 /* AuthorizeData.swift in Sources */,
 				CE6E16DE26D8F2E300EE5D1B /* Sender.swift in Sources */,
 				CE59DB5326D3B372002ABBB1 /* RootTabBarViewController.swift in Sources */,

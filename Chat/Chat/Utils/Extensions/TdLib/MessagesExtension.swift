@@ -19,6 +19,7 @@ extension Messages {
                 var content = ""
                 var description = ""
                 var image: UIImage?
+                var audioItem: Audioitem?
                 switch item.content {
                 case .messageText(text: let text, webPage: nil):
                     content = text.text ?? "default"
@@ -42,6 +43,25 @@ extension Messages {
                     }
                 case .messageSticker(sticker: let sticker):
                     content = sticker.emoji
+                case .messageVoiceNote(voiceNote: let voiceNote, caption: let formattedText, isListened: let isListened):
+                    let voiceId = voiceNote.voice.id
+                    let duration = Float(voiceNote.duration)
+                    if voiceNote.voice.local.path == "" {
+                        TDManager.shared.downloadFile(id: voiceId) { result in
+                            switch result {
+                            case .success(let result):
+                                let url = URL(fileURLWithPath: voiceNote.voice.local.path)
+                                audioItem = Audioitem(url: url, duration: duration, size: .init(width: 150, height: 40))
+                                print(result)
+                            case .failure(let error):
+                                print(error.localizedDescription)
+                            }
+                        }
+                    } else {
+                        let url = URL(fileURLWithPath: voiceNote.voice.local.path)
+                        audioItem = Audioitem(url: url, duration: duration, size: .init(width: 150, height: 40))
+                    }
+                    
                 default:
                     print("Content: \(item.content)")
                 }
@@ -52,7 +72,7 @@ extension Messages {
                     let descriptionMessage = Message(id: id, sender: sender, content: description, date: date)
                     messages.append(descriptionMessage)
                 }
-                let message = Message(id: id, sender: sender, content: content, date: date, image: image)
+                let message = Message(id: id, sender: sender, content: content, date: date, image: image, audioItem: audioItem)
                 messages.append(message)
             }
             return messages.reversed()
