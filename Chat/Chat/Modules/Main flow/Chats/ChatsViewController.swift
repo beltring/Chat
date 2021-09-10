@@ -75,6 +75,7 @@ class ChatsViewController: UIViewController {
                     TDManager.shared.getChat(chatId: id) { [weak self] res in
                         switch res {
                         case .success(let chat):
+                            print(chat)
                             DispatchQueue.main.async {
                                 self?.dataSource.append(chat)
                                 self?.tableView.reloadData()

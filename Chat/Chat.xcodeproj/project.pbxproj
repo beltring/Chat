@@ -227,7 +227,6 @@
 		CE59DB6226D3C818002ABBB1 /* Parents */ = {
 			isa = PBXGroup;
 			children = (
-				CE59DB6326D3C846002ABBB1 /* TDlibError.swift */,
 			);
 			path = Parents;
 			sourceTree = "<group>";
@@ -283,6 +282,7 @@
 				CE5F0FBC26CF84FE00DC4272 /* Application */,
 				CE5F0FBD26CF850A00DC4272 /* CoreData */,
 				CEA1A40326D3635500122D32 /* Helpers */,
+				CEE949B726EB255600A2A0E2 /* Models */,
 				CE5F0FBE26CF851A00DC4272 /* Modules */,
 				CE59DB6226D3C818002ABBB1 /* Parents */,
 				CE5F0FBF26CF855400DC4272 /* Resources */,
@@ -371,8 +371,8 @@
 		CEA1A3FD26D3631800122D32 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CE59DB6326D3C846002ABBB1 /* TDlibError.swift */,
 				CE59DB4826D3A95C002ABBB1 /* Extensions */,
-				CE5338C226D518C400391E86 /* AuthorizeData.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -380,11 +380,19 @@
 		CEA1A40326D3635500122D32 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				CE5382EC26D7A94C006F5552 /* Chat */,
 				CEA1A40426D3640100122D32 /* TDManager.swift */,
 				CE59BF9326DF628C009D18D6 /* DataUDManager.swift */,
+				CE5338C226D518C400391E86 /* AuthorizeData.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		CEE949B726EB255600A2A0E2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE5382EC26D7A94C006F5552 /* Chat */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
