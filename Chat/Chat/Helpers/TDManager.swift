@@ -113,7 +113,8 @@ class TDManager {
     func sendMessage(id: Int64, content: InputMessageContent, completion: @escaping (Result<Bool, TDlibError>) -> Void) {
         coordinator.send(SendMessage(chatId: id, replyToMessageId: 0, options: .none, replyMarkup: .none, inputMessageContent: content)).done { _ in
             completion(.success(true))
-        }.catch { _ in
+        }.catch { error in
+            print(error)
             completion(.failure(.sampleError))
         }
     }

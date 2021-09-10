@@ -25,7 +25,7 @@ extension Messages {
                 case .messagePhoto(photo: let photo, caption: let caption, isSecret: false):
                     description = caption.text ?? ""
 //                    print(photo)
-                    let path = photo.sizes.first { $0.type == "m" || $0.type == "s"}?.photo.local.path
+                    let path = photo.sizes.first { $0.type == "m" || $0.type == "s" || $0.type == "i"}?.photo.local.path
                     
                     if path != "" {
                         image = UIImage(contentsOfFile: path!)

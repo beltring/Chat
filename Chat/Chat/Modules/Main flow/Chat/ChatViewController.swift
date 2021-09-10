@@ -111,19 +111,19 @@ class ChatViewController: MessagesViewController {
     }
     
     // MARK: - Logic
-    private func sendPhoto(_ image: UIImage) {
+    private func sendPhoto() {
         isSendingPhoto = true
         
         let inputThumbnail = InputThumbnail(thumbnail: .none, width: .none, height: .none)
-        let text = FormattedText(text: "test", entities: .none)
+        let text = FormattedText(text: .none, entities: .none)
         let photo = InputFile.local(path: sendPhotoUrl)
-        let content: InputMessageContent = .inputMessagePhoto(photo: photo, thumbnail: inputThumbnail, addedStickerFileIds: [], width: 100, height: 100, caption: text, ttl: 0)
-        TDManager.shared.sendMessage(id: chat.id, content: content) { result in
+        let content: InputMessageContent = .inputMessagePhoto(photo: photo, thumbnail: inputThumbnail, addedStickerFileIds: [], width: 250, height: 250, caption: text, ttl: 0)
+        TDManager.shared.sendMessage(id: chat.id, content: content) { [weak self] result in
             switch result {
             case .success(let result):
                 print(result)
             case .failure(let error):
-                print(error)
+                self?.presentAlert(title: "Error", message: "The image size is large")
             }
         }
         let message = Message(sender: currentUser, content: "test photo message", image: UIImage(contentsOfFile: sendPhotoUrl)!)
@@ -251,6 +251,7 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
             let data = img.pngData()! as NSData
             data.write(toFile: localPath!, atomically: true)
             sendPhotoUrl = localPath!
+            sendPhoto()
         }
     }
     
