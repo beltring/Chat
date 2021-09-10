@@ -1,21 +1,43 @@
 PODS:
+  - InputBarAccessoryView (5.3.1):
+    - InputBarAccessoryView/Core (= 5.3.1)
+  - InputBarAccessoryView/Core (5.3.1)
+  - KeychainSwift (19.0.0)
+  - MessageKit (3.6.1):
+    - InputBarAccessoryView (~> 5.3.1)
   - PhoneNumberKit (3.3.0):
     - PhoneNumberKit/PhoneNumberKitCore (= 3.3.0)
     - PhoneNumberKit/UIKit (= 3.3.0)
   - PhoneNumberKit/PhoneNumberKitCore (3.3.0)
   - PhoneNumberKit/UIKit (3.3.0):
     - PhoneNumberKit/PhoneNumberKitCore
+  - PKHUD (5.3.0)
+  - SwiftLint (0.41.0)
 
 DEPENDENCIES:
+  - KeychainSwift (~> 19.0)
+  - MessageKit (= 3.6.1)
   - PhoneNumberKit (= 3.3)
+  - PKHUD (= 5.3.0)
+  - SwiftLint (= 0.41.0)
 
 SPEC REPOS:
   trunk:
+    - InputBarAccessoryView
+    - KeychainSwift
+    - MessageKit
     - PhoneNumberKit
+    - PKHUD
+    - SwiftLint
 
 SPEC CHECKSUMS:
+  InputBarAccessoryView: 1f75d8c9f75e5e57f3ffac36ed58635a8005e0bc
+  KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
+  MessageKit: d153fbbbcb12f3f4045a1ba8874298924dacfb62
   PhoneNumberKit: edd7d55c9bcf5b00cb7675c045b24c698a43c874
+  PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
+  SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: ebbfd2ad0cc576614f05aef7b665440c9d4a9a2d
+PODFILE CHECKSUM: 1d630dba252a78cea48162532a7497f8911c79a3
 
 COCOAPODS: 1.10.1

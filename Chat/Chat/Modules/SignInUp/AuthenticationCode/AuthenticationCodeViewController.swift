@@ -9,7 +9,7 @@ import UIKit
 
 class AuthenticationCodeViewController: UIViewController {
 
-    @IBOutlet weak var codeTextField: UITextField!
+    @IBOutlet private weak var codeTextField: UITextField!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -21,7 +21,7 @@ class AuthenticationCodeViewController: UIViewController {
     // MARK: - Setup
     private func setupNavigationBar() {
         navigationItem.title = "Code"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(nextTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextTapped))
     }
     
     // MARK: - Actions
@@ -30,8 +30,9 @@ class AuthenticationCodeViewController: UIViewController {
         TDManager.shared.checkCode(code: code) { [weak self] result in
             switch result {
             case.success:
-                print("Success")
-//                self?.navigationController?.pushViewController(MainScreeen, animated: true)
+                AuthorizeData.shared.isAuthorized = true
+                let rootVC = RootTabBarViewController.initial()
+                self?.navigationController?.setViewControllers([rootVC], animated: true)
             case .failure(let error):
                 self?.presentAlert(title: "Error", message: error.localizedDescription)
             }

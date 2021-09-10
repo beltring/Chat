@@ -18,10 +18,9 @@ extension UIViewController {
         return instanceInitial(from: storyboard)
     }
 
-    //MARK: - Private
-
+    // MARK: - Private
     private class func instanceInitial<T: UIViewController>(from storyboard: UIStoryboard) -> T {
-        return storyboard.instantiateInitialViewController() as! T
+        return (storyboard.instantiateInitialViewController() as? T)!
     }
 }
 
@@ -31,12 +30,11 @@ extension UIViewController {
                       preferredStyle: UIAlertController.Style = .alert,
                       cancelTitle: String = NSLocalizedString("Cancel", comment: ""),
                       cancelStyle: UIAlertAction.Style = .cancel,
-                      cancelHandler: ((UIAlertAction) -> ())? = nil,
+                      cancelHandler: ((UIAlertAction) -> Void)? = nil,
                       otherActions: [UIAlertAction]? = nil,
                       animated: Bool = true,
-                      completion: (() -> ())? = nil) {
-        
-        
+                      completion: (() -> Void)? = nil) {
+            
         DispatchQueue.main.async { [weak self] in
             
             let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)

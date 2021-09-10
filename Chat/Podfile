@@ -1,8 +1,17 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '12.3'
+# platform :ios, '12.3'
 
 target 'Chat' do
-  
+  use_frameworks!
+
+  pod 'KeychainSwift', '~> 19.0'  
+
+  pod 'MessageKit', '3.6.1'
+
   pod 'PhoneNumberKit', '3.3'
+  
+  pod 'PKHUD', '5.3.0'
+
+  pod 'SwiftLint', '0.41.0'
 
 end

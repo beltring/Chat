@@ -5,12 +5,12 @@
 //  Created by User on 8/23/21.
 //
 
-import UIKit
 import PhoneNumberKit
+import UIKit
 
 class PhoneNumberViewController: UIViewController {
     
-    @IBOutlet weak var numberTextField: PhoneNumberTextField!
+    @IBOutlet private weak var numberTextField: PhoneNumberTextField!
     
     // MARK: - Setup
     override func viewDidLoad() {
@@ -27,17 +27,17 @@ class PhoneNumberViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @IBAction func nextTapped(_ sender: Any) {
-//        guard let phoneNumber = numberTextField.text else { return }
+    @IBAction private func nextTapped(_ sender: Any) {
+        guard let phoneNumber = numberTextField.text else { return }
         navigationController?.pushViewController(AuthenticationCodeViewController.initial(), animated: true)
-//        TDManager.shared.setPhoneNumber(number: phoneNumber) { [weak self] result in
-//            switch result {
-//            case .success:
-//                self?.navigationController?.pushViewController(AuthenticationCodeViewController.initial(), animated: true)
-//            case .failure(let error):
-//                self?.presentAlert(title: "Error", message: error.localizedDescription)
-//            }
-//        }
+        TDManager.shared.setPhoneNumber(number: phoneNumber) { [weak self] result in
+            switch result {
+            case .success:
+                self?.navigationController?.pushViewController(AuthenticationCodeViewController.initial(), animated: true)
+            case .failure(let error):
+                self?.presentAlert(title: "Error", message: error.localizedDescription)
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

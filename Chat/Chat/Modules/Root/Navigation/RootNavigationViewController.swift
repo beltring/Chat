@@ -9,23 +9,18 @@ import UIKit
 
 class RootNavigationViewController: UINavigationController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
     // MARK: - Setup
     func setRootController() {
         let vc: UIViewController
         
-        vc = PhoneNumberViewController.initial()
-//        if AuthorizeData.shared.isAuthorized {
-//            vc = RootTabBarViewController.initial()
-//        } else {
-//            vc = LoginViewController.initial()
-//        }
-//
+        if AuthorizeData.shared.isAuthorized {
+            vc = RootTabBarViewController.initial()
+            guard let tabBar = vc as? RootTabBarViewController else { return }
+            tabBar.selectedIndex = 1
+        } else {
+            vc = PhoneNumberViewController.initial()
+        }
+
         setViewControllers([vc], animated: false)
     }
 
