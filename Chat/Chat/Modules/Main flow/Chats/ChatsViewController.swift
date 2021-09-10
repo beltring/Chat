@@ -75,7 +75,7 @@ class ChatsViewController: UIViewController {
                     TDManager.shared.getChat(chatId: id) { [weak self] res in
                         switch res {
                         case .success(let chat):
-                            print(chat)
+//                            print(chat)
                             DispatchQueue.main.async {
                                 self?.dataSource.append(chat)
                                 self?.tableView.reloadData()
@@ -162,15 +162,25 @@ extension ChatsViewController: UITableViewDataSource {
 extension ChatsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let chatId = dataSource[indexPath.row].id
-        let title = dataSource[indexPath.row].title
+        let chatTD = dataSource[indexPath.row]
+        let chatId = chatTD.id
+        let title = chatTD.title
+        var isChannel = false
         lastIndexPath = indexPath
+        
+        switch chatTD.type {
+        case .supergroup(supergroupId: _, isChannel: let res):
+           isChannel = res
+        default:
+            isChannel = false
+        }
+        
         TDManager.shared.getChatHistory(chatId: chatId) { [weak self] result in
             switch result {
             case .success(let messages):
 //                print(messages)
                 let vc = ChatViewController.initial()
-                vc.chat = Chat(id: chatId, title: title, messages: messages.convertToArrayMessages())
+                vc.chat = Chat(id: chatId, title: title, messages: messages.convertToArrayMessages(), isChannel: isChannel)
                 vc.user = self?.currentUser
                 self?.tabBarController?.navigationController?.pushViewController(vc, animated: true)
             case .failure(let error):

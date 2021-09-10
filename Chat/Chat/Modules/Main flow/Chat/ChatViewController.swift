@@ -39,6 +39,7 @@ class ChatViewController: MessagesViewController {
         setupMessageCollectionView()
         prepareDataSource()
         addCameraBarButton()
+        setupMessageInputBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,6 +69,13 @@ class ChatViewController: MessagesViewController {
             layout.textMessageSizeCalculator.incomingAvatarSize = .zero
             layout.photoMessageSizeCalculator.outgoingAvatarSize = .zero
             layout.photoMessageSizeCalculator.incomingAvatarSize = .zero
+        }
+        
+    }
+    
+    private func setupMessageInputBar() {
+        if chat.isChannel {
+            messageInputBar.isHidden = true
         }
     }
     
