@@ -38,6 +38,9 @@
 		CE601E8726D611B800D40665 /* Contacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE601E8626D611B800D40665 /* Contacts.storyboard */; };
 		CE601E9226D612F200D40665 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE601E9026D612F200D40665 /* ContactTableViewCell.swift */; };
 		CE601E9326D612F200D40665 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE601E9126D612F200D40665 /* ContactTableViewCell.xib */; };
+		CE60C68826EF277100B44022 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60C68726EF277100B44022 /* BasicAudioController.swift */; };
+		CE60C68D26EF6A9900B44022 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60C68C26EF6A9900B44022 /* PhotoViewController.swift */; };
+		CE60C69026EF6AF100B44022 /* Photo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE60C68F26EF6AF100B44022 /* Photo.storyboard */; };
 		CE62372D26DE3C3800961A3E /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62372C26DE3C3800961A3E /* DateExtension.swift */; };
 		CE6E16B626D8D18A00EE5D1B /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E16B526D8D18A00EE5D1B /* DateFormatterExtensions.swift */; };
 		CE6E16DE26D8F2E300EE5D1B /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E16DD26D8F2E300EE5D1B /* Sender.swift */; };
@@ -91,6 +94,9 @@
 		CE601E8626D611B800D40665 /* Contacts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Contacts.storyboard; sourceTree = "<group>"; };
 		CE601E9026D612F200D40665 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		CE601E9126D612F200D40665 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
+		CE60C68726EF277100B44022 /* BasicAudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
+		CE60C68C26EF6A9900B44022 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		CE60C68F26EF6AF100B44022 /* Photo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Photo.storyboard; sourceTree = "<group>"; };
 		CE62372C26DE3C3800961A3E /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		CE6E16B526D8D18A00EE5D1B /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
 		CE6E16DD26D8F2E300EE5D1B /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
@@ -248,6 +254,7 @@
 			children = (
 				CE7B7E6726D7501900DEB604 /* Chat.storyboard */,
 				CE7B7E6B26D7521900DEB604 /* ChatViewController.swift */,
+				CE60C68B26EF6A6E00B44022 /* ChatPhoto */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -356,6 +363,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		CE60C68B26EF6A6E00B44022 /* ChatPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				CE60C68F26EF6AF100B44022 /* Photo.storyboard */,
+				CE60C68C26EF6A9900B44022 /* PhotoViewController.swift */,
+			);
+			path = ChatPhoto;
+			sourceTree = "<group>";
+		};
 		CEA1A3F426D3608700122D32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +390,7 @@
 		CEA1A3FD26D3631800122D32 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CE60C68726EF277100B44022 /* BasicAudioController.swift */,
 				CE59DB6326D3C846002ABBB1 /* TDlibError.swift */,
 				CE59DB4826D3A95C002ABBB1 /* Extensions */,
 			);
@@ -468,6 +485,7 @@
 				CE59DB6C26D3CFBB002ABBB1 /* AuthenticationCode.storyboard in Resources */,
 				CE601E9326D612F200D40665 /* ContactTableViewCell.xib in Resources */,
 				CE7B7E6826D7501900DEB604 /* Chat.storyboard in Resources */,
+				CE60C69026EF6AF100B44022 /* Photo.storyboard in Resources */,
 				CE5338B426D4CE8D00391E86 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,7 +576,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE60C68D26EF6A9900B44022 /* PhotoViewController.swift in Sources */,
 				CEE949ED26EB90FA00A2A0E2 /* AudioItem.swift in Sources */,
+				CE60C68826EF277100B44022 /* BasicAudioController.swift in Sources */,
 				CE5338C326D518C400391E86 /* AuthorizeData.swift in Sources */,
 				CE6E16DE26D8F2E300EE5D1B /* Sender.swift in Sources */,
 				CE59DB5326D3B372002ABBB1 /* RootTabBarViewController.swift in Sources */,

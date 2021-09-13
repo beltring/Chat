@@ -20,14 +20,13 @@ extension Messages {
                 var description = ""
                 var image: UIImage?
                 var audioItem: Audioitem?
+                var pathImage: String = ""
                 switch item.content {
                 case .messageText(text: let text, webPage: nil):
                     content = text.text ?? "default"
                 case .messagePhoto(photo: let photo, caption: let caption, isSecret: false):
                     description = caption.text ?? ""
-//                    print(photo)
                     let path = photo.sizes.first { $0.type == "m" || $0.type == "s" || $0.type == "i"}?.photo.local.path
-                    
                     if path != "" {
                         image = UIImage(contentsOfFile: path!)
                     } else {
@@ -43,7 +42,7 @@ extension Messages {
                     }
                 case .messageSticker(sticker: let sticker):
                     content = sticker.emoji
-                case .messageVoiceNote(voiceNote: let voiceNote, caption: let formattedText, isListened: let isListened):
+                case .messageVoiceNote(voiceNote: let voiceNote, caption: _, isListened: _):
                     let voiceId = voiceNote.voice.id
                     let duration = Float(voiceNote.duration)
                     if voiceNote.voice.local.path == "" {

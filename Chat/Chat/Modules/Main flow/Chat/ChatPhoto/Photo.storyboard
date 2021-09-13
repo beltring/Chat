@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lax-EK-yX9">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Photo View Controller-->
+        <scene sceneID="BeJ-wP-3ac">
+            <objects>
+                <viewController id="lax-EK-yX9" customClass="PhotoViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TFn-Qv-H0w">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wCI-Vv-pVZ">
+                                <rect key="frame" x="0.0" y="319.5" width="414" height="267"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="267" id="982-nK-KNg"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uNM-Lr-Ohb">
+                                <rect key="frame" x="147" y="800" width="120" height="22"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Tap to share" image="square.and.arrow.up" catalog="system">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="sharePhotoTapped:" destination="lax-EK-yX9" eventType="touchUpInside" id="Zw7-Kb-MsS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LKm-Bi-k2M"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LKm-Bi-k2M" firstAttribute="bottom" secondItem="uNM-Lr-Ohb" secondAttribute="bottom" constant="40" id="1OB-Qp-y3c"/>
+                            <constraint firstItem="wCI-Vv-pVZ" firstAttribute="centerY" secondItem="LKm-Bi-k2M" secondAttribute="centerY" id="1nC-wO-H1P"/>
+                            <constraint firstItem="uNM-Lr-Ohb" firstAttribute="centerX" secondItem="LKm-Bi-k2M" secondAttribute="centerX" id="7wY-eG-KXq"/>
+                            <constraint firstItem="wCI-Vv-pVZ" firstAttribute="trailing" secondItem="LKm-Bi-k2M" secondAttribute="trailing" id="FbB-9e-rcT"/>
+                            <constraint firstItem="wCI-Vv-pVZ" firstAttribute="centerX" secondItem="LKm-Bi-k2M" secondAttribute="centerX" id="IH8-US-93C"/>
+                            <constraint firstItem="wCI-Vv-pVZ" firstAttribute="leading" secondItem="LKm-Bi-k2M" secondAttribute="leading" id="Prl-RK-Mg2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="messagePhoto" destination="wCI-Vv-pVZ" id="hNS-RM-ocR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2e9-YC-h38" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="253.62318840579712" y="87.723214285714278"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

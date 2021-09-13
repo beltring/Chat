@@ -20,6 +20,7 @@ class ChatViewController: MessagesViewController {
     private var currentUser: Sender!
     private var sendPhotoUrl: String = ""
     private var timer: Timer?
+    private lazy var audioController = BasicAudioController(messageCollectionView: messagesCollectionView)
     private var isSendingPhoto = false {
         didSet {
             messageInputBar.leftStackViewItems.forEach { item in
@@ -47,10 +48,11 @@ class ChatViewController: MessagesViewController {
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(getMessages), userInfo: nil, repeats: true)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         timer?.invalidate()
         timer = nil
+        audioController.stopAnyOngoingPlaying()
     }
     
     // MARK: - Setup
@@ -62,7 +64,9 @@ class ChatViewController: MessagesViewController {
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesDisplayDelegate = self
         messagesCollectionView.messagesLayoutDelegate = self
+        messagesCollectionView.messageCellDelegate = self
         messageInputBar.delegate = self
+        scrollsToLastItemOnKeyboardBeginsEditing = true
         
         if let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout {
             layout.textMessageSizeCalculator.outgoingAvatarSize = .zero
@@ -129,7 +133,7 @@ class ChatViewController: MessagesViewController {
         let message = Message(sender: currentUser, content: "test photo message", image: UIImage(contentsOfFile: sendPhotoUrl)!)
         messages.append(message)
         self.chat.messages.append(message)
-
+        
         messagesCollectionView.reloadData()
         self.messagesCollectionView.scrollToLastItem()
     }
@@ -230,6 +234,62 @@ extension ChatViewController: MessagesLayoutDelegate {
     
     func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return 5
+    }
+}
+
+extension ChatViewController: MessageCellDelegate {
+    func didTapImage(in cell: MessageCollectionViewCell) {
+        guard let indexPath = messagesCollectionView.indexPath(for: cell) else { return }
+        guard let messagesDataSource = messagesCollectionView.messagesDataSource else { return }
+        let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
+        let vc = PhotoViewController.initial()
+        switch message.kind {
+        case .photo(let photoItem):
+            if let image = photoItem.image {
+                vc.photoImage = image
+                present(vc, animated: true, completion: nil)
+            }
+        default:
+            break
+        }
+        
+    }
+    
+    func didTapPlayButton(in cell: AudioMessageCell) {
+        guard let indexPath = messagesCollectionView.indexPath(for: cell),
+              let message = messagesCollectionView.messagesDataSource?.messageForItem(at: indexPath, in: messagesCollectionView) else {
+            print("Failed to identify message when audio cell receive tap gesture")
+            return
+        }
+        guard audioController.state != .stopped else {
+            // There is no audio sound playing - prepare to start playing for given audio message
+            audioController.playSound(for: message, in: cell)
+            return
+        }
+        if audioController.playingMessage?.messageId == message.messageId {
+            // tap occur in the current cell that is playing audio sound
+            if audioController.state == .playing {
+                audioController.pauseSound(for: message, in: cell)
+            } else {
+                audioController.resumeSound()
+            }
+        } else {
+            // tap occur in a difference cell that the one is currently playing sound. First stop currently playing and start the sound for given message
+            audioController.stopAnyOngoingPlaying()
+            audioController.playSound(for: message, in: cell)
+        }
+    }
+    
+    func didStartAudio(in cell: AudioMessageCell) {
+        print("Did start playing audio sound")
+    }
+    
+    func didPauseAudio(in cell: AudioMessageCell) {
+        print("Did pause audio sound")
+    }
+    
+    func didStopAudio(in cell: AudioMessageCell) {
+        print("Did stop audio sound")
     }
 }
 
