@@ -19,10 +19,10 @@ struct Message: MessageType {
     let sentDate: UIKit.Date
     let sender: SenderType
     var image: UIImage?
-    var downloadURL: URL?
     var audioItem: Audioitem?
     var videoPath = ""
     var linkItem: LinkItem?
+    
     var kind: MessageKind {
         if let image = image {
             let mediaItem = ChatMediaItem(image: image)

@@ -104,6 +104,8 @@ extension Messages {
                 let date = item.date
                 let id = item.id
                 let sender = Sender(senderId: userId, displayName: "Test")
+                let message = Message(id: id, sender: sender, content: content, date: date, image: image, audioItem: audioItem)
+                messages.append(message)
                 if description != "" {
                     let descriptionMessage = Message(id: id, sender: sender, content: description, date: date)
                     messages.append(descriptionMessage)
@@ -111,11 +113,11 @@ extension Messages {
                     let videoMessage = Message(id: id, sender: sender, content: content, date: date, videoPath: videoPath)
                     messages.append(videoMessage)
                 } else if let chatLinkItem = linkItem {
+                    messages.removeLast()
                     let linkItem = Message(id: id, sender: sender, date: date, linkItem: chatLinkItem)
                     messages.append(linkItem)
                 }
-                let message = Message(id: id, sender: sender, content: content, date: date, image: image, audioItem: audioItem)
-                messages.append(message)
+                
             }
             return messages.reversed()
         } else {
