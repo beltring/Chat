@@ -279,7 +279,7 @@ extension ChatViewController: MessageCellDelegate {
     }
     
     func didSelectURL(_ url: URL) {
-        print(url)
+        presentSafariViewController(url: url)
     }
     
     func didTapImage(in cell: MessageCollectionViewCell) {
