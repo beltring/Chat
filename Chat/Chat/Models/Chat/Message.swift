@@ -18,20 +18,23 @@ struct Message: MessageType {
     let content: String
     let sentDate: UIKit.Date
     let sender: SenderType
+    var image: UIImage?
+    var downloadURL: URL?
+    var audioItem: Audioitem?
+    var videoUrl: URL?
     var kind: MessageKind {
         if let image = image {
-            let mediaItem = ImageMediaItem(image: image)
+            let mediaItem = ChatMediaItem(image: image)
             return .photo(mediaItem)
         } else if let audioItem = audioItem {
             return .audio(audioItem)
+        } else if let videoUrl = videoUrl {
+            let mediaItem = ChatMediaItem(url: videoUrl)
+            return .video(mediaItem)
         } else {
             return .text(content)
         }
     }
-    
-    var image: UIImage?
-    var downloadURL: URL?
-    var audioItem: Audioitem?
     
     init(user: User, content: String, displayName: String) {
         let userId = String(user.id)
@@ -63,6 +66,14 @@ struct Message: MessageType {
         self.id = String(id)
         self.image = image
         self.audioItem = audioItem
+    }
+    init(id: Int64, sender: Sender, content: String, date: Int32, videoUrl: URL?) {
+        self.sender = sender
+        self.content = content
+        sentDate = UIKit.Date(timeIntervalSince1970: TimeInterval(date))
+        self.id = String(id)
+        self.videoUrl = videoUrl
+        print(videoUrl)
     }
 }
 

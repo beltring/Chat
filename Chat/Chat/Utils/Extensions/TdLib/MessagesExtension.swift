@@ -20,10 +20,30 @@ extension Messages {
                 var description = ""
                 var image: UIImage?
                 var audioItem: Audioitem?
-                var pathImage: String = ""
+                var videoPath = ""
+                var pageUrl = ""
                 switch item.content {
-                case .messageText(text: let text, webPage: nil):
+                case .messageText(text: let text, webPage: let page):
                     content = text.text ?? "default"
+                    if let webPage = page, webPage.type == "video" {
+                        pageUrl = webPage.url
+                    }
+                case .messageVideo(video: let video, caption: let caption, isSecret: _):
+                    description = caption.text ?? ""
+                    let path = video.video.local.path
+                    if path != "" {
+                        videoPath = path
+                    } else {
+                        let videoId = video.video.id
+                        TDManager.shared.downloadFile(id: videoId) { result in
+                            switch result {
+                            case .success(let file):
+                                videoPath = file.local.path
+                            case .failure(let error):
+                                print(error.localizedDescription)
+                            }
+                        }
+                    }
                 case .messagePhoto(photo: let photo, caption: let caption, isSecret: false):
                     description = caption.text ?? ""
                     let path = photo.sizes.first { $0.type == "m" || $0.type == "s" || $0.type == "i"}?.photo.local.path
@@ -70,6 +90,10 @@ extension Messages {
                 if description != "" {
                     let descriptionMessage = Message(id: id, sender: sender, content: description, date: date)
                     messages.append(descriptionMessage)
+                } else if videoPath != "" {
+                    let videoUrl = URL(fileURLWithPath: videoPath)
+                    let videoMessage = Message(id: id, sender: sender, content: content, date: date, videoUrl: videoUrl)
+                    messages.append(videoMessage)
                 }
                 let message = Message(id: id, sender: sender, content: content, date: date, image: image, audioItem: audioItem)
                 messages.append(message)
