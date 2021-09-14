@@ -74,6 +74,10 @@ class ChatViewController: MessagesViewController {
             layout.textMessageSizeCalculator.incomingAvatarSize = .zero
             layout.photoMessageSizeCalculator.outgoingAvatarSize = .zero
             layout.photoMessageSizeCalculator.incomingAvatarSize = .zero
+            layout.videoMessageSizeCalculator.outgoingAvatarSize = .zero
+            layout.videoMessageSizeCalculator.incomingAvatarSize = .zero
+            layout.linkPreviewMessageSizeCalculator.outgoingAvatarSize = .zero
+            layout.linkPreviewMessageSizeCalculator.incomingAvatarSize = .zero
         }
         
     }
@@ -225,6 +229,21 @@ extension ChatViewController: MessagesDisplayDelegate {
         let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
         return .bubbleTail(corner, .curved)
     }
+    
+    func detectorAttributes(for detector: DetectorType, and message: MessageType, at indexPath: IndexPath) -> [NSAttributedString.Key: Any] {
+            switch detector {
+            case .hashtag, .mention: return [.foregroundColor: UIColor.blue]
+            default: return [
+                NSAttributedString.Key.foregroundColor: UIColor.white,
+                NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
+                NSAttributedString.Key.underlineColor: UIColor.white
+            ]
+            }
+        }
+        
+        func enabledDetectors(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> [DetectorType] {
+            return [.url, .address, .phoneNumber, .date, .transitInformation, .mention, .hashtag]
+        }
 }
 
 // MARK: - MessagesLayoutDelegate
@@ -257,6 +276,10 @@ extension ChatViewController: MessageCellDelegate {
                 break
             }
         }
+    }
+    
+    func didSelectURL(_ url: URL) {
+        print(url)
     }
     
     func didTapImage(in cell: MessageCollectionViewCell) {

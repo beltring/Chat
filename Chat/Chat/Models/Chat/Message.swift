@@ -21,16 +21,20 @@ struct Message: MessageType {
     var image: UIImage?
     var downloadURL: URL?
     var audioItem: Audioitem?
-    var videoUrl: URL?
+    var videoPath = ""
+    var linkItem: LinkItem?
     var kind: MessageKind {
         if let image = image {
             let mediaItem = ChatMediaItem(image: image)
             return .photo(mediaItem)
         } else if let audioItem = audioItem {
             return .audio(audioItem)
-        } else if let videoUrl = videoUrl {
-            let mediaItem = ChatMediaItem(url: videoUrl)
+        } else if videoPath != "" {
+            let url = URL(fileURLWithPath: videoPath)
+            let mediaItem = ChatMediaItem(url: url)
             return .video(mediaItem)
+        } else if let linkItem = linkItem {
+            return .linkPreview(linkItem)
         } else {
             return .text(content)
         }
@@ -67,13 +71,21 @@ struct Message: MessageType {
         self.image = image
         self.audioItem = audioItem
     }
-    init(id: Int64, sender: Sender, content: String, date: Int32, videoUrl: URL?) {
+    
+    init(id: Int64, sender: Sender, content: String, date: Int32, videoPath: String) {
         self.sender = sender
         self.content = content
         sentDate = UIKit.Date(timeIntervalSince1970: TimeInterval(date))
         self.id = String(id)
-        self.videoUrl = videoUrl
-        print(videoUrl)
+        self.videoPath = videoPath
+    }
+    
+    init(id: Int64, sender: Sender, date: Int32, linkItem: LinkItem?) {
+        self.sender = sender
+        self.content = ""
+        sentDate = UIKit.Date(timeIntervalSince1970: TimeInterval(date))
+        self.id = String(id)
+        self.linkItem = linkItem
     }
 }
 

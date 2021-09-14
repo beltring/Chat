@@ -21,12 +21,29 @@ extension Messages {
                 var image: UIImage?
                 var audioItem: Audioitem?
                 var videoPath = ""
-                var pageUrl = ""
+                var linkItem: ChatLinkItem?
                 switch item.content {
                 case .messageText(text: let text, webPage: let page):
                     content = text.text ?? "default"
-                    if let webPage = page, webPage.type == "video" {
-                        pageUrl = webPage.url
+                    if let webPage = page {
+                        let url = URL(string: webPage.url)
+                        
+                        let path = webPage.photo?.sizes.first { $0.type == "m"}?.photo.local.path
+                        if path != "" {
+                            let image = UIImage(contentsOfFile: path!)
+                            linkItem = ChatLinkItem(text: text.text, attributedText: .none, url: url!, title: webPage.title, teaser: webPage.description, thumbnailImage: image!)
+                        } else {
+                            let photoId = webPage.photo?.sizes.first { $0.type == "m" }?.photo.id
+                            TDManager.shared.downloadFile(id: photoId) { result in
+                                switch result {
+                                case .success(let file):
+                                    let image = UIImage(contentsOfFile: file.local.path)
+                                    linkItem = ChatLinkItem(text: text.text, attributedText: .none, url: url!, title: webPage.title, teaser: webPage.description, thumbnailImage: image!)
+                                case .failure(let error):
+                                    print(error.localizedDescription)
+                                }
+                            }
+                        }
                     }
                 case .messageVideo(video: let video, caption: let caption, isSecret: _):
                     description = caption.text ?? ""
@@ -91,9 +108,11 @@ extension Messages {
                     let descriptionMessage = Message(id: id, sender: sender, content: description, date: date)
                     messages.append(descriptionMessage)
                 } else if videoPath != "" {
-                    let videoUrl = URL(fileURLWithPath: videoPath)
-                    let videoMessage = Message(id: id, sender: sender, content: content, date: date, videoUrl: videoUrl)
+                    let videoMessage = Message(id: id, sender: sender, content: content, date: date, videoPath: videoPath)
                     messages.append(videoMessage)
+                } else if let chatLinkItem = linkItem {
+                    let linkItem = Message(id: id, sender: sender, date: date, linkItem: chatLinkItem)
+                    messages.append(linkItem)
                 }
                 let message = Message(id: id, sender: sender, content: content, date: date, image: image, audioItem: audioItem)
                 messages.append(message)
