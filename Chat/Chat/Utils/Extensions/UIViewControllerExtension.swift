@@ -19,7 +19,7 @@ extension UIViewController {
         let storyboard = UIStoryboard(name: name, bundle: nil)
         return instanceInitial(from: storyboard)
     }
-
+    
     // MARK: - Private
     private class func instanceInitial<T: UIViewController>(from storyboard: UIStoryboard) -> T {
         return (storyboard.instantiateInitialViewController() as? T)!
@@ -37,7 +37,7 @@ extension UIViewController {
                       otherActions: [UIAlertAction]? = nil,
                       animated: Bool = true,
                       completion: (() -> Void)? = nil) {
-            
+        
         DispatchQueue.main.async { [weak self] in
             
             let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
@@ -60,7 +60,7 @@ extension UIViewController {
         let vc = self.makeSafariViewController(url: url)
         self.present(vc, animated: true)
     }
-
+    
     func makeSafariViewController(url: URL) -> SFSafariViewController {
         let vc = SFSafariViewController(url: url)
         vc.delegate = UIViewController.safariDelegate
@@ -71,7 +71,7 @@ extension UIViewController {
     private static let safariDelegate = WebViewControllerDelegate()
 }
 
-fileprivate class WebViewControllerDelegate: NSObject, SFSafariViewControllerDelegate {
+private class WebViewControllerDelegate: NSObject, SFSafariViewControllerDelegate {
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         controller.dismiss(animated: true, completion: nil)
     }

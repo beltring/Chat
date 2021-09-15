@@ -43,6 +43,11 @@
 		CE60C69026EF6AF100B44022 /* Photo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE60C68F26EF6AF100B44022 /* Photo.storyboard */; };
 		CE62372D26DE3C3800961A3E /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62372C26DE3C3800961A3E /* DateExtension.swift */; };
 		CE626AC226F0932900BD7AA8 /* ChatLinkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626AC126F0932900BD7AA8 /* ChatLinkItem.swift */; };
+		CE64C3E526F1C0120037ADDE /* NavigationBarProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE64C3E426F1C0120037ADDE /* NavigationBarProgressView.swift */; };
+		CE64C3E926F1C1C90037ADDE /* NavigationBarProgressViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE64C3E826F1C1C90037ADDE /* NavigationBarProgressViewConfigurator.swift */; };
+		CE64C3ED26F1C69A0037ADDE /* INavigationBarProgressContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE64C3EC26F1C69A0037ADDE /* INavigationBarProgressContainer.swift */; };
+		CE64C3F126F1C6F40037ADDE /* IAttachableNavigationBarProgressContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE64C3F026F1C6F40037ADDE /* IAttachableNavigationBarProgressContainer.swift */; };
+		CE64C3F426F1C8410037ADDE /* INavigationBarProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE64C3F326F1C8410037ADDE /* INavigationBarProgressView.swift */; };
 		CE6E16B626D8D18A00EE5D1B /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E16B526D8D18A00EE5D1B /* DateFormatterExtensions.swift */; };
 		CE6E16DE26D8F2E300EE5D1B /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E16DD26D8F2E300EE5D1B /* Sender.swift */; };
 		CE7B7E6826D7501900DEB604 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7B7E6726D7501900DEB604 /* Chat.storyboard */; };
@@ -100,6 +105,11 @@
 		CE60C68F26EF6AF100B44022 /* Photo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Photo.storyboard; sourceTree = "<group>"; };
 		CE62372C26DE3C3800961A3E /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		CE626AC126F0932900BD7AA8 /* ChatLinkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLinkItem.swift; sourceTree = "<group>"; };
+		CE64C3E426F1C0120037ADDE /* NavigationBarProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarProgressView.swift; sourceTree = "<group>"; };
+		CE64C3E826F1C1C90037ADDE /* NavigationBarProgressViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarProgressViewConfigurator.swift; sourceTree = "<group>"; };
+		CE64C3EC26F1C69A0037ADDE /* INavigationBarProgressContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INavigationBarProgressContainer.swift; sourceTree = "<group>"; };
+		CE64C3F026F1C6F40037ADDE /* IAttachableNavigationBarProgressContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAttachableNavigationBarProgressContainer.swift; sourceTree = "<group>"; };
+		CE64C3F326F1C8410037ADDE /* INavigationBarProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INavigationBarProgressView.swift; sourceTree = "<group>"; };
 		CE6E16B526D8D18A00EE5D1B /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
 		CE6E16DD26D8F2E300EE5D1B /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		CE7B7E6726D7501900DEB604 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
@@ -375,6 +385,33 @@
 			path = ChatPhoto;
 			sourceTree = "<group>";
 		};
+		CE64C3E326F1BFD20037ADDE /* CustomNavBar */ = {
+			isa = PBXGroup;
+			children = (
+				CE64C3E426F1C0120037ADDE /* NavigationBarProgressView.swift */,
+				CE64C3E826F1C1C90037ADDE /* NavigationBarProgressViewConfigurator.swift */,
+			);
+			path = CustomNavBar;
+			sourceTree = "<group>";
+		};
+		CE64C3EB26F1C6810037ADDE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CE64C3F626F1C9C10037ADDE /* NavBar */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CE64C3F626F1C9C10037ADDE /* NavBar */ = {
+			isa = PBXGroup;
+			children = (
+				CE64C3F026F1C6F40037ADDE /* IAttachableNavigationBarProgressContainer.swift */,
+				CE64C3EC26F1C69A0037ADDE /* INavigationBarProgressContainer.swift */,
+				CE64C3F326F1C8410037ADDE /* INavigationBarProgressView.swift */,
+			);
+			path = NavBar;
+			sourceTree = "<group>";
+		};
 		CEA1A3F426D3608700122D32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,6 +433,7 @@
 				CE60C68726EF277100B44022 /* BasicAudioController.swift */,
 				CE59DB6326D3C846002ABBB1 /* TDlibError.swift */,
 				CE59DB4826D3A95C002ABBB1 /* Extensions */,
+				CE64C3EB26F1C6810037ADDE /* Protocols */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -403,6 +441,7 @@
 		CEA1A40326D3635500122D32 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CE64C3E326F1BFD20037ADDE /* CustomNavBar */,
 				CEA1A40426D3640100122D32 /* TDManager.swift */,
 				CE59BF9326DF628C009D18D6 /* DataUDManager.swift */,
 				CE5338C226D518C400391E86 /* AuthorizeData.swift */,
@@ -586,6 +625,7 @@
 				CE6E16DE26D8F2E300EE5D1B /* Sender.swift in Sources */,
 				CE59DB5326D3B372002ABBB1 /* RootTabBarViewController.swift in Sources */,
 				CE626AC226F0932900BD7AA8 /* ChatLinkItem.swift in Sources */,
+				CE64C3F126F1C6F40037ADDE /* IAttachableNavigationBarProgressContainer.swift in Sources */,
 				CE59DB6826D3CFB2002ABBB1 /* AuthenticationCodeViewController.swift in Sources */,
 				CE59DB4A26D3A992002ABBB1 /* UIViewExtension.swift in Sources */,
 				CE59BF9426DF628C009D18D6 /* DataUDManager.swift in Sources */,
@@ -593,7 +633,9 @@
 				CE5EC13426DCC1E100E467A9 /* MessagesExtension.swift in Sources */,
 				CE601E8326D611AE00D40665 /* ContactsViewController.swift in Sources */,
 				CE6E16B626D8D18A00EE5D1B /* DateFormatterExtensions.swift in Sources */,
+				CE64C3E926F1C1C90037ADDE /* NavigationBarProgressViewConfigurator.swift in Sources */,
 				CE59DB6426D3C846002ABBB1 /* TDlibError.swift in Sources */,
+				CE64C3F426F1C8410037ADDE /* INavigationBarProgressView.swift in Sources */,
 				CE62372D26DE3C3800961A3E /* DateExtension.swift in Sources */,
 				CE5382EE26D7A9C7006F5552 /* Message.swift in Sources */,
 				CEA1A40526D3640100122D32 /* TDManager.swift in Sources */,
@@ -601,6 +643,7 @@
 				CE59DB4126D39997002ABBB1 /* PhoneNumberViewController.swift in Sources */,
 				CE5F0FAF26CF845D00DC4272 /* Chat.xcdatamodeld in Sources */,
 				CE59DB4D26D3A9F4002ABBB1 /* UIViewControllerExtension.swift in Sources */,
+				CE64C3ED26F1C69A0037ADDE /* INavigationBarProgressContainer.swift in Sources */,
 				CE5338B926D4FCAB00391E86 /* UITableViewCellExtensions.swift in Sources */,
 				CE5338BE26D4FD3C00391E86 /* ChatTableViewCell.swift in Sources */,
 				CE5EC12D26DCC01300E467A9 /* Chat.swift in Sources */,
@@ -609,6 +652,7 @@
 				CE5338B126D4CE8200391E86 /* SettingsViewController.swift in Sources */,
 				CE7B7E6C26D7521900DEB604 /* ChatViewController.swift in Sources */,
 				CE601E9226D612F200D40665 /* ContactTableViewCell.swift in Sources */,
+				CE64C3E526F1C0120037ADDE /* NavigationBarProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

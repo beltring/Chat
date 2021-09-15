@@ -9,28 +9,39 @@ import TDLib
 import UIKit
 
 class ChatsViewController: UIViewController {
-
+    
     @IBOutlet private weak var tableView: UITableView!
+    
+    var activityView: UIView & INavigationBarProgressView = NavigationBarProgressView(
+        config: .init(
+            interItemSpace: 8,
+            regularTitle: "Regular",
+            pendingTitle: "Updating...",
+            titleFont: .systemFont(ofSize: 16, weight: .medium)
+        )
+    )
     
     private var dataSource = [TDLib.Chat]()
     private var currentUser: User!
     private let refreshControl = UIRefreshControl()
     private var lastIndexPath = IndexPath(row: 0, section: 0)
     private let activityIndicator = UIActivityIndicatorView(style: .gray)
+    private var isPending: Bool = false
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupTableView()
         setupNavigationItem()
         prepareDataSource()
         getUser()
         setupRefreshControl()
+        self.attach(navigationActivityView: self.activityView)
         
-//        let barButton = UIBarButtonItem(customView: activityIndicator)
-//        navigationItem.rightBarButtonItem = barButton
-//        activityIndicator.startAnimating()
+        //        let barButton = UIBarButtonItem(customView: activityIndicator)
+        //        navigationItem.rightBarButtonItem = barButton
+        //        activityIndicator.startAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +49,7 @@ class ChatsViewController: UIViewController {
         tabBarController?.navigationController?.setNavigationBarHidden(true, animated: animated)
         prepareDataSource()
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         tabBarController?.navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -75,7 +86,7 @@ class ChatsViewController: UIViewController {
                     TDManager.shared.getChat(chatId: id) { [weak self] res in
                         switch res {
                         case .success(let chat):
-//                            print(chat)
+                            //                            print(chat)
                             DispatchQueue.main.async {
                                 self?.dataSource.append(chat)
                                 self?.tableView.reloadData()
@@ -87,6 +98,7 @@ class ChatsViewController: UIViewController {
                 }            
                 self?.tableView.reloadData()
                 self?.refreshControl.endRefreshing()
+//                self?.stopNavigationActivity()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -95,7 +107,13 @@ class ChatsViewController: UIViewController {
     
     // MARK: - Actions    
     @objc private func refreshChats(_ sender: Any) {
-        prepareDataSource()
+        if isPending {
+              stopNavigationActivity()
+        } else {
+            startNavigationActivity()
+            prepareDataSource()
+        }
+        isPending.toggle()
     }
     
     // MARK: - API calls
@@ -170,7 +188,7 @@ extension ChatsViewController: UITableViewDelegate {
         
         switch chatTD.type {
         case .supergroup(supergroupId: _, isChannel: let res):
-           isChannel = res
+            isChannel = res
         default:
             isChannel = false
         }
@@ -187,4 +205,14 @@ extension ChatsViewController: UITableViewDelegate {
             }
         }
     }
+}
+
+extension ChatsViewController: INavigationBarProgressContainer {
+    
+}
+
+extension ChatsViewController: IAttachableNavigationBarProgressContainer {
+  public func attach(navigationActivityView: INavigationBarProgressView & UIView) {
+    self.navigationItem.titleView = navigationActivityView
+  }
 }
