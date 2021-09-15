@@ -178,7 +178,6 @@ extension ChatsViewController: UITableViewDelegate {
         TDManager.shared.getChatHistory(chatId: chatId) { [weak self] result in
             switch result {
             case .success(let messages):
-//                print(messages)
                 let vc = ChatViewController.initial()
                 vc.chat = Chat(id: chatId, title: title, messages: messages.convertToArrayMessages(), isChannel: isChannel)
                 vc.user = self?.currentUser

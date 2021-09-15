@@ -29,7 +29,7 @@ extension Messages {
                         let url = URL(string: webPage.url)
                         
                         let path = webPage.photo?.sizes.first { $0.type == "m"}?.photo.local.path
-                        if path != "" {
+                        if path != nil && path != "" {
                             let image = UIImage(contentsOfFile: path!)
                             linkItem = ChatLinkItem(text: text.text, attributedText: .none, url: url!, title: webPage.title, teaser: webPage.description, thumbnailImage: image!)
                         } else {
