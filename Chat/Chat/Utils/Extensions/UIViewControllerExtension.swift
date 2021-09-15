@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import SafariServices
 import UIKit
 
+// MARK: - Initial
 extension UIViewController {
     static func initial() -> Self {
         let className = String(describing: self)
@@ -24,6 +26,7 @@ extension UIViewController {
     }
 }
 
+// MARK: - Alert
 extension UIViewController {
     func presentAlert(title: String? = nil,
                       message: String? = nil,
@@ -44,5 +47,32 @@ extension UIViewController {
             
             self?.present(alert, animated: animated, completion: completion)
         }
+    }
+}
+
+// MARK: - SafariViewController
+extension UIViewController {
+    func presentSafariViewController(url: URL?) {
+        guard let url = url else {
+            return
+        }
+        
+        let vc = self.makeSafariViewController(url: url)
+        self.present(vc, animated: true)
+    }
+
+    func makeSafariViewController(url: URL) -> SFSafariViewController {
+        let vc = SFSafariViewController(url: url)
+        vc.delegate = UIViewController.safariDelegate
+        
+        return vc
+    }
+    
+    private static let safariDelegate = WebViewControllerDelegate()
+}
+
+fileprivate class WebViewControllerDelegate: NSObject, SFSafariViewControllerDelegate {
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }

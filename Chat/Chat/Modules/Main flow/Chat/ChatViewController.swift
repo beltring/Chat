@@ -5,6 +5,7 @@
 //  Created by User on 8/26/21.
 //
 
+import AVKit
 import TDLib
 import InputBarAccessoryView
 import MessageKit
@@ -73,6 +74,10 @@ class ChatViewController: MessagesViewController {
             layout.textMessageSizeCalculator.incomingAvatarSize = .zero
             layout.photoMessageSizeCalculator.outgoingAvatarSize = .zero
             layout.photoMessageSizeCalculator.incomingAvatarSize = .zero
+            layout.videoMessageSizeCalculator.outgoingAvatarSize = .zero
+            layout.videoMessageSizeCalculator.incomingAvatarSize = .zero
+            layout.linkPreviewMessageSizeCalculator.outgoingAvatarSize = .zero
+            layout.linkPreviewMessageSizeCalculator.incomingAvatarSize = .zero
         }
         
     }
@@ -224,6 +229,21 @@ extension ChatViewController: MessagesDisplayDelegate {
         let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
         return .bubbleTail(corner, .curved)
     }
+    
+    func detectorAttributes(for detector: DetectorType, and message: MessageType, at indexPath: IndexPath) -> [NSAttributedString.Key: Any] {
+            switch detector {
+            case .hashtag, .mention: return [.foregroundColor: UIColor.blue]
+            default: return [
+                NSAttributedString.Key.foregroundColor: UIColor.white,
+                NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
+                NSAttributedString.Key.underlineColor: UIColor.white
+            ]
+            }
+        }
+        
+        func enabledDetectors(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> [DetectorType] {
+            return [.url, .address, .phoneNumber, .date, .transitInformation, .mention, .hashtag]
+        }
 }
 
 // MARK: - MessagesLayoutDelegate
@@ -238,6 +258,30 @@ extension ChatViewController: MessagesLayoutDelegate {
 }
 
 extension ChatViewController: MessageCellDelegate {
+    func didTapMessage(in cell: MessageCollectionViewCell) {
+        if let indexPath = messagesCollectionView.indexPath(for: cell) {
+            let message = messages[indexPath.section]
+            
+            switch message.kind {
+            case .video(let videoItem):
+                if let videoUrl = videoItem.url {
+                    let player = AVPlayer(url: videoUrl)
+                    let playerViewController = AVPlayerViewController()
+                    playerViewController.player = player
+                    present(playerViewController, animated: true) {
+                        playerViewController.player!.play()
+                    }
+                }
+            default:
+                break
+            }
+        }
+    }
+    
+    func didSelectURL(_ url: URL) {
+        presentSafariViewController(url: url)
+    }
+    
     func didTapImage(in cell: MessageCollectionViewCell) {
         guard let indexPath = messagesCollectionView.indexPath(for: cell) else { return }
         guard let messagesDataSource = messagesCollectionView.messagesDataSource else { return }
@@ -248,6 +292,15 @@ extension ChatViewController: MessageCellDelegate {
             if let image = photoItem.image {
                 vc.photoImage = image
                 present(vc, animated: true, completion: nil)
+            }
+        case .video(let videoItem):
+            if let videoUrl = videoItem.url {
+                let player = AVPlayer(url: videoUrl)
+                let playerViewController = AVPlayerViewController()
+                playerViewController.player = player
+                present(playerViewController, animated: true) {
+                    playerViewController.player!.play()
+                }
             }
         default:
             break
@@ -291,6 +344,7 @@ extension ChatViewController: MessageCellDelegate {
     func didStopAudio(in cell: AudioMessageCell) {
         print("Did stop audio sound")
     }
+    
 }
 
 // MARK: - UIImagePickerControllerDelegate&UINavigationControllerDelegate

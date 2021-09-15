@@ -18,7 +18,7 @@
 		CE5338C326D518C400391E86 /* AuthorizeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5338C226D518C400391E86 /* AuthorizeData.swift */; };
 		CE5382EE26D7A9C7006F5552 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5382ED26D7A9C7006F5552 /* Message.swift */; };
 		CE59BF9426DF628C009D18D6 /* DataUDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59BF9326DF628C009D18D6 /* DataUDManager.swift */; };
-		CE59BF9726DF80F3009D18D6 /* ImageMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59BF9626DF80F3009D18D6 /* ImageMediaItem.swift */; };
+		CE59BF9726DF80F3009D18D6 /* ChatMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59BF9626DF80F3009D18D6 /* ChatMediaItem.swift */; };
 		CE59DB4126D39997002ABBB1 /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59DB4026D39997002ABBB1 /* PhoneNumberViewController.swift */; };
 		CE59DB4526D399A9002ABBB1 /* PhoneNumber.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE59DB4426D399A9002ABBB1 /* PhoneNumber.storyboard */; };
 		CE59DB4A26D3A992002ABBB1 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59DB4926D3A992002ABBB1 /* UIViewExtension.swift */; };
@@ -42,6 +42,7 @@
 		CE60C68D26EF6A9900B44022 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60C68C26EF6A9900B44022 /* PhotoViewController.swift */; };
 		CE60C69026EF6AF100B44022 /* Photo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE60C68F26EF6AF100B44022 /* Photo.storyboard */; };
 		CE62372D26DE3C3800961A3E /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62372C26DE3C3800961A3E /* DateExtension.swift */; };
+		CE626AC226F0932900BD7AA8 /* ChatLinkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626AC126F0932900BD7AA8 /* ChatLinkItem.swift */; };
 		CE6E16B626D8D18A00EE5D1B /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E16B526D8D18A00EE5D1B /* DateFormatterExtensions.swift */; };
 		CE6E16DE26D8F2E300EE5D1B /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E16DD26D8F2E300EE5D1B /* Sender.swift */; };
 		CE7B7E6826D7501900DEB604 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7B7E6726D7501900DEB604 /* Chat.storyboard */; };
@@ -68,7 +69,7 @@
 		CE5338C226D518C400391E86 /* AuthorizeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizeData.swift; sourceTree = "<group>"; };
 		CE5382ED26D7A9C7006F5552 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		CE59BF9326DF628C009D18D6 /* DataUDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUDManager.swift; sourceTree = "<group>"; };
-		CE59BF9626DF80F3009D18D6 /* ImageMediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMediaItem.swift; sourceTree = "<group>"; };
+		CE59BF9626DF80F3009D18D6 /* ChatMediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMediaItem.swift; sourceTree = "<group>"; };
 		CE59DB4026D39997002ABBB1 /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
 		CE59DB4426D399A9002ABBB1 /* PhoneNumber.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhoneNumber.storyboard; sourceTree = "<group>"; };
 		CE59DB4926D3A992002ABBB1 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -98,6 +99,7 @@
 		CE60C68C26EF6A9900B44022 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		CE60C68F26EF6AF100B44022 /* Photo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Photo.storyboard; sourceTree = "<group>"; };
 		CE62372C26DE3C3800961A3E /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		CE626AC126F0932900BD7AA8 /* ChatLinkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLinkItem.swift; sourceTree = "<group>"; };
 		CE6E16B526D8D18A00EE5D1B /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
 		CE6E16DD26D8F2E300EE5D1B /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		CE7B7E6726D7501900DEB604 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
@@ -175,11 +177,12 @@
 		CE5382EC26D7A94C006F5552 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				CEE949EC26EB90FA00A2A0E2 /* AudioItem.swift */,
+				CE5EC12C26DCC01300E467A9 /* Chat.swift */,
+				CE59BF9626DF80F3009D18D6 /* ChatMediaItem.swift */,
 				CE5382ED26D7A9C7006F5552 /* Message.swift */,
 				CE6E16DD26D8F2E300EE5D1B /* Sender.swift */,
-				CE5EC12C26DCC01300E467A9 /* Chat.swift */,
-				CE59BF9626DF80F3009D18D6 /* ImageMediaItem.swift */,
-				CEE949EC26EB90FA00A2A0E2 /* AudioItem.swift */,
+				CE626AC126F0932900BD7AA8 /* ChatLinkItem.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				CE5338C326D518C400391E86 /* AuthorizeData.swift in Sources */,
 				CE6E16DE26D8F2E300EE5D1B /* Sender.swift in Sources */,
 				CE59DB5326D3B372002ABBB1 /* RootTabBarViewController.swift in Sources */,
+				CE626AC226F0932900BD7AA8 /* ChatLinkItem.swift in Sources */,
 				CE59DB6826D3CFB2002ABBB1 /* AuthenticationCodeViewController.swift in Sources */,
 				CE59DB4A26D3A992002ABBB1 /* UIViewExtension.swift in Sources */,
 				CE59BF9426DF628C009D18D6 /* DataUDManager.swift in Sources */,
@@ -600,7 +604,7 @@
 				CE5338B926D4FCAB00391E86 /* UITableViewCellExtensions.swift in Sources */,
 				CE5338BE26D4FD3C00391E86 /* ChatTableViewCell.swift in Sources */,
 				CE5EC12D26DCC01300E467A9 /* Chat.swift in Sources */,
-				CE59BF9726DF80F3009D18D6 /* ImageMediaItem.swift in Sources */,
+				CE59BF9726DF80F3009D18D6 /* ChatMediaItem.swift in Sources */,
 				CE5F0FA526CF845D00DC4272 /* AppDelegate.swift in Sources */,
 				CE5338B126D4CE8200391E86 /* SettingsViewController.swift in Sources */,
 				CE7B7E6C26D7521900DEB604 /* ChatViewController.swift in Sources */,
