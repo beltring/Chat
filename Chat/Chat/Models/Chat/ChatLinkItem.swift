@@ -21,5 +21,4 @@ struct ChatLinkItem: LinkItem {
     
     var thumbnailImage: UIImage
     
-    
 }

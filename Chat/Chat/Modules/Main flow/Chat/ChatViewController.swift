@@ -135,7 +135,7 @@ class ChatViewController: MessagesViewController {
                 self?.presentAlert(title: "Error", message: "The image size is large")
             }
         }
-        let message = Message(sender: currentUser, content: "test photo message", image: UIImage(contentsOfFile: sendPhotoUrl)!)
+        let message = Message(sender: currentUser, image: UIImage(contentsOfFile: sendPhotoUrl))
         messages.append(message)
         self.chat.messages.append(message)
         
@@ -206,7 +206,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                 print(error)
             }
         }
-        let message = Message(userId: currentUser.senderId, content: text, displayName: currentUser.displayName)
+        let message = Message(sender: currentUser, content: text)
         messages.append(message)
         self.chat.messages.append(message)
         inputBar.inputTextView.text = ""
@@ -234,9 +234,9 @@ extension ChatViewController: MessagesDisplayDelegate {
             switch detector {
             case .hashtag, .mention: return [.foregroundColor: UIColor.blue]
             default: return [
-                NSAttributedString.Key.foregroundColor: UIColor.white,
+                NSAttributedString.Key.foregroundColor: UIColor.black,
                 NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
-                NSAttributedString.Key.underlineColor: UIColor.white
+                NSAttributedString.Key.underlineColor: UIColor.black
             ]
             }
         }

@@ -102,12 +102,12 @@ extension Messages {
                     print("Content: \(item.content)")
                 }
                 let date = item.date
-                let id = item.id
+                let id = String(item.id)
                 let sender = Sender(senderId: userId, displayName: "Test")
-                let message = Message(id: id, sender: sender, content: content, date: date, image: image, audioItem: audioItem)
+                let message = Message(id: id, sender: sender, date: date, audioItem: audioItem, content: content)
                 messages.append(message)
                 if description != "" {
-                    let descriptionMessage = Message(id: id, sender: sender, content: description, date: date)
+                    let descriptionMessage = Message(id: id, sender: sender, date: date, content: description)
                     messages.append(descriptionMessage)
                 } else if videoPath != "" {
                     let videoMessage = Message(id: id, sender: sender, content: content, date: date, videoPath: videoPath)

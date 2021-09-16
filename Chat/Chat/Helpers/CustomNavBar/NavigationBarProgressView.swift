@@ -13,7 +13,7 @@ class NavigationBarProgressView: UIView {
     let titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         return label
-    } ()
+    }()
 
     let config: NavigationBarProgressViewConfigurator
     private(set) var isPending: Bool = false
@@ -55,6 +55,7 @@ class NavigationBarProgressView: UIView {
       }
 }
 
+// MARK: - Extensions
 // MARK: - INavigationBarProgressView
 extension NavigationBarProgressView: INavigationBarProgressView {
   public func didStartPending() {

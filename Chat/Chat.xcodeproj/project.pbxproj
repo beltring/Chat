@@ -307,6 +307,7 @@
 				CEA1A40326D3635500122D32 /* Helpers */,
 				CEE949B726EB255600A2A0E2 /* Models */,
 				CE5F0FBE26CF851A00DC4272 /* Modules */,
+				CE742F5A26F3273300C2B3D3 /* Parents */,
 				CE59DB6226D3C818002ABBB1 /* Parents */,
 				CE5F0FBF26CF855400DC4272 /* Resources */,
 				CEA1A3FD26D3631800122D32 /* Utils */,
@@ -394,14 +395,6 @@
 			path = CustomNavBar;
 			sourceTree = "<group>";
 		};
-		CE64C3EB26F1C6810037ADDE /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				CE64C3F626F1C9C10037ADDE /* NavBar */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		CE64C3F626F1C9C10037ADDE /* NavBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,6 +403,22 @@
 				CE64C3F326F1C8410037ADDE /* INavigationBarProgressView.swift */,
 			);
 			path = NavBar;
+			sourceTree = "<group>";
+		};
+		CE742F5A26F3273300C2B3D3 /* Parents */ = {
+			isa = PBXGroup;
+			children = (
+				CE742F5B26F3273B00C2B3D3 /* Protocols */,
+			);
+			path = Parents;
+			sourceTree = "<group>";
+		};
+		CE742F5B26F3273B00C2B3D3 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CE64C3F626F1C9C10037ADDE /* NavBar */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		CEA1A3F426D3608700122D32 /* Frameworks */ = {
@@ -433,7 +442,6 @@
 				CE60C68726EF277100B44022 /* BasicAudioController.swift */,
 				CE59DB6326D3C846002ABBB1 /* TDlibError.swift */,
 				CE59DB4826D3A95C002ABBB1 /* Extensions */,
-				CE64C3EB26F1C6810037ADDE /* Protocols */,
 			);
 			path = Utils;
 			sourceTree = "<group>";

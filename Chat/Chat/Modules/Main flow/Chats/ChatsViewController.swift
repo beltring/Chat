@@ -15,7 +15,7 @@ class ChatsViewController: UIViewController {
     var activityView: UIView & INavigationBarProgressView = NavigationBarProgressView(
         config: .init(
             interItemSpace: 8,
-            regularTitle: "Regular",
+            regularTitle: "Chats",
             pendingTitle: "Updating...",
             titleFont: .systemFont(ofSize: 16, weight: .medium)
         )
@@ -33,15 +33,10 @@ class ChatsViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        setupNavigationItem()
         prepareDataSource()
         getUser()
         setupRefreshControl()
         self.attach(navigationActivityView: self.activityView)
-        
-        //        let barButton = UIBarButtonItem(customView: activityIndicator)
-        //        navigationItem.rightBarButtonItem = barButton
-        //        activityIndicator.startAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,10 +67,6 @@ class ChatsViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refreshChats(_:)), for: .valueChanged)
     }
     
-    private func setupNavigationItem() {
-        navigationItem.title = "Chats"
-    }
-    
     private func prepareDataSource() {
         dataSource = []
         TDManager.shared.getChats { [weak self] result in
@@ -98,7 +89,8 @@ class ChatsViewController: UIViewController {
                 }            
                 self?.tableView.reloadData()
                 self?.refreshControl.endRefreshing()
-//                self?.stopNavigationActivity()
+                self?.stopNavigationActivity()
+                self?.isPending.toggle()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -111,9 +103,9 @@ class ChatsViewController: UIViewController {
               stopNavigationActivity()
         } else {
             startNavigationActivity()
-            prepareDataSource()
         }
         isPending.toggle()
+        prepareDataSource()
     }
     
     // MARK: - API calls

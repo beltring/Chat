@@ -40,51 +40,46 @@ struct Message: MessageType {
         }
     }
     
-    init(user: User, content: String, displayName: String) {
-        let userId = String(user.id)
-        sender = Sender(senderId: userId, displayName: displayName)
-        self.content = content
-        sentDate = Date()
-        id = nil
-    }
-    
-    init(userId: String, content: String, displayName: String) {
-        sender = Sender(senderId: userId, displayName: displayName)
-        self.content = content
-        sentDate = Date()
-        id = nil
-    }
-    
-    init(sender: Sender, content: String, image: UIImage) {
+    // MARK: - Init
+    init(sender: Sender, content: String) {
         self.sender = sender
         self.content = content
+        sentDate = Date()
+        id = nil
+    }
+    
+    init(sender: Sender, image: UIImage?) {
+        self.sender = sender
+        self.content = ""
         self.image = image
         sentDate = Date()
         self.id = nil
     }
     
-    init(id: Int64, sender: Sender, content: String, date: Int32, image: UIImage? = nil, audioItem: Audioitem? = nil) {
+    init(id: String, sender: Sender, date: Int32, content: String = "") {
         self.sender = sender
         self.content = content
         sentDate = UIKit.Date(timeIntervalSince1970: TimeInterval(date))
-        self.id = String(id)
+        self.id = id
+    }
+    
+    init(id: String, sender: Sender, date: Int32, image: UIImage?, content: String = "") {
+        self.init(id: id, sender: sender, date: date, content: content)
         self.image = image
+    }
+    
+    init(id: String, sender: Sender, date: Int32, audioItem: Audioitem?, content: String = "") {
+        self.init(id: id, sender: sender, date: date, content: content)
         self.audioItem = audioItem
     }
     
-    init(id: Int64, sender: Sender, content: String, date: Int32, videoPath: String) {
-        self.sender = sender
-        self.content = content
-        sentDate = UIKit.Date(timeIntervalSince1970: TimeInterval(date))
-        self.id = String(id)
+    init(id: String, sender: Sender, content: String, date: Int32, videoPath: String) {
+        self.init(id: id, sender: sender, date: date, content: content)
         self.videoPath = videoPath
     }
     
-    init(id: Int64, sender: Sender, date: Int32, linkItem: LinkItem?) {
-        self.sender = sender
-        self.content = ""
-        sentDate = UIKit.Date(timeIntervalSince1970: TimeInterval(date))
-        self.id = String(id)
+    init(id: String, sender: Sender, date: Int32, linkItem: LinkItem?) {
+        self.init(id: id, sender: sender, date: date)
         self.linkItem = linkItem
     }
 }

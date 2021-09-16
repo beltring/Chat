@@ -32,9 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Wait encryption key")
             case .waitPhoneNumber:
                 print("Wait phone number event.")
-            case .waitCode(_):
+            case .waitCode:
                 print("Wait code event.")
-            case .waitPassword( _, _, _):
+            case .waitPassword:
                 print("Show passoword screen (will only happen when the user has setup 2FA).")
             case .ready:
                 print("Ready")
@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Chat")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
