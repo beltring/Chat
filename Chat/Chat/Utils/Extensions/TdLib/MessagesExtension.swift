@@ -88,7 +88,6 @@ extension Messages {
                             case .success(let result):
                                 let url = URL(fileURLWithPath: voiceNote.voice.local.path)
                                 audioItem = Audioitem(url: url, duration: duration, size: .init(width: 150, height: 40))
-                                print(result)
                             case .failure(let error):
                                 print(error.localizedDescription)
                             }
@@ -104,7 +103,7 @@ extension Messages {
                 let date = item.date
                 let id = String(item.id)
                 let sender = Sender(senderId: userId, displayName: "Test")
-                let message = Message(id: id, sender: sender, date: date, audioItem: audioItem, content: content)
+                let message = Message(id: id, sender: sender, date: date, image: image, content: content)
                 messages.append(message)
                 if description != "" {
                     let descriptionMessage = Message(id: id, sender: sender, date: date, content: description)
@@ -116,6 +115,9 @@ extension Messages {
                     messages.removeLast()
                     let linkItem = Message(id: id, sender: sender, date: date, linkItem: chatLinkItem)
                     messages.append(linkItem)
+                } else if let audioItem = audioItem {
+                    let audioMessage = Message(id: id, sender: sender, date: date, audioItem: audioItem, content: content)
+                    messages.append(audioMessage)
                 }
                 
             }
