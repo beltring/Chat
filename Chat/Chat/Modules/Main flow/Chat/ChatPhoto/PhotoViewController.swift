@@ -24,7 +24,7 @@ class PhotoViewController: UIViewController {
         messagePhoto.image = photoImage
     }
 
-    // MARK: - Actions
+    // MARK: - Navigation
     @IBAction private func sharePhotoTapped(_ sender: UIButton) {
         let shareController = UIActivityViewController(activityItems: [photoImage!], applicationActivities: nil)
         

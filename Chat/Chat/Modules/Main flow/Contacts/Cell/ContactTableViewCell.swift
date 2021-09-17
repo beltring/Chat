@@ -17,7 +17,6 @@ class ContactTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.layoutIfNeeded()
         profileImage.layer.cornerRadius = profileImage.frame.height / 2.0
-        layer.masksToBounds = true
     }
     
     override func prepareForReuse() {
@@ -31,7 +30,10 @@ class ContactTableViewCell: UITableViewCell {
     func configure(name: String, status: String, profileImage: UIImage?) {
         nameLabel.text = name
         statusLabel.text = status
-        guard let img = profileImage else { return }
-        self.profileImage.image = img
+        if let img = profileImage {
+            self.profileImage.image = img
+        } else {
+            self.profileImage.image = UIImage(named: "ImgNoImage")
+        }
     }
 }

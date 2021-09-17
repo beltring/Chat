@@ -85,7 +85,7 @@ extension Messages {
                     if voiceNote.voice.local.path == "" {
                         TDManager.shared.downloadFile(id: voiceId) { result in
                             switch result {
-                            case .success(let result):
+                            case .success:
                                 let url = URL(fileURLWithPath: voiceNote.voice.local.path)
                                 audioItem = Audioitem(url: url, duration: duration, size: .init(width: 150, height: 40))
                             case .failure(let error):

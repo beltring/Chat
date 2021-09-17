@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,8 +18,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgNoImage" translatesAutoresizingMaskIntoConstraints="NO" id="6Wt-hO-b3D">
+                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImgNoImage" translatesAutoresizingMaskIntoConstraints="NO" id="6Wt-hO-b3D">
                         <rect key="frame" x="16" y="7.5" width="40" height="40"/>
+                        <color key="tintColor" systemColor="labelColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="Vlm-Os-i2v"/>
                             <constraint firstAttribute="height" constant="40" id="szq-tu-bBv"/>
@@ -57,6 +59,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="imgNoImage" width="2048" height="2048"/>
+        <image name="ImgNoImage" width="2048" height="2048"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

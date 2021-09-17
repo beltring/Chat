@@ -10,9 +10,6 @@ import MessageKit
 
 struct Audioitem: AudioItem {
     var url: URL
-    
     var duration: Float
-    
     var size: CGSize
-
 }

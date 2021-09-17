@@ -199,12 +199,13 @@ extension ChatsViewController: UITableViewDelegate {
     }
 }
 
-extension ChatsViewController: INavigationBarProgressContainer {
-    
-}
-
+// MARK: - IAttachableNavigationBarProgressContainer
 extension ChatsViewController: IAttachableNavigationBarProgressContainer {
   public func attach(navigationActivityView: INavigationBarProgressView & UIView) {
     self.navigationItem.titleView = navigationActivityView
   }
+}
+
+// MARK: - INavigationBarProgressContainer
+extension ChatsViewController: INavigationBarProgressContainer {
 }

@@ -16,6 +16,7 @@ class DataUDManager {
     }
 }
 
+// MARK: - Extensions
 extension DataUDManager {
     
     var appearance: String {
